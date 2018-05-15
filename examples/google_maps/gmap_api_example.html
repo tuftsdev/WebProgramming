@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Google Maps API version 3 Example</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+		<link rel="stylesheet" href="gmap_api_example_style.css" />
+		<script>
+			function init()
+			{
+				// Faneuil Hall
+				var landmark = new google.maps.LatLng(42.3599611, -71.0567528);
+			
+				// Set up map
+				var myOptions = {
+					zoom: 13, // The larger the zoom number, the bigger the zoom
+					center: landmark,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				
+				// Create the map in the "map_canvas" <div>
+				var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+				// Create a marker				
+				var marker = new google.maps.Marker({
+					position: landmark,
+					title: "Faneuil Hall, Boston, MA"
+				});
+				marker.setMap(map);
+
+				// This is a global info window...
+				var infowindow = new google.maps.InfoWindow();
+				
+				// Open info window on click of marker
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.setContent(marker.title);
+					infowindow.open(map, marker);
+				});
+			}
+		</script>
+	</head>
+	
+	<body onload="init()">
+		<div id="map_canvas"></div>
+	</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Web Applications with Node.js + Express</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Web Applications with Node.js + Express</h2>
+
+<h3>The Limitations of Client-Side</h3>
+
+<h3>Server-Side</h3>
+
+<h3>A Web Application: The Big Ideas</h3>
+<ul>
+<li>"Does something" --action-oriented</li>
+<li>Capturing, storing, processing, and transmitting data</li>
+<li>Why? Wide accessibility thanks to ubiquity of the web browser</li>
+<li>Mass customization</li>
+<li>Highly programmable</li>
+<li>Living content</li>
+<li>Manage state, including authentication</li>
+<li>Immediate and mass deployment</li>
+<li>Interactive user interfaces</li>
+<li>Available</li>
+<li>Offline and online access</li>
+<li>Read: <a href="http://www.acunetix.com/websitesecurity/web-applications/" target="_blank">http://www.acunetix.com/websitesecurity/web-applications/</a></li>
+</ul>
+
+<h3>General Anatomy and Structure of a Web Application</h3>
+
+<h3>That Was Then...</h3>
+<ul>
+<li>The LAMP stack: Linux + Apache + MySQL (database) + PHP (language)</li>
+<li>The good: still alive and viable</li>
+<li>The bad and the ugly: administration; language design; just read the PHP sucks vent: <a href="http://blog.codinghorror.com/the-php-singularity/" target="_blank">http://blog.codinghorror.com/the-php-singularity/</a></li>
+</ul>
+
+<h3>This is now...</h3>
+<ul>
+<li>Use a framework to streamline the development; makes developing web applications easier by making assumptions about what every developer needs to get started; write less code; don't reinvent the wheel</li>
+<li>Carefully choose a database system. No longer one-size-fits-all.</li>
+<li>If there is something that you need, download a package (or library) for the framework using a package manager (which performs installing, upgrading, configuring, and removing packages)</li>
+<li>Start up the integrated server on the web app</li>
+<li>And always, refer to the web framework API documentation</li>
+</ul>
+
+<h3>Node.js</h3>
+<ul>
+<li>Server-side software</li>
+<li>Uses JavaScript</li>
+<li>Uses Google's V8 JavaScript engine (<a href="https://code.google.com/p/v8/" target="_blank">https://code.google.com/p/v8/</a>)</li>
+<li>Event-driven and asynchronous I/O</li>
+<li>Lightweight</li>
+<li>For writing network applications</li>
+<li>Creates a web server by itself</li>
+<li>No bloat and very little overhead (unlike Apache)</li>
+<li>The API documentation: <a href="http://nodejs.org/api/" target="_blank">http://nodejs.org/api/</a></li>
+<li>But wait, Node.js is for writing high performance network applications, but what about writing web applications?</li>
+</ul>
+
+<h3>Express</h3>
+<ul>
+<li>Web application framework for Node.js</li>
+<li>Getting started (Hello World example): <a href="http://expressjs.com/starter/hello-world.html" target="_blank">http://expressjs.com/starter/hello-world.html</a></li>
+<li>The API documentation: <a href="http://expressjs.com/4x/api.html" target="_blank">http://expressjs.com/4x/api.html</a></li>
+</ul>
+
+<h3>Tutorial Using Node.js, Express, and Heroku (with code ready for MongoDB)</h3>
+<ol>
+<li>On your computer or virtual machine, run <code>mkdir node-example</code>.  This will create a new folder for your first server-side web application. <span class="note">DO NOT DO THIS IN YOUR PRIVATE GITHUB REPOSITORY!</span></li>
+<li>Run <code>cd node-example</code></li>
+<li>In the <code>node-example</code> folder, create a new file named <code>server.js</code> that contains the following:
+<pre>
+// Express initialization
+var express = require('express');
+var app = express();
+
+// Mongo initialization, setting up a connection to a MongoDB  (on Heroku or localhost)
+/*var mongoUri = process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/whereintheworld'; // comp20 is the name of the database we are using in MongoDB
+var mongo = require('mongodb');
+var db = mongo.Db.connect(mongoUri, function (error, databaseConnection) {
+  db = databaseConnection;
+});*/
+
+app.get('/', function (request, response) {
+  response.set('Content-Type', 'text/html');
+  response.send('&lt;p&gt;Hey, it works!&lt;/p&gt;');
+});
+
+
+// Oh joy! http://stackoverflow.com/questions/15693192/heroku-node-js-error-web-process-failed-to-bind-to-port-within-60-seconds-of
+app.listen(process.env.PORT || 3000);
+</pre>
+</li>
+<li>In the <code>node-example</code> folder, create a new file named <code>package.json</code> that contains the following:
+<pre>
+{
+        "name": "node-example",
+        "version": "0.0.1",
+        "dependencies": {
+                "express": "latest",
+                "mongodb": "latest",
+                "body-parser": "latest"
+        }
+}
+</pre>
+</li>
+<li>In the <code>node-example</code> folder, create a new file named <code>Procfile</code> that contains the following line: <code>web: node server.js</code>.  This file is required for Heroku to run your web application and server.</li>
+<li>Create a README file <code>README.md</code></li>
+<li>Run <code>npm install</code>.  This will install all dependencies and libraries required for your Node.js web application as specified in your <code>package.json</code> file.</li>
+<li>To test your web application and server, run <code>node server.js</code> (or <code>nodejs server.js</code> on the virtual machine I provided), then go to <code>http://localhost:3000/</code> on your web browser.</li>
+<li>Set up your folder as a Git repository. Inside <code>node-example</code>, run <code>git init</code>. Then commit and add the files via <code>git add .; git commit -m 'First';</code>.</li>
+<li>Set up your web application for Heroku by running <code>heroku create</code> inside <code>node-example</code>.  In order for this to work correctly, you must do the above (<code>git init</code>) first!</li>
+<li>Push your web application to Heroku by running <code>git push heroku master</code>.</li>
+<li>Run <code>heroku ps:scale web=1</code> to spin up one server for your web application.</li>
+<li>Run <code>heroku open</code> to open your web browser and go to your web application on Heroku.</li>
+</ol>
+<p>If you receive an "Application Error", run <code>heroku logs</code> to see what went wrong.</p>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>COMP 20: Web Programming</title>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+	// Using multiple unit types within one animation.
+		$("#go").click(function(){
+			$("#block").animate({
+				width: "90%",
+				opacity: 0.4,
+				marginLeft: "0in",
+				fontSize: "3em",
+				borderWidth: "10px"
+			}, 1500);
+		});
+	});
+</script>
+<style>
+div {
+	background-color:#bca;
+	width:100px;
+	border:1px solid green;
+}
+</style>
+</head>
+<body>
+<button id="go">&gt;&gt; Run</button>
+<div id="block">Hello!</div>
+</body>
+</html>

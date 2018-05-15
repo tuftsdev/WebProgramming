@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+<head>
+<title>Where In The World?</title>
+<script>
+	var request = new XMLHttpRequest();
+
+	function getLocation() {
+		// Step 1: set up HTTP request. Three required arguments...:
+		// ...HTTP method (string), URL (string), asynch (boolean)
+		request.open("GET", "location.json", true);
+
+		// Step 2: Set up callback function to deal with HTTP response data
+		request.onreadystatechange = function() {
+			if (request.readyState == 4 && request.status == 200) {
+				console.log("Got the data back!");
+				data = request.responseText;
+				console.log(data);
+				loc = JSON.parse(data);
+				elem = document.getElementById("location");
+				elem.innerHTML = "<p>Carmen Sandiego was last seen at " + loc["description"] + "</p>";
+			}
+			else if (request.readyState == 4 && request.status != 200) {
+				// think 404 or 500
+				document.getElementById("location").innerHTML = "<p>Whoops, something went terribly wrongo</p>";
+			}
+			else {
+				console.log("In progress...");
+			}
+		};
+
+		// Step 3: trigger the HTTP request
+		// The argument for send() --data that you want to send to web server
+		request.send(null);
+	}
+</script>
+</head>
+
+<body onload="getLocation()">
+	<h1>Where In The World?</h1>
+	<div id="location">Trying to determine location...</div>
+</body>
+</html>

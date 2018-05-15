@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>Messages</title>
+	<meta charset="utf-8"/>
+	<script>
+		function loadMessages() {
+			console.log("Start of loadMessages");
+			// Step 1: Create instance of XMLHttpRequest
+			request = new XMLHttpRequest();
+
+			// Step 2: Set up an HTTP request
+			request.open("GET", "https://messagehub.herokuapp.com/messages.json", true);
+
+			// Step 3: Set up to handle the HTTP response
+			request.onreadystatechange = function() {
+				// Request is done and got a response back
+				if (request.readyState == 4 && request.status == 200) {
+					outputDiv = document.getElementById("messages");
+					
+					// Step 5: Work with the response data
+					theString = request.responseText;				
+
+					// Step 5A: Parse the responseText to JavaScript objects
+					messages = JSON.parse(theString);
+					outputString = "";
+					for (count = 0; count < messages.length; count++) {
+						outputString += "<p>" + messages[count].content + " was written by " + messages[count].username + "</p>"
+					}
+					outputDiv.innerHTML = outputString;
+
+				}
+			};
+
+			// Step 4: Execute / send the request
+			console.log("Before request.send()");
+			request.send();
+			console.log("After request.send()");
+		}
+	</script>
+</head>
+
+<body onload="loadMessages()">
+	<h1>Messages</h1>
+	<div id="messages">Loading...</div>
+</body>
+</html>

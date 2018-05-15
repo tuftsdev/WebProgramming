@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Lab: Closest MBTA Subway Station</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Lab: Closest MBTA Subway Station, Part 2 on Week 4</h2>
+
+<h3><a href="lab-mbta.html">Revisit Part 1 on Week 3</a></h3>
+
+<h2>Instructions</h2>
+<p>This week, you are to implement four features onto your MBTA subway map from last week:</p>
+<ol>
+	<li>Determine your geolocation (geographic latitude and longitude) using the JavaScript <code>navigator.geolocation</code> object. Upon determining your geolocation, place a marker of where you are on the map.  The icon of the marker must be different than icon used for each MBTA subway station (it can be the default red pin Google uses).</li>
+	<li>Upon clicking on your marker on the map, display an information window (a.k.a., infowindow) noting the closest MBTA Red Line subway station from where you are including the distance away in miles.</li>
+	<li>Render a polyline (any color) that connects "your" marker to the marker of the closest MBTA Red Line subway station.</li>
+	<li>Upon clicking on a MBTA Red Line subway station marker, display an infowindow of the schedule of upcoming trains for that station.  Use JSON API of Red Line trains that I provide (see more details below).</li>
+</ol>
+
+<h2>The JSON API of MBTA Red Line Trains</h2>
+<p>The URL of the JSON API is <code>https://defense-in-derpth.herokuapp.com/redline.json</code></p>
+
+<p>This is a real-time schedule of the MBTA Red Line subway trains and it is updated very frequently.  Please refer to this document for the description of the keys in the JSON data: <a href="http://www.mbta.com/uploadedfiles/Description.pdf" target="_blank">http://www.mbta.com/uploadedfiles/Description.pdf</a></p>
+
+<h2>Calulating the Distance Between Two Geopoints</h2>
+<p>There are two ways to calculate the distance between two geopoints, choose one:</p>
+<ol>
+<li>Use the classic Haversine Formula. The formula is provided and analyzed at <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">http://www.movable-type.co.uk/scripts/latlong.html</a>.  Also, you are encouraged to use the JavaScript implementation of the Haversine Formula on Stasck Overflow but please do cite it in your <code>README.md</code> or in your code: <a href="http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript" target="_blank">http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript</a>.</li>
+<li>Use <code>google.maps.geometry.spherical.computeDistanceBetween(latLngA, latLngB);</code>.  See documentation at <a href="https://developers.google.com/maps/documentation/javascript/reference#spherical">https://developers.google.com/maps/documentation/javascript/reference#spherical</a></li>
+</ol>
+<p>Remember, the distance must be in <strong>miles</strong>, not meters.</p>
+
+<h2>Going Beyond</h2>
+<ul>
+	<li>In addition to noting the closest MBTA Red Line subway station from where you are, display a table of how far away you (in miles) to each MBTA Red Line subway station.  Sort the table by distance, from closest to furthest station.  This table can also be in the infowindow after clicking on "your" marker.</li>
+	<li>Upon determining the closest MBTA Red Line subway station away from you, display the restaurants, bars, and coffee shops within one mile of that subway station.  Consider using the Google Places API.</li>
+	<li>Upon clicking on an MBTA Red Line subway station marker, display the restaurants, bars, and coffee shops within one mile of that subway station.</li>
+	<li>Based on the JSON data feed, mark where the Red Line subway trains are on the map.</li>
+</ul>
+
+<h2>Testing Your Work</h2>
+<p>For this part of the lab, you <em>cannot</em> open the <code>index.html</code> page on a web browser as <code>navigator.geolocation</code> requires a server.  To test your work locally, run Python's simple HTTP server in the folder of your work.  That is:</p>
+<p><code>% cd comp20-XXXXX/mbta; # where XXXXX is the name of your private GitHub repository<br/>% python -m SimpleHTTPServer<br/></code></p>
+<p>By default, a simple web server will open up on port 8000.  Go to <code>http://localhost:8000/</code> on your favorite web browser to test your work.</p>
+<p class="note">Do not serve your work via the <code>gh-pages</code> branch of your private GitHub repository.</p>
+
+<h2>The <code>README</code> File</h2>
+<p>Every assignment shall include a <code>README</code> file that describes the work. This description must:</p>
+<ol>
+<li>Identify what aspects of the work have been correctly implemented and what have not.</li>
+<li>Identify anyone with whom you have collaborated or discussed the assignment.</li>
+<li>Say approximately how many hours you have spent completing the assignment.</li>
+<li>Be written in either text format (thus <code>README.txt</code>) or in Markdown (thus <code>README.md</code>). No other formats will be accepted.</li>
+</ol>
+
+<h2>Submitting Part 2</h2>
+<p>Push all your changes to the private repository in GitHub that I created for you in a folder named <code>mbta</code> under the <code>master</code> branch. Say that your private repository in GitHub is named <code>comp20-mchow</code>, make sure all the files are pushed to <code>comp20-mchow/mbta</code>.</p>
+
+<h2>Assessment</h2>
+<p>This lab is worth 10 points:</p>
+<ul>
+<li>(1 point) <code>README</code></li>
+<li>(2 points) Determine and mark your location on the map</li>
+<li>(2 points) Note the closest MBTA Red Line subway station from where you are (e.g., upon clicking on marker of where you are)</li>
+<li>(1 point) Polyline connecting your marker to the closest MBTA Red Line subway station</li>
+<li>(4 points) Upon clicking on a MBTA Red Line subway station marker, display an infowindow of the schedule of upcoming trains for that station</li>
+<li>(BONUS 1 point) Accomplish at least one of the "Going Beyond" items</li>
+</ul>
+
+</body>
+</html>

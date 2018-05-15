@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - JavaScript Objects and Functions</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>JavaScript Objects and Functions</h2>
+
+<h3>JavaScript Object</h3>
+<ul>
+<li>Recall: almost everything in JavaScript is an object</li>
+<li>An object in JavaScript is simply a collection of data and functions with a given object name</li>
+<li>Objects that you have seen so far: <code>Math</code>, <code>Date</code>, strings, and arrays</li>
+<li>Work "sort of" like objects in C++</li>
+<li>You must have an <code>Object</code> in order to assign attributes to it</li>
+<li>Attributes are created when assigned to</li>
+</ul>
+
+<h3>Hashes a.k.a. Dictionaries a.k.a. Associative Arrays a.k.a. Finite Map</h3>
+<ul>
+<li>Recall arrays</li>
+<li>Now imagine the ability of using strings as array indices</li>
+<li>The index is better known as a <span class="stress">key</span></li>
+<li>The corresponding value for the key can be anything (e.g., a string, a number, an object)!</li>
+</ul>
+<pre>
+	o = new Object;
+	o['a'] = 5;
+	o[7] = [1,2,3];
+	o['hi'] = {'hello':'there', 'yo':'man'};
+	console.log(o['a']);
+	console.log(o[7]);
+	console.log(o['hi']['hello']); 
+</pre>
+<ul>
+<li>This results in the JavaScript console:
+<pre>
+	5
+	1,2,3
+	there
+</pre>
+</li>
+<li><code>o['a']</code> is the value associated with index 'a'</li>
+<li><code>{ 'hello':'there', 'yo':'man' }</code> is an associative array literal. This means
+<ul>
+<li>map <code>hello</code> to <code>there</code></li>
+<li>map <code>yo</code> to <code>man</code></li> 
+</ul>
+</li>
+</ul>
+
+<h3>So What About JavaScript Functions?</h3>
+<ul>
+<li>I hope you all read <a href="http://www.joelonsoftware.com/items/2006/08/01.html" target="_blank"><span class="title">Can Your Programming Language Do This?</span> by Joel Spolsky (Joel on Software)</a></li>
+<li>Functions are also objects in JavaScript too!</li>
+<li>The big ideas: <!--http://stackoverflow.com/questions/705173/what-is-meant-by-first-class-object-->
+<ul>
+<li>A function is an instance of the <code>Object</code> type in JavaScript</li>
+<li>A function may be named by variables</li>
+<li>A function may be passed as arguments to procedures (i.e., functions)</li>
+<li>A function may be returned as the results of procedures (i.e., functions)</li>
+<li>They may be included in data structures (read: other <code>Objects</code>)</li>
+</ul>
+</li>
+<li>...and thus given these big ideas, functions in JavaScript are <span class="stress">first class</span></li>
+<li>Why is this important?
+<ol>
+<li>More opportunities for abstraction =&gt; your code is smaller, tighter, more reusable, and more scalable</li>
+<li>Functional composition (math anyone?)</li>
+<li>Fake the idea of Object-Oriented Programming with JavaScript</li>
+<li>Used extensively in jQuery</li>
+<li>This is how the Google Maps API and jQuery were written!</li>
+</ol>
+</li>
+<li>Example: <a href="https://github.com/tuftsdev/WebProgramming/tree/gh-pages/examples/firstclassfunctions" target="_blank">https://github.com/tuftsdev/WebProgramming/tree/gh-pages/examples/firstclassfunctions</a></li>
+<li>Try it out: <script async src="https://jsfiddle.net/mchow01/72j6knum/1/embed/"></script></li>
+</ul>
+
+</body>
+</html>

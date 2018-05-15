@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Asynchronous JavaScript and XML (AJAX)</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Asynchronous JavaScript and XML (AJAX)</h2>
+
+<h3>What is Ajax?</h3>
+<ul>
+<li>All of our web programs have been of the response-request model (circa late 1990s).  In other words, there is a lot of waiting!  Thus, causes usability issues</li>
+<li>Why can't web applications be more like desktop applications (i.e., as fast)?</li>
+<li>Not a programming language</li>
+<li>The big ideas:
+<ol>
+<li>No more waiting around!</li>
+<li>Only update a certain section of a page at a certain time with data from a server-side script (most of the times from the same domain and some times from a different domain)</li>
+</ol>
+</li>
+<li>The <span class="stress">asynchronous</span> process:
+<ol>
+<li>The web page sends its requests <span class="stress">using a JavaScript function</span> which handles talking to the server</li>
+<li>The JavaScript code makes a request to the server</li>
+<li>You continue to work on the page</li>
+<li>The server's response has only the data the page needs --without any markups</li>
+<li>The JavaScript dynamically updates the web page --without drawing everything or disturbing the user experience!</li>
+</ol>
+</li>
+</ul>
+
+<h3>The Core of Ajax: The <code>XMLHttpRequest</code> Object</h3>
+<ul>
+<li><code>XMLHttpRequest</code> is invoked (in a JavaScript function) on an event --e.g., <code>onChange</code> in a text box</li>
+<li><code>XMLHttpRequest</code> requests a document from the web server</li>
+<li>Server retrieves data, sends it back</li>
+<li>Ah ha, <code>XMLHttpRequest</code> fires event saying that data has arrived
+<ul>
+<li>A handler function is necessary to receive the notification...</li>
+</ul>
+</li>
+<li>...and to process the data.  Update the display typically using the DOM</li>
+<li>Methods:
+<ul>
+<li><code>abort</code></li>
+<li><code>getAllResponseHeaders</code></li>
+<li><code>getResponseHeader</code></li>
+<li><code>open(<span class="stress">method</span>, <span class="stress">url</span>, <span class="stress">asynchronous? (true or false)</span>)</code></li>
+<li><code>send(<span class="stress">data string</span>)</code> - start it up!  Usually send <code>null</code> as data string</li>
+<li><code>setRequestHeader</code></li>
+</ul>
+</li>
+<li>Properties:
+<ul>
+<li><code>onreadystatechange</code> - Set this to the handler function (when request is complete)!</li>
+<li><code>readyState</code> - A number indicating what state the request is in:
+<ul>
+<li>0 =&gt; Not initialized</li>
+<li>1 =&gt; Set up</li>
+<li>2 =&gt; Sent</li>
+<li>3 =&gt; In progress</li>
+<li>4 =&gt; Complete</li>
+<li>A change in <code>readyState</code> =&gt;<code>onreadystatechange</code> handler function runs</li>
+</ul>
+</li>
+<li><code>responseText</code> - The response data</li>
+<li><code>responseXML</code> - The response data as a document tree</li>
+<li><code>status</code> - The HTTP status code returned from the server</li>
+<li><code>statusText</code></li>
+</ul>
+</li>
+<li>Q: Can ready state = 4 but you receive errors?  How do you account for this?</li>
+</ul>
+
+<h3><span class="note">Important!</span> Security Restrictions</h3>
+<ul>
+<li>Cannot open files on your own machine (i.e., <code>file:///</code>)</li>
+<li>Most of the times, can only fetch files from the same site that the page is on.  This is also known as <span class="stress">JavaScript's Same Origin Policy</span>.</li>
+<li>You can fetch files from a different web server --if the server-side script on the different web server has enabled <span class="stress">Cross-Origin Request Sharing (CORS)</span></li>
+</ul>
+
+<h3>Question: Does a readyState of 4 always mean a good thing?</h3>
+
+</body>
+</html>

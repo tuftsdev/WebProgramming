@@ -1,0 +1,121 @@
+<link rel="stylesheet" type="text/css" href="style.css"></link>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" href="fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.galleryTable').each(function(index, elem){
+			$('img', elem).wrap(function() {
+				return '<a class="fancybox" rel="gal' + index + '" href="' + $(this).prop('src') + '" title="' + $(this).prop('title') + '">' + $(this).html() + '</a>';
+			});
+		});
+
+		$('.fancybox').not("[rel^='gal']").wrap(function() {
+			return '<a class="fancybox" href="' + $(this).prop('src') + '" title="' + $(this).prop('title') + '">' + $(this).html() + '</a>';
+		});
+		$(".fancybox").fancybox({
+	    	openEffect	: 'elastic',
+	    	closeEffect	: 'elastic',
+
+	    	helpers : {
+	    		title : {
+	    			type : 'inside'
+	    		}
+	    	}
+	    });
+	});
+</script>
+
+Security Assessment of Scorecenter
+==================================
+Prepared by [Gabe Joseph](http://gjoseph92.github.io) &bull; 4/30/2013
+
+Introduction
+------------
+This assessment tests the security of the [ScoreCenter](http://blooming-cliffs-4876.herokuapp.com/) web application developed by [@pattra](http://pattra.github.io/) for [Comp20 assignment 5](http://tuftsdev.github.io/WebProgramming/assignments/a5.html). According to the specifications she followed from _her_ client, ScoreCenter is "a web application that maintains high scores for HTML5 games" by providing an API for other developers to submit and retrieve the scores their games produce. It also offers a web interface where users can see all scores submitted, and search for scores by username. However, vulnerabilities in the application currently make it unsuitable for public use. This document identifies those vulnerabilities and suggests solutions for them.
+
+**What counts as a vulnerability?** That's a tough question, because my client's client's (or `client**`; many levels of client-indirection here) specifications demanded inherent insecurities. Most importantly, authentication is neither required nor allowed in the submission API specification, so anyone can submit a high score for any game under any username, with any score amount (which makes the highness of a "high score" dubious). At the least, implementing an API key, so each game accepts submissions from only certain developers, would be necessary to ensure the data is valid. Therefore, this assessment focuses mainly on vulnerabilities in the code, not how the API can be (ab)used with false submissions, which is arguably the biggest insecurity of all.
+
+Methodology
+-----------
+Testing was first carried out "black-box", using just what would be available to an attacker. However, I ran all code locally, and therefore did have to modify it slightly to connect to a local mongo instance and not Heroku's. Using just simple tools (`curl` and an HTML form I'd previously written to test my own code), I found multiple vulnerabilities. I then reviewed the code to find more logic errors and opportunities for server-side exploitation.
+
+Abstract of Findings
+--------------------
+As with most security issues, all the vulnerabilities in this application stem from putting too much faith in external input and assuming, not asserting, its correctness. Multiple vulnerabilities let an attacker crash the website by submitting unexpectedly-formatted scores or user searches. Fortunately, the site does prevent code that attackers could submit as a score from running in users' browsers when they visit the site, which could change the site's appearance or crash a user's browser. However, other websites that store their scores in ScoreCenter are at risk of the same attack, unless they also use proper security checks against the results ScoreCenter gives them.
+
+Issues Found
+------------
+1. **Cross-Cross-Site Scripting**
+	- Affects GET API
+	- <span class="high">High</span>: this flaw makes ScoreCenter a significant security risk for other sites that expect it to handle data correctly, so exposing it could cause a mass exodus from the product. However, the issue is easily-resolvable, and offending submissions can also be fixed retroactively.
+	- Data submitted via the POST API is not escaped, so it could include JavaScript or HTML (in place of a username or score) that a client's application would execute if it didn't include its own escaping. Though XSS is avoided on the web interface by escaping brackets (no `<script>`) and ampersands (`&#x3C;` won't produce `<`), which is [done automatically](https://github.com/visionmedia/jade/blob/master/Readme.md#features) by the Jade template engine used, an attacker still can use ScoreCenter to attack a client application's code. For example, running `curl --data "game_title=frogger&username=<iframe src='http://omfgdogs.com'></iframe>&score=1000000" localhost:3000/submit.json` will not inject the amusing iframe into the ScoreCenter web interface, but might affect an unsuspecting client:
+	<table class="galleryTable">
+		<tr><td>![pre-injection](img/pre-xss-client.png "Client site before injection")</td>
+		<td>![post-injection](img/post-xss-client.png "Client site after injection")</td></tr>
+	</table>
+	- This issue can be resolved by escaping user input before it enters the database. For example, commonly-dangerous characters can be escaped to their HTML-code equivalents, then the input can be filtered through a whitelist of allowable characters, such as `str.match(/[\d\w\s\]|[\~\!\@\#\$\^\*\-\_\+\;]*/g).join('');`. This same escaping can be applied retroactively using `db.collection.update()`.
+
+2. **Server crash on invalid JSON**
+	- Affects GET API
+	- <span class="mod">Moderate</span>: a simple attack can crash the Node web server, but the vulnerability is very easily resolvable
+	- As noted before, the data submitted is not escaped. Therefore, an attacker can submit data that results in malformed JSON (such as extra `,` or `"` characters), which makes the JSON parser throw an uncaught exception. Though escaping input of such characters might eliminate the symptom, the real problem is the convoluted code for the `/highscores.json` route. Rather than letting Express handle the JSONifying of the JavaScript object that results from a MongoDB query, the function tries to make JSON manually by string concatenation. However, in the final line, that string is parsed _back_ into an object by `JSON.parse()`, which is given to Express to send as the response. (Which, of course, is converted to a string again by Express internally via `JSON.stringify()`.) Therefore, if the strings concatenated contain JSON characters (`{`, `"`, etc.), the parser will throw an exception, which ends the server:
+	<table class="galleryTable">
+		<tr><td>![Malformed data](img/malformed-submit.png "Malformed data submitted via POST")</td>
+		<td>![GET crashes server](img/malformed-get.png "GETting the highscores crashes the server")</td>
+		<td>![Server log](img/malformed-log.png "The unexpected character causes an exception")</td></tr>
+	</table>
+	- This issue _could_ be resolved by just wrapping `JSON.parse(strJson)` in a try/catch block. However, it _should_ be resolved by removing the lengthy string-concatenation part, and just sending the array of results returned by Mongo directly through Express, which JSONifies it automatically. (No need for the `strJson` part, just call `response.send(docs)` after sorting.)
+	- **Sidenote**: though not a security flaw, I did notice that the scores aren't sorted correctly: `/highscores.json` gives the _latest 10 scores_ in sorted order, not the top 10 ever. This should be resolved by using a Mongo parameter to sort:
+
+			collection.find( { game_title : sanitize(req.query.game_title) }, {
+					sort : { score : -1 },
+					limit : 10,
+				} ).toArray(function(err, docs) {
+					response.send(docs);
+				});
+
+3. **Injection of additional database fields**
+	- In POST API; affects database only
+	- <span class="low">Low</span>: Arbitrary fields can be included in the database, but they are not currently returned by the GET API, so the only cost is in extra database space and lookups.
+	- By reviewing the code for the `/submit.json` route, I found that so long as the submission has the required fields, the entire submission body is added to the database by `collection.insert(request.body, ...`, including any extraneous fields. Because the `/highscores.json` code picks fields by name, these extra fields won't come back to a client, but they still take up space in the database.
+	<table class="galleryTable">
+		<tr><td>![Inserting extra fields](img/extra-field-curl.png "Submitting extra fields via POST")</td>
+		<td>![Server log](img/extra-field-mongo.png "All fields are stored in Mongo, including extras")</td></tr>
+	</table>
+	- This can be resolved by building an object from only the desired fields:
+		
+			var score = {
+				game_title : sanitize(req.body.game_title),
+				username : sanitize(req.body.username),
+				score : parseInt(req.body.score),
+				created_at : new Date()
+			};
+			collection.insert(score, function(err, result) { ... } );
+
+4. **Arbitrary queries and JavaScript execution on Mongo**
+	- In user search; affects database execution
+	- <span class="high">High</span>: Given that the _least_ bad thing an attacker could do is perform any query possible on the database, this is serious. However, it is also easy to resolve.
+	- Reviewing the code for user search, I noticed that the user to look up is a GET parameter, but the Mongo search executes whatever that query is: `var cursor = collection.find(request.query)`, making anyone able to run any query against the database (and see the results in a pretty table view!) just by passing their query as a parameter.If the database contained private information, this would be a massive security flaw; as it is, all data is publicly available on the homepage. However, using MongoDB's `$where` query, attackers can execute (limited) JavaScript on the database. Modifying the data isn't possible, but a crude DoS attack can lock up the database with executing a meaningless query: `$where: "var a=0; while (true) { a++; }"` Simply entering this query into the browser URI bar, it is automatically encoded. When the database doesn't respond to the node server's next request, node aborts with an exception, taking down the site even after the malicious Mongo query times out.
+	<table class="galleryTable">
+		<tr>
+			<td>![mongod CPU pre-attack](img/mongod-top-pre-attack.png "Normally, mongod demands few resources")</td>
+			<td>![Query string](img/query-string.png "Any query string is sent to Mongo, including this malicious one.")</td>
+			<td>![Encoded query string](img/query-string-encoded.png "The browser automatically encodes the query for easy attacking")</td>
+		</tr><tr>
+			<td>![mongod CPU during attack](img/mongod-top-during.png "The infinite loop makes mongod unresponsive...")</td>
+			<td>![node exception](img/node-exception.png "...which causes a Node exception when its database requests go unanswered...")</td>
+			<td>![Site is down](img/server-down.png "...bringing down the site until mongod and node are restarted.")</td>
+		</tr>
+	</table>
+	- To resolve this, the mongo query should be built explicitly, not taken entirely from user input!
+
+			if (request.query.username) {
+				collection.find( { 'username' : sanitize(request.query.username) });
+				//Use data...
+			}
+	- **Sidenote**: were this evaluation conducted a week ago, this would be a significantly greater security flaw. Until MongoDB 2.4, a [0-day vulnerability](http://blog.scrt.ch/2013/03/24/mongodb-0-day-ssji-to-rce/) existed which allowed arbitrary database-side execution of native commands. Additionally, the scope of the `$where` query had read/write access to the full database, allowing queries like `{$where: "db.collection.dropDatabase();"}`. However, this was fixed just days ago with MongoDB 2.4.
+
+Conclusion
+----------
+Issues with ScoreCenter make it easy to render both the site and the clients it serves inoperable. Following the recommendations given will significantly reduce the site's vulnerability to these basic attacks. Fortunately, all the changes are easy to implement. However, the obvious structural vulnerability will still remain, which lets anyone submit any score for any game, meaning that no scores listed can really be trusted. Therefore, though these problems could be fixed at minimal cost, the most prudent action would be to fix the flaws, restructure the API to verify who is submitting scores, and conduct a more thorough follow-up evaluation. Such a task would cost approximately $600, which is a small price to pay for safety, [don't you think?](mailto:gabriel.joseph@tufts.edu)

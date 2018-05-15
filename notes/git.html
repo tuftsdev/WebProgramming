@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Revision Control with Git</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Revision Control with Git</h2>
+
+<h3>Distributed Revision Control Software</h3>
+<ul>
+<li>Why?</li>
+<li>Source code management</li>
+<li><em>Distributed</em> - many developers can work on a given project from different locations and networks</li>
+</ul>
+
+<h3>Git</h3>
+<ul>
+<li>A distributed revision control system</li>
+<li>Extremely fast and efficient</li>
+<li>Lightweight</li>
+<li>Largely local-based, not dependent on a remote network (unlike Subversion)</li>
+</ul>
+
+<h3>Basic Git Commands</h3>
+<ol>
+<li><code>git clone <em>GIT_URL</em></code> - Download a copy of a repository</li>
+<li><code>git pull</code> - Update your repository with latest changes from remote</li>
+<li><code>git add</code> - Add file(s) to your staging area</li>
+<li><code>git commit</code> - Record your snapshot into your history; "bless" your work
+	<ul>
+		<li>Important: each commit is given a unique SHA-1 hash identifier</li>
+	</ul>
+</li>
+<li><code>git push</code> - Upload your changes to the remote repository (e.g., GitHub)</li>
+<li><code>git log</code> - Show commit logs</li>
+</ol>
+
+<h3>Reverting to a Previous Commit</h3>
+<ul>
+	<li><code>git reset --hard <em>HASH_OF_THE_COMMIT</em></code></li>
+	<li>Source: <a href="http://stackoverflow.com/questions/4114095/revert-to-previous-git-commit" target="_blank">http://stackoverflow.com/questions/4114095/revert-to-previous-git-commit</a></li>
+</ul>
+
+<h3>Branching</h3>
+<ul>
+	<li>Why: "diverge from the main line of development and continue to do work without messing with that main line" (source: <a href="http://git-scm.com/book/en/Git-Branching" target="_blank">http://git-scm.com/book/en/Git-Branching</a>)</li>
+	<li><code>git branch ...</code></li>
+	<li><code>git checkout ...</code></li>
+	<li>You will need to use branching in order to publish to GitHub pages (i.e., <code>gh-pages</code>). <a href="https://help.github.com/articles/creating-project-pages-manually" target="_blank">https://help.github.com/articles/creating-project-pages-manually</a></li>
+</ul>
+
+<h3>GitHub</h3>
+<ul>
+<li>A website: <a href="https://github.com/" target="_blank">https://github.com/</a></li>
+<li>Not to be confused with Git itself</li>
+<li>Web-based hosting of Git projects</li>
+<li>Fosters even greater collaboration!</li>
+<li><em>Fork</em> popular projects</li>
+<li>Social</li>
+</ul>
+
+<h3>Advice</h3>
+<ul>
+	<li>Almost never a good idea to work directly off of the <code>master</code> branch</li>
+	<li>Worse comes to worst if you are having problems with a Git repo, delete the entire folder, re-clone it from GitHub and work off it that</li>
+</ul>
+
+</body>
+</html>

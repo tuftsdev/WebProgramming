@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>COMP 20: Web Programming</title>
+<script src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#nav').delay(5000).fadeOut().delay(5000).fadeIn();
+	});
+</script>
+</head>
+
+<body>
+	<div id="nav">
+		<ul>
+			<li id="home">Home</li>
+			<li id="groups">Groups</li>
+			<li id="profile">Profile</li>
+			<li id="contacts">Contacts</li>
+			<li id="inbox">Inbox</li>
+			<li id="applications">Applications</li>
+		</ul>
+	</div>
+	<div id="content">
+		<p>Updates for today:</p>
+		<ul>
+			<li>Alice is now connected to Bob</li>
+			<li>Tom recommends Jerry</li>
+			<li>Harry just returned from a trip from Curaco</li>
+			<li>Joan is now connected to Mary</li>
+			<li>Steven is now connected to James</li>
+		</ul>
+	</div>
+</body>
+</html>

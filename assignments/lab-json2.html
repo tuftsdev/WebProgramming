@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Lab: JavaScript Object Notation (JSON) and XMLHttpRequest</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Lab: Messages, Part 2</h2>
+
+<p class="note">This lab is worth 5 points.</p>
+
+<h2>Lab Objectives</h2>
+<ol>
+<li>Practice parsing JSON data.</li>
+<li>Practice using JavaScript associative arrays.</li>
+<li>Practice using the JavaScript <code>XMLHttpRequest</code> object</li>
+<li>Understand the limitations of client-side JavaScript.</li>
+</ol>
+
+<h2>Overview</h2>
+<p>This lab is identical to <a href="lab-json1.html">the previous "Messages" lab</a>.  This time, instead of the JSON data hard-coded, you will load a file containing the JSON data using JavaScript's <code>XMLHttpRequest</code> object, parse the JSON file, and output the data to a section of a completely loaded HTML file.</p>
+
+<h2>Getting Started</h2>
+<ol>
+<li>Download the file <code><a href="messages.zip">messages.zip</a></code> directly into the folder <code>comp20-firstletterofyourfirstnamelastname</code> on your computer.</li>
+<li>Unzip the ZIP file.  A folder <code>messages</code> with files will be created.  You can replace the existing <code>messages</code> folder (the previous lab).</li>
+<li>Remove the ZIP file <code>messages.zip</code></li>
+<li>Run <code>git add .</code></li>
+<li>Run <code>git commit -m "Starting messages part 2"</code></li>
+<li>Run <code>git push</code></li>
+</ol>
+<p>You are provided with four files in the <code>messages</code> directory:</p>
+<ol>
+<li><code>index.html</code> - HTML page</li>
+<li><code>style.css</code> - An empty stylesheet. You are free to modify this file.</li>
+<li><code>data.json</code> - A file containing JSON data</li>
+<li><code>lab.js</code> - Where you will write all your JavaScript code.</li>
+</ol>
+
+<h2>Instructions, Part 1: Loading the Data from the <code>data.json</code> file</h2>
+<p>Please review the <code>index.html</code> file.  Your job is to modify the <code>lab.js</code> file to open the JSON file using <code>XMLHttpRequest</code>, parse the JSON data, and output the messages in the "messages" section of the HTML, as ordered in JSON file.  <span class="note">IMPORTANT: you are not allowed to modify the HTML file!  You are also not allowed to use jQuery!</span>  However, you are free to display the messages on the page however you want them to look as I am giving you a blank CSS file to modify.</p>
+
+<h2>Example Output</h2>
+<p><img src="lab-json.png" alt="Lab JSON" /></p>
+
+<h2>Viewing Your Work</h2>
+<p>Serve your page via Python's simple HTTP server in the folder of your lab.  That is:<p>
+<p><code>% cd comp20-XXXXX/messages; # where XXXXX is the name of your private GitHub repository<br/>% python -m SimpleHTTPServer<br/></code></p>
+<p>By default, a simple web server will open up on port 8000.  Go to <code>http://localhost:8000</code> on your favorite web browser to test your work.</p>
+<p class="note">Do not serve your work via the <code>gh-pages</code> branch of your private GitHub repository.</p>
+
+<h2>Debugging</h2>
+<p>Be sure to look at your JavaScript console for any errors.</p>
+
+<h2>Instructions, Part 2: Loading the Data From Local Machine</h2>
+<p>If the first part worked, turn off Python's simple HTTP server.  Instead, open the <code>index.html</code> on a few web browsers (Chrome, Firefox, Safari, Microsoft Edge, etc.) via double-clicking on the file or do a File &gt; Open.  Does it really work?  Should it work?</p>
+
+<h2>Instructions, Part 3: Loading the Data Given a URI</h2>
+<p>If the first part worked, instead of loading the data from the <code>data.json</code> file, try loading the JSON data from a URI.  Replace <code>data.json</code> in your <code>lab.js</code> to <code>https://messagehub.herokuapp.com/messages.json</code>.  The JSON looks very similar with the same important fields.  You do not need to modify any other code in your JavaScript.  Does it work?</p>
+
+<!-- So I ripped this off from Norman Ramsey at http://www.cs.tufts.edu/comp/105/details.html -->
+<h2>The <code>README</code> File</h2>
+<p>Every assignment and lab shall include a <code>README</code> file that describes the work. This description must:</p>
+<ol>
+<li>Identify what aspects of the work have been correctly implemented and what have not.</li>
+<li>Identify anyone with whom you have collaborated or discussed the assignment.</li>
+<li>Say approximately how many hours you have spent completing the assignment.</li>
+<li>Be written in either text format (<code>README.txt</code>) or in Markdown (<code>README.md</code>). No other formats will be accepted.</li>
+</ol>
+<p class="note">For this lab, you must also answer an important question: <strong>is it possible to request the data from a different origin (e.g., <code>http://messagehub.herokuapp.com/</code>) or from your local machine (from <code>file:///</code>) from using <code>XMLHttpRequest</code>?  Why or why not?</strong>  Please read the following three articles, in order, to help you answer this question:</p>
+<ol>
+	<li><a href="https://en.wikipedia.org/wiki/XMLHttpRequest" target="_blank">https://en.wikipedia.org/wiki/XMLHttpRequest</a>. Yes, you may be balking that I am making you read a Wikipedia article but there is a very important line in the overview.  This serves as good background reading.</li>
+	<li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" target="_blank">https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy</a></li>
+	<li><a href="https://security.stackexchange.com/questions/8264/why-is-the-same-origin-policy-so-important" target="_blank">https://security.stackexchange.com/questions/8264/why-is-the-same-origin-policy-so-important</a></li>
+</ol>
+
+<h2>Submitting the lab</h2>
+<p>To submit this lab, your work must be in the <code>master</code> branch of your private Git repository on GitHub.</p>
+
+<h2>Assessment</h2>
+<ol>
+<li>(1 point) The basics (e.g., file names, Git commit messages)</li>
+<li>(2 points) Your JavaScript code that parses the JSON, modifies "messages" section of HTML</li>
+<li>(2 points) The <code>README</code> with answer to the important question</li>
+<li>(-5.0 point) You modified the HTML</li>
+<li>(-5.0 point) You used jQuery</li>
+</ol>
+
+</body>
+</html>

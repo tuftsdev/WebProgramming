@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Document Object Model (DOM)</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Document Object Model (DOM)</h2>
+<ul>
+<li>The big idea: use JavaScript to dynamically modify HTML content <em>after it is loaded</em>.  Yes, you can mix HTML and JavaScript.</li>
+<li>The document object: a JavaScript object that contains the entire structure of an HTML page after it is loaded, in tree-like format (thus, known as the Document Object Model tree).  Given the tree, you can get, change, add, or delete HTML elements. Example of a DOM tree: <a href="https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core" target="_blank">https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core</a></li>
+<li>A standard programming interface for HTML (API)</li>
+<li>The Document Object Model is browser independent</li>
+<li>Very powerful: allows progressive enhancements of pages, and responsive interactions on the client-side</li>
+<li>Standardized by the W3C</li>
+<li>Each document is a hierarchy</li>
+</ul>
+
+<h3>Consider the Example</h3>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Page Title&lt;/title&gt;
+&lt;meta http-equiv="content-type" content="text/html; charset=utf-8" /&gt;
+&lt;meta http-equiv="Content-Language" content="en-us" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;This is a heading&lt;/h1&gt;
+&lt;p&gt;A paragraph with a &lt;a href="http://www.google.com/"&gt;link&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a list item&lt;/li&gt;
+&lt;li&gt;another list item&lt;/li&gt;
+&lt;li&gt;a third list item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<ul>
+<li>The resulting DOM tree: <img src="dom_tree.gif" alt="DOM Tree" /></li>
+<li>Your turn: give the graphical representation of the DOM for the following:
+<pre>
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Shady Grove&lt;/td&gt;
+      &lt;td&gt;Aeolian&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Over the River, Charlie&lt;/td&gt;
+      &lt;td&gt;Dorian&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</li>
+</ul>
+
+<h3>Nodes</h3>
+<ul>
+<li><span class="stress">Element nodes</span> - Can have children and/or attributes; example: HTML tags. <span class="notes">WARNING! Not all element nodes contains text!</span></li>
+<li><span class="stress">Text nodes</span> - A child within an element node; cannot have children; example: text in a block element</li>
+<li><span class="stress">Attribute nodes</span> - A child within an element node; cannot have children; example: attribute-value pair</li>
+</ul>
+
+<h3>Example</h3>
+<script async src="https://jsfiddle.net/mchow01/0wga8wLp/3/embed/"></script>
+</body>
+</html>

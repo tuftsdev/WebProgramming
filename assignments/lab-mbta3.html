@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Lab: Closest MBTA Subway Station</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Lab: Closest MBTA Subway Station, Part 3 on Week 5</h2>
+
+<h3><a href="lab-mbta2.html">Revisit Part 2 on Week 4</a></h3>
+
+<h2>Instructions</h2>
+<p>Last week, I gave you a URL to the JSON real-time data feed of MBTA Red Line subway trains: <code>https://defense-in-derpth.herokuapp.com/redline.json</code>.  This week, I am deleting what I provided that serves the JSON data feed.  Therefore, your map will no longer work.  To make your map work again, you must recreate the server-side.</p>
+
+<p>I can tell you how my JSON data feed actually worked: it pulls the data from <code>http://developer.mbta.com/lib/rthr/red.json</code>, the original source.  In other words, what you used in the last lab was a mirror of what is provided by the MBTA.  However, I added one thing that allowed one to directly access my JSON data feed from client-side JavaScript.  You see, if you simply change <code>https://defense-in-derpth.herokuapp.com/redline.json</code> to <code>http://developer.mbta.com/lib/rthr/red.json</code> in your last lab, your map will still not work because of a fundamental security principle in client-side JavaScript.</p>
+
+<h2>Basic Requirements of the Server</h2>
+<p>You will recreate the server that will serve the real-time schedule JSON feed MBTA Red Line subway trains.  Basic requirements:
+<ol>
+	<li>The server shall be written in Node.js and using the Express web application framework.  You are allowed to use Node packages.</li>
+	<li>Your work must be deployed onto <a href="https://www.heroku.com/" target="_blank">Heroku</a>.</li>
+	<li>Your server must have one route: <code>GET /redline.json</code>.  Accessing this route shall return a JSON string, the contents of the original source of the JSON data feed <code>http://developer.mbta.com/lib/rthr/red.json</code>.</li>
+	<li>Cross-Origin Resource Sharing must be enabled for <code>GET /redline.json</code>.</li>
+</ol>
+
+<p>Once you have completed the basic requirements of the server, all you need to do is to change the URL <code>https://defense-in-derpth.herokuapp.com/redline.json</code> to <code>https://NAMEOFYOURHEROKUAPP.herokuapp.com/redline.json</code> in your map and your map should work again.  If your map does not work, or if JavaScript changes are required to your previous work, then something is wrong with your server.</p>
+
+<h2>Going Beyond</h2>
+<ol>
+	<li>Record the latitude and longitude of users accessing your map in MongoDB.  Please DO NOT record more information than that (e.g., IP address) for privacy purposes.  You will need to implement a new route on the server (using HTTP POST).</li>
+	<li>Keep track of the most popular Red Line stations clicked on.  Each time when a user clicks on a train station, record the information into a database (e.g., Mongo).  You will need to implement a new route on the server (using HTTP POST).</li>
+	<li>The MBTA JSON feed <code>http://developer.mbta.com/lib/rthr/red.json</code> is actually deprecated, but has not been fully decommissioned (think of reasons why full decommission is a bad idea).  Upgrade to the newest version of the MBTA Real-Time API.  See <a href="http://www.mbta.com/rider_tools/developers/" target="_blank">http://www.mbta.com/rider_tools/developers/</a> for more details.</li>
+	<li>Build another web application + server with the same basic requirements except using a different programming language and framework (e.g., using Django or Flask for Python, Rails or Sinatra for Ruby).  Assess the differences and similarities in your README.</li>
+</ol>
+
+<h2>References</h2>
+<ol>
+<li><a href="http://expressjs.com/api.html" target="_blank">The Express web framework API reference (offcial)</a></li>
+<li><a href="https://github.com/tuftsdev/WebProgramming/tree/gh-pages/examples/nodejs/nodemongoapp">The <code>nodemongoapp</code> example I wrote</a></li>
+<li><a href="https://stackoverflow.com/questions/7067966/how-to-allow-cors-in-express-node-js" target="_blank">Node.js + Express + Cross-Domain Scripting (Stack Overflow)</a></li>
+<li><a href="https://docs.mongodb.org/getting-started/shell/#getting-started-with-mongodb-development" target="_blank">Getting Started with MongoDB Development (official)</a></li>
+<li><a href="lab-nodejsheroku.html">The Node.js + Heroku Lab</a></li>
+<li><a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#provision-a-database" target="_blank">Getting Started with Node.js on Heroku - Provision a Database</a></li>
+<li><a href="https://github.com/mongodb/node-mongodb-native" target="_blank">The Official MongoDB Node.JS Driver QUICK START</a></li>
+<li><a href="https://mongodb.github.io/node-mongodb-native/genindex.html" target="_blank">The Official MongoDB Node.JS Driver Documentation</a></li>
+</ol>
+
+<h2>The <code>README</code> File</h2>
+<p>Every assignment shall include a <code>README</code> file that describes the work. This description must:</p>
+<ol>
+<li>Identify what aspects of the work have been correctly implemented and what have not.</li>
+<li>Identify anyone with whom you have collaborated or discussed the assignment.</li>
+<li>Say approximately how many hours you have spent completing the assignment.</li>
+<li>Be written in either text format (thus <code>README.txt</code>) or in Markdown (thus <code>README.md</code>). No other formats will be accepted.</li>
+</ol>
+
+<h2>Submitting Part 3</h2>
+<ol>
+<li>Add me as a collaborator (using my email address <code>mchow[AT]cs[DOT]tufts[DOT]edu</code>) for your web application in Heroku.  You can do this by logging on to Heroku, go to the dashboard for your web application, under "Access", click on the "Add collaborator" button, enter my email address, and click "Save changes".</li>
+<li>Remember, your <a href="lab-mbta2.html">lab 10</a> must now work with your server and not the one I provided to you.  Change the URL in your lab 10 from <code>https://defense-in-derpth.herokuapp.com/redline.json</code> to <code>https://NAMEOFYOURHEROKUAPP.herokuapp.com/redline.json</code>, and push your changes to your private GitHub repository (i.e., <code>comp20-*****/mbta</code>)</li>
+</ol>
+
+<h2>Assessment</h2>
+<p>This lab is worth 10 points:</p>
+<ul>
+<li>(1 point) <code>README</code></li>
+<li>(2 points) Updated map that now connects to your server and not my server <code>defense-in-derpth.herokuapp.com</code></li>
+<li>(6 points) Working web application on <code>herokuapp.com</code> with cross-origin resource sharing enabled on <code>GET /redline.json</code> resource</li>
+<li>(1 points) Accomplish at least one of the "Going Beyond" items</li>
+</ul>
+
+</body>
+</html>

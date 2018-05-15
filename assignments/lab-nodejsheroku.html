@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Lab: Getting Started with the Server Side using Node.js and Heroku</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Lab: Getting Started with the Server Side using Node.js and Heroku</h2>
+
+
+<h2>Lab Objectives</h2>
+<ul>
+<li>Set up your workstation properly to use Node.js, MongoDB, and Heroku.</li>
+<li>Build a simple server-side web application and deploy it to Heroku.  This web application shall also be used for Assignment 3.</li>
+<li>Understand how a web server serves dynamic and static content.</li>
+</ul>
+
+<h2>Overview</h2>
+<p>Server-side development is a lot more involved than what we have been doing so far and requires a number of components and software including Node.js and MongoDB (database).  You will be using a database in Assignment 3 but not in this lab.</p>
+<p>For this class, we will deploy our server-side web application to Heroku.  Why use Heroku you may ask?  With Heroku, we do not need to worry about the server hardware, server configuration, and server maintenance.  Server configuration and maintenance require an extraodinary amount of work --just ask my Web Enginering students what they had to go through when they were thrown into the fire to use Amazon EC2 (part of the Amazon Web Services family, or AWS for short).  For a more elaborate discussion on Heroku vs Amazon AWS, see <a href="http://stackoverflow.com/questions/9802259/why-do-people-use-heroku-when-aws-is-present-whats-distinguishing-about-heroku" target="_blank">http://stackoverflow.com/questions/9802259/why-do-people-use-heroku-when-aws-is-present-whats-distinguishing-about-heroku</a>.</p>
+
+<h2>Software Installation Option 1 (required for Windows, strongly recommended for Mac users):</h2>
+<p>Use the <a href="http://www.cs.tufts.edu/comp/20/vm/">virtual machine (VM).</a>  You will also need to install the Heroku toolbelt on the VM on your own.</p>
+
+<h2>Software Installation Option 2: For Advanced Mac OS X Users</h2>
+<p>If you are a Mac user and choose not to use a virtual machine, install Node.js, Mongo DB, and the Heroku toolbelt via <a href="http://brew.sh/" target="_blank">Homebrew</a>: <code>brew install node mongo heroku-toolbelt</code>.</p>
+
+<h2>Software Installation Option 3: For Linux Users</h2>
+<p>Install Node.js using directions at <a href="https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager" target="_blank">https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager</a>.  Then, install MongoDB using directions at <a href="https://docs.mongodb.org/manual/administration/install-on-linux/" target="_blank">https://docs.mongodb.org/manual/administration/install-on-linux/</a>.</p>
+
+<h2 class="note">Important Notes</h2>
+<ul>
+	<li>Do NOT do this lab or Assignment 3 inside of your private GitHub repository!</li>
+	<li>If you install Node.js via Homebrew on Mac, use <code>node</code> to run Node.js (e.g., <code>node index.js</code>).  On the virtual machine or on Linux, use <code>nodejs</code> to run Node.js (e.g., <code>nodejs index.js</code>).</li>
+</ul>
+
+<h2>Instructions</h2>
+<ol>
+<li>Create a Heroku account: <a href="http://www.heroku.com/" target="_blank">http://www.heroku.com/</a> (free)</li>
+<li>In order to use MongoDB via addon in a web application on Heroku, you will need to verify your Heroku account via of a credit card. You will not be billed. The reason for this is to verify that you are a human, and not a spammer.  If you do not have a credit card or not comfortable with using one, an alternative option is to buy and use prepaid credit card.</li>
+<li>Follow the instructions at <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction" target="_blank">https://devcenter.heroku.com/articles/getting-started-with-nodejs-o</a> up to and including the "Provision add-ons" section. <span class="note">IMPORTANT: Be careful in the "Scale the app" section.  I suggest you skip the section because if you are not careful, you will be billed and we will not be responsible for your actions!</span></li>
+<li>Please also read the README for the <code>node-js-getting-started</code> example on GitHub: <a href="https://github.com/heroku/node-js-getting-started" target="_blank">https://github.com/heroku/node-js-getting-started</a></li>
+<li><span class="note">The important step</span>: modify the web application so that it serves a static HTML file.  Create a static HTML file on your own and put it in the <code>public</code> folder.  This static HTML file can be named anything that you want.  Modify <code>index.js</code> so that it can serves the static HTML file when one accesses the route <code>/lab8</code>.  Example: accessing <code>https://[YOUR_APP_IDENTIFIER_RANDOMLY_GENERATED].herokuapp.com/lab8</code> on a web browser will render the static HTML file that you created.  See <a href="https://stackoverflow.com/questions/16593686/what-is-the-best-practice-for-serving-html-in-node-js-with-express-js" target="_blank">https://stackoverflow.com/questions/16593686/what-is-the-best-practice-for-serving-html-in-node-js-with-express-js</a> for more details on how to serve static content with Node.js.</li>
+</ol>
+
+<h2>Submitting the Lab</h2>
+<p>Add me as a collaborator (using my email address <code>mchow[AT]cs[DOT]tufts[DOT]edu</code>) for your web application in Heroku.  You can do this by logging on to Heroku, go to the dashboard for your web application, under "Access", click on the "Add collaborator" button, enter my email address, and click "Save changes".</p>
+
+<h2>Assessment</h2>
+<ul>
+	<li>(1 point) Heroku web application is shared with me, working URL</li>
+	<li>(2 points) Web application serves a static HTML file at route <code>/lab8</code> (HTTP GET)</li>
+	<li class="note">No credit will be given if acessing web application results in an "Application Error"</li>
+</ul>
+
+</body>
+</html>

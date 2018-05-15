@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - jQuery</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>jQuery</h2>
+
+<h3>Why Use a Good JavaScript Library?</h3>
+<ul>
+<li>Rapid development</li>
+<li>Wrapper for JavaScript</li>
+<li>Lightweight</li>
+<li>Shorter code to write</li>
+<li>Allows for developers to create abstractions (i.e., plugins)</li>
+<li>A lot of browser incompatibility worries are alleviated</li>
+<li>Find stuff and do something to it</li>
+<li>Plethora of JavaScript libraries available</li>
+</ul>
+
+<h3>Why jQuery?</h3>
+<ul>
+<li><a href="http://jquery.com/" target="_blank">http://jquery.com/</a></li>
+<li>Outstanding documentation</li>
+<li>Lightweight (~19 KB for minified format)</li>
+<li>Simple code and easy syntax</li>
+<li>Many plugins and special effects</li>
+<li>Ajax support</li>
+<li>Cross-browser support</li>
+<li>Plugins --a lot of cool stuff and features you need are already written (e.g., a popup calendar, scrolling news ticker)</li>
+<li>Do not think that jQuery IS JavaScript</li>
+</ul>
+
+<h3>Getting Started: Two Ways</h3>
+<ol>
+<li><a href="http://code.jquery.com/jquery-2.1.3.min.js" target="_blank">Download jQuery</a> and include it in your HTML pages: <code>&lt;script src="jquery-2.1.3.min.js" &gt;&lt;/script&gt;</code></li>
+<li>Use jQuery via Google Code: <code>&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"&gt;&lt;/script&gt;</code>.  Of course, you have to be connect to the Internet and have to depend on Google being up!
+<ul>
+<li>More details: <a href="http://code.google.com/apis/libraries/devguide.html#jquery" target="_blank">http://code.google.com/apis/libraries/devguide.html#jquery</a></li>
+</ul>
+</li>
+</ol>
+
+<h3>Launching Code on Document Ready</h3>
+<pre>
+ $(document).ready(function(){
+   // Your code here
+ });
+</pre>
+<ul>
+<li>Checks and waits until the document object is ready to be manipulated (that is, everything including images are loaded).</li>
+</ul>
+
+<h3>Selectors</h3>
+<ul>
+<li>jQuery uses CSS-style selectors to find specific elements in the DOM</li>
+<li><code>$('h1,h2,h3')</code></li>
+<li><code>$('div#content p.blurb')</code></li>
+<li><code>$("a")</code></li>
+<li><code>$("div")</code></li>
+<li><code>$('#myForm :radio:checked')</code> - filter a form element</li>
+<li><code>$('li:first')</code> - find a specific element</li>
+<li>Notice, you can use single quote or double quotes around the elements</li>
+<li>jQuery selection methods all return jQuery collections --that is, an array.  Examples:
+<ul>
+<li><code>$('div').length</code></li>
+<li><code>$('div')[0]</code></li>
+<li><code>$('div')[1]</code></li>
+<li><code>$('div').size()</code></li>
+<li><code>$('div').each(function() { console.log(this); });</code></li>
+</ul>
+</li>
+<li>Exercise: Using jQuery, implement a feature that highlights (in yellow) all the paragraphs in the document, and echo all the text inside of the paragraph tags to a console (e.g., in Firebug).</li>
+</ul>
+
+<h3>Syntax</h3>
+<ul>
+<li><code>$("#header")</code> - Get the element with id="header"</li>
+<li><code>$("h3")</code> - Get all &lt;h3&gt; element</li>
+<li><code>$("div#content .photo")</code> - Get all element with class="photo" nested in the &lt;div id="content"&gt;</li>
+<li><code>$("ul li")</code> - Get all &lt;li&gt; element nested in all &lt;ul&gt;</li>
+<li><code>$("ul li:first")</code> - Get only the first &lt;li&gt; element of the &lt;ul&gt;</li>
+</ul>
+
+<h3>Magic Selectors</h3>
+<ul>
+<li>Start with ":"</li>
+<li><code>:first</code></li>
+<li><code>:last</code></li>
+<li><code>:header</code></li>
+<li><code>:hidden</code></li>
+<li><code>:contains</code></li>
+<li><code>:radio</code></li>
+<li><code>:input</code></li>
+
+</ul>
+
+<h3>HTML Manipulation</h3>
+<ul>
+<li><code>$('div').html()</code></li>
+<li><code>$('div').html('&lt;p&gt;Hi!&lt;/p&gt;')</code></li>
+<li><code>$('div').append('&lt;p&gt;Hi!&lt;/p&gt;')</code></li>
+<li><code>$('div').after('&lt;p&gt;Hi!&lt;/p&gt;')</code></li>
+<li><code>$('div').remove()</code></li>
+<li><code>$('div').empty()</code></li>
+</ul>
+
+<h3>Attributes</h3>
+<ul>
+<li><code>$('img').attr('alt')</code></li>
+<li><code>$('img').attr('alt', 'Logo')</code></li>
+<li><code>$('img').attr({ src: 'logo.png', alt: 'Logo' });</code></li>
+<li><code>$('select').val()</code></li>
+<li><code>$('input').val('First Name')</code></li>
+</ul>
+
+<h3>Changing the Class of Elements</h3>
+<ul>
+<li><code>$('p').addClass('test')</code></li>
+<li><code>$('p').removeClass('test')</code></li>
+<li><code>$('p').toggleClass('test')</code></li>
+</ul>
+
+<h3>CSS</h3>
+<ul>
+<li><code>$('div').css('color', 'red')</code></li>
+<li><code>$('div').height()</code></li>
+<li><code>$('div').height('20px')</code></li>
+<li><code>$('div').innerHeight()</code></li>
+<li><code>$('div').outerHeight()</code></li>
+</ul>
+
+<h3>Events</h3>
+<ul>
+<li><code>$('button').click();</code></li>
+<li><pre>$('button').click(function(){
+  $(this).css('color', 'red');
+});
+</pre></li>
+<li><code>$('form').submit();</code></li>
+</ul>
+
+<h3>Special Effects</h3>
+<ul>
+<li><code>$('div').hide('slow')</code></li>
+<li><code>$('div').hide('fast')</code></li>
+<li><code>$('div').show('slow')</code></li>
+<li><code>$('div').show('fast')</code></li>
+<li><code>$('div').slideDown('slow')</code></li>
+<li><code>$('div').slideDown('fast')</code></li>
+<li><code>$('div').fadeOut(1000)</code></li>
+<li><code>$('div').toggle()</code></li>
+<li><code>$('div').fadeIn('slow')</code></li>
+</ul>
+
+<h3>DOM Traversal</h3>
+<ul>
+<li><code>${div.section).parent()</code></li>
+<li><code>${div.section).next()</code></li>
+<li><code>${div.section).prev()</code></li>
+<li><code>${div.section).nextAll('p')</code></li>
+<li><code>$('h1:first').parents();</code></li>
+</ul>
+
+<h3>Ajax</h3>
+<ul>
+<li><code>$.get(<span class="stress">url</span>, <span class="stress">parameters</span>, <span class="stress">callback</span>)</code></li>
+<li><code>$.post(<span class="stress">url</span>, <span class="stress">parameters</span>, <span class="stress">callback</span>)</code></li>
+</ul>
+
+</body>
+</html>

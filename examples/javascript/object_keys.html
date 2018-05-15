@@ -1,0 +1,25 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<title>Presidents</title>
+	<script>
+		presidents = {}
+		presidents['Bacow'] = "Larry";
+		presidents["Monaco"] = 'Tony';
+		presidents["Obama"] = 'Barack';
+		presidents["Roosevelt"] = 'Teddy';
+		presidents["Roosevelt"] = 'Franklin Delano';
+		theKeys = Object.keys(presidents);
+		for (i = 0; i < theKeys.length; i++) {
+			console.log(theKeys[i] + " => " + presidents[theKeys[i]]);
+		}
+	</script>
+</head>
+
+<body>
+	<h1>Presidents</h1>
+	<p>Take a look at the JavaScript console of your web browser.</p>
+</body>
+</html>

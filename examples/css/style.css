@@ -1,0 +1,57 @@
+/* This is a style sheet */
+
+body {
+	background-color: #1E90FF;
+	font-family: "Comic Sans MS";
+	font-size: 18px;
+	color: white;
+}
+
+/*
+
+body {...} from lines 3 - 8 => rule
+body => selector
+font-family: "Comic Sans MS"; line 5 => declaration
+`font-family` => attribute or key
+`"Comic Sans MS"` => value
+
+*/
+
+div {
+	text-align: center;
+	color: yellow;
+	background-color: magenta;
+}
+
+/* Selectors:
+
+1. HTML element name. Examples: div, body (as seen above)
+2. ID selector: Starts with a `#`;
+     applies to HTML elements with `id` attribute;
+     SHOULD be only used ONCE
+3. CLASS selector: Starts with a `.`;
+     applies to HTML elements with `class` attribute;
+     CAN be used MUTLIPLE times
+*/
+
+#header {
+	font-size: 36px;
+	border: dashed;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.peeps {
+	background-color: yellow;
+	font-size: 64px;
+	color: black;
+	font-family: "Helvetica";
+	padding: 10px;
+	border-top: dashed;
+	border-bottom: dashed;
+}
+
+div {
+	color: green;
+	background-color: orange;
+}
