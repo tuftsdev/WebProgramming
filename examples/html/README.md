@@ -22,3 +22,4 @@ HTML examples.
 
 # Exercise
 1. Identify all the problems in `fail.html`
+    * (Solution: corrected version of the HTML is `correct.html`)
