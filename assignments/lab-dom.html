@@ -9,7 +9,7 @@
 
 <body>
 <h1>COMP 20: Web Programming</h1>
-<h2>Lab: <span class="stress">My Old Kentucky Home</span></h2>
+<h2>Lab: <span class="stress">Rick Roll</span></h2>
 
 <h2>Lab Objectives</h2>
 <ol>
@@ -17,42 +17,100 @@
 	<li>Practice using the Document Object Model (DOM).</li>
 	<li>Practice with using JavaScript objects.</li>
 	<li>Understand event handling and using first-class function.</li>
-	<li>Recognize the power of HTML5 (in this case, audio manipulation).</li>
+	<li>Recognize the power of HTML5.</li>
 </ol>
 
 <h2>Overview</h2>
-<p>HTML5 introduces built-in media support via the <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements, offering the ability to easily embed and manipulate media on web pages (Mozilla.org).  In this lab, you will create a web page that annotates a music video with its lyrics, images, and perhaps other media.</p>
+<p>HTML5 introduces built-in media support via the <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements, offering the ability to easily embed and manipulate media on web pages (Mozilla.org).  In this lab, you will create a web page that annotates a video with text and perhaps other media.</p>
 
-<h2>The Music Video</h2>
-<p>The music video that you will annotate is for one of the most beloved State songs (source: <a href="https://www.youtube.com/watch?v=paMpJZgVP_k" target="_blank">https://www.youtube.com/watch?v=paMpJZgVP_k</a>):</p>
+<h2>The Video</h2>
+<p>The video that you will annotate is an old song:</p>
 
-<video src="https://www.cs.tufts.edu/comp/20/my_old_kentucky_home.mp4" id="music_video" controls>
+<video src="https://www.cs.tufts.edu/comp/20/rickroll.mp4" id="rickroll" controls>
 </video>
 <p>You are free to use the following to access the video on your page and there is no need to make a copy of the video onto your computer:</p>
 <pre>
-&lt;video src="https://www.cs.tufts.edu/comp/20/my_old_kentucky_home.mp4" id="music_video" controls&gt;
+&lt;video src="https://www.cs.tufts.edu/comp/20/rickroll.mp4" id="rickroll" controls&gt;
 &lt;/video&gt;
 </pre>
 
-<h2>Lyrics to <span class="title">My Old Kentucky Home</span></h2>
+<h2>Lyrics to "Never Gonna Give You Up"</h2>
 <pre>
-The sun shines bright in My Old Kentucky Home,
-'Tis summer, the people are gay;
-The corn-top's ripe and the meadow's in the bloom
-While the birds make music all the day.
 
-The young folks roll on the little cabin floor,
-All merry, all happy and bright;
-By 'n' by hard times comes a knocking at the door,
-Then My Old Kentucky Home, good night!
+We're no strangers to love
+You know the rules and so do I
+A full commitment's what I'm thinking of
+You wouldn't get this from any other guy
 
-Chorus
+I just wanna tell you how I'm feeling
+Gotta make you understand
 
-Weep no more my lady
-Oh weep no more today;
-We will sing one song
-For My Old Kentucky Home
-For My Old Kentucky Home, far away
+Never gonna give you up
+Never gonna let you down
+Never gonna run around and desert you
+Never gonna make you cry
+Never gonna say goodbye
+Never gonna tell a lie and hurt you
+
+We've known each other for so long
+Your heart's been aching, but
+You're too shy to say it
+Inside, we both know what's been going on
+We know the game and we're gonna play it
+
+And if you ask me how I'm feeling
+Don't tell me you're too blind to see
+
+Never gonna give you up
+Never gonna let you down
+Never gonna run around and desert you
+Never gonna make you cry
+Never gonna say goodbye
+Never gonna tell a lie and hurt you
+
+Never gonna give you up
+Never gonna let you down
+Never gonna run around and desert you
+Never gonna make you cry
+Never gonna say goodbye
+Never gonna tell a lie and hurt you
+
+(Ooh, give you up)
+(Ooh, give you up)
+Never gonna give, never gonna give
+(Give you up)
+Never gonna give, never gonna give
+(Give you up)
+
+We've known each other for so long
+Your heart's been aching, but
+You're too shy to say it
+Inside, we both know what's been going on
+We know the game and we're gonna play it
+
+I just wanna tell you how I'm feeling
+Gotta make you understand
+
+Never gonna give you up
+Never gonna let you down
+Never gonna run around and desert you
+Never gonna make you cry
+Never gonna say goodbye
+Never gonna tell a lie and hurt you
+
+Never gonna give you up
+Never gonna let you down
+Never gonna run around and desert you
+Never gonna make you cry
+Never gonna say goodbye
+Never gonna tell a lie and hurt you
+
+Never gonna give you up
+Never gonna let you down
+Never gonna run around and desert you
+Never gonna make you cry
+Never gonna say goodbye
+Never gonna tell a lie and hurt you
 </pre>
 
 <h2>Getting Started</h2>
@@ -62,15 +120,15 @@ For My Old Kentucky Home, far away
 &lt;html&gt;
 &lt;head&gt;
 &lt;meta charset="utf-8" /&gt;
-&lt;title&gt;My Old Kentucky Home&lt;/title&gt;
+&lt;title&gt;Rick Roll&lt;/title&gt;
 &lt;link rel="stylesheet" href="style.css" type="text/css" /&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
 
-&lt;h1 id="title"&gt;My Old Kentucky Home&lt;/h1&gt;
+&lt;h1 id="title"&gt;Rick Roll&lt;/h1&gt;
 
-&lt;video src="https://www.cs.tufts.edu/comp/20/my_old_kentucky_home.mp4" id="music_video" controls&gt;&lt;/video&gt;
+&lt;video src="https://www.cs.tufts.edu/comp/20/rickroll.mp4" id="rickroll" controls&gt;&lt;/video&gt;
 &lt;div id="lyrics"&gt;&lt;/div&gt;
 
 &lt;script&gt;
@@ -81,7 +139,7 @@ For My Old Kentucky Home, far away
 </pre>
 
 <h2>Instructions</h2>
-<p>Using JavaScript, annotate the music video with the lyrics of the song in the <code>&lt;div id="lyrics"&gt;</code>.  You are free to annotate the music video any way that you want (e.g., by stanza, line-by-line).  You must also use at least two images for your annotation (in any stanza).  The only section of the HTML that you shall modify is inside the <code>&lt;script&gt;&lt;/script&gt;</code>.  Finally, you must provide some styling for the page via <code>style.css</code>.</p>
+<p>Using JavaScript, annotate the video with the stanzas of the song inside the <code>&lt;div id="lyrics"&gt;</code>.  Finally, you must provide some styling for the page via <code>style.css</code>.</p>
 
 <h2>Readings and References</h2>
 <ul>
@@ -90,28 +148,23 @@ For My Old Kentucky Home, far away
 	<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events" target="_blank">Media events (Mozilla)</a></li>
 </ul>
 
-<!-- So I ripped this off from Norman Ramsey at http://www.cs.tufts.edu/comp/105/details.html -->
 <h2>The <code>README</code> File</h2>
-<p>Every assignment and lab shall include a <code>README</code> file that describes the work. This description must:</p>
+<p>Each assignment and lab shall include a <code>README</code> file that describes the work. This description must:</p>
 <ol>
 <li>Identify what aspects of the work have been correctly implemented and what have not.</li>
 <li>Identify anyone with whom you have collaborated or discussed the assignment.</li>
 <li>Say approximately how many hours you have spent completing the assignment.</li>
-<li>Be written in either text format (<code>README.txt</code>) or in Markdown (<code>README.md</code>). No other formats will be accepted.</li>
+<li>Be written in either text format (<code>README.txt</code>) or in Markdown (<code>README.md</code>).  Markdown is preferred.  No other formats will be accepted.  Please use all capital letters for <code>README</code></li>
 </ol>
+<p>This <code>README</code> file must be directly in the folder of the lab or assignment.</p>
 
-<h2>Warnings</h2>
+<h2>Important</h2>
 <ul>
 	<li>You are not allowed to use jQuery for this lab.</li>
 </ul>
 
-<h2>Notes</h2>
-<ul>
-	<li>You can annotate the song by stanza or line-by-line (karaoke style).</li>
-</ul>
-
 <h2>Submitting Your Lab</h2>
-<p>Push all your files to a folder named <code>my_old_kentucky_home</code> inside of the private GitHub repo I created for you.  Say that your private repository is named <code>comp20-mchow</code>, make sure all the files are pushed to <code>comp20-mchow/my_old_kentucky_home</code>.</p>
+<p>Push all your files (the HTML, the CSS, the README) to a folder named <code>rickroll</code> inside of the private GitHub repo I created for you.  Say that your private repository is named <code>comp20-mchow</code>, make sure all the files are pushed to <code>comp20-mchow/rickroll</code>. <span class="note">Please do not add and push the video to repository!</span></p>
 <pre>
 # Inside your private GitHub repo folder (e.g., <code>comp20-mchow</code>)
 git add .
@@ -120,13 +173,11 @@ git push
 </pre>
 
 <h2>Assessment</h2>
-<p>This lab is worth 5 points.</p>
+<p>This lab is worth 4 points.</p>
 <ul>
-	<li>(1 point) The basics (e.g., folder name in private GitHub repository, file names, README file)</li>
-	<li>(2.5 points) The <code>index.html</code> page following all the instructions above</li>
-	<li>(0.5 point) The <code>style.css</code> file</li>
-	<li>(1 point) Used at least two images for your annotation.</li>
-	<li>(-5 points) You used jQuery</li>
+	<li>(1 point) The basics (e.g., folder name in private GitHub repository, file names, repo name, README file, one CSS file)</li>
+	<li>(3 points) The <code>index.html</code> page following all the instructions above</li>
+	<li>(-4 points) You used jQuery</li>
 	<li>(-3 points) Errors and outputs (e.g., from <code>console.log statements</code>) exist in JavaScript console</li>
 </ul>
 
