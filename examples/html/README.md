@@ -21,5 +21,6 @@ HTML examples.
 14. Thou shall always validate HTML markup at https://validator.w3.org/.
 
 # Exercise
-1. Identify all the problems in `fail.html`
-    * (Solution: corrected version of the HTML is `correct.html`)
+Identify all the problems in `fail.html`
+
+Solution: see `correct.html`
