@@ -12,38 +12,40 @@
 <h2>Lab: Closest MBTA Subway Station, Part 1 on Week 3</h2>
 
 <h2>Overview</h2>
-<p>Over the next three weeks, you will create a web page (with a server) that shows all the MBTA (Massachusetts Bay Transportation Authority) Red Line subway train stations on a map and each station's real-time schedule of upcoming trains.  If you are not familiar with the MBTA subway system, the Red Line can be seen at <a href="http://www.mbta.com/schedules_and_maps/subway/lines/?route=RED" target="_blank">http://www.mbta.com/schedules_and_maps/subway/lines/?route=RED</a>.  The MBTA also provides APIs providing real-time data on subway schedules (except for the Green Line), bus schedules, and alerts for developers to use: see <a href="http://www.mbta.com/rider_tools/developers/" target="_blank">http://www.mbta.com/rider_tools/developers/</a>.</p>
+<p>Over the next three weeks, you will create a web page (with a server) that shows all the MBTA (Massachusetts Bay Transportation Authority) Red Line subway train stations on a map and each station's real-time schedule of upcoming trains.  If you are not familiar with the MBTA subway system, the Red Line can be seen at <a href="https://www.mbta.com/schedules/Red/line" target="_blank">https://www.mbta.com/schedules/Red/line</a>.  The MBTA also provides APIs providing real-time data on subway schedules, bus schedules, and alerts for developers to use: see <a href="https://www.mbta.com/developers" target="_blank">https://www.mbta.com/developers</a>.</p>
 
 <p>It is important to note that instructions for this lab may be deliberately vague at times.  You are expected to ask questions if you are confused or not sure about something as in the professional world.  There will also be opportunities to go beyond expectations especially for those who feel they have mastered the material.</p>
 
 <h2>Instructions</h2>
 <p>The following is a table of all the MBTA Red Line subway stations and their geolocations:</p>
 <pre>
-     stop_name     |  stop_lat   |      stop_lon      
--------------------+-------------+--------------------
- South Station     |   42.352271 | -71.05524200000001
- Andrew            |   42.330154 |         -71.057655
- Porter Square     |     42.3884 | -71.11914899999999
- Harvard Square    |   42.373362 |         -71.118956
- JFK/UMass         |   42.320685 |         -71.052391
- Savin Hill        |    42.31129 |         -71.053331
- Park Street       | 42.35639457 |        -71.0624242
- Broadway          |   42.342622 |         -71.056967
- North Quincy      |   42.275275 |         -71.029583
- Shawmut           | 42.29312583 | -71.06573796000001
- Davis             |    42.39674 |         -71.121815
- Alewife           |   42.395428 |         -71.142483
- Kendall/MIT       | 42.36249079 |       -71.08617653
- Charles/MGH       |   42.361166 |         -71.070628
- Downtown Crossing |   42.355518 |         -71.060225
- Quincy Center     |   42.251809 |         -71.005409
- Quincy Adams      |   42.233391 |         -71.007153
- Ashmont           |   42.284652 | -71.06448899999999
- Wollaston         |  42.2665139 |        -71.0203369
- Fields Corner     |   42.300093 |         -71.061667
- Central Square    |   42.365486 |         -71.103802
- Braintree         |  42.2078543 |        -71.0011385
+     stop_name     |  stop_lat   |      stop_lon      |   stop_id   
+-------------------+-------------+--------------------+-------------
+ South Station     |   42.352271 | -71.05524200000001 | place-sstat
+ Andrew            |   42.330154 |         -71.057655 | place-andrw
+ Porter Square     |     42.3884 | -71.11914899999999 | place-portr
+ Harvard Square    |   42.373362 |         -71.118956 | place-harsq
+ JFK/UMass         |   42.320685 |         -71.052391 | place-jfk
+ Savin Hill        |    42.31129 |         -71.053331 | place-shmnl
+ Park Street       | 42.35639457 |        -71.0624242 | place-pktrm
+ Broadway          |   42.342622 |         -71.056967 | place-brdwy
+ North Quincy      |   42.275275 |         -71.029583 | place-nqncy
+ Shawmut           | 42.29312583 | -71.06573796000001 | place-smmnl
+ Davis             |    42.39674 |         -71.121815 | place-davis
+ Alewife           |   42.395428 |         -71.142483 | place-alfcl
+ Kendall/MIT       | 42.36249079 |       -71.08617653 | place-knncl
+ Charles/MGH       |   42.361166 |         -71.070628 | place-chmnl
+ Downtown Crossing |   42.355518 |         -71.060225 | place-dwnxg
+ Quincy Center     |   42.251809 |         -71.005409 | place-qnctr
+ Quincy Adams      |   42.233391 |         -71.007153 | place-qamnl
+ Ashmont           |   42.284652 | -71.06448899999999 | place-asmnl
+ Wollaston         |  42.2665139 |        -71.0203369 | place-wlsta
+ Fields Corner     |   42.300093 |         -71.061667 | place-fldcr
+ Central Square    |   42.365486 |         -71.103802 | place-cntsq
+ Braintree         |  42.2078543 |        -71.0011385 | place-brntn
 </pre>
+
+<p>NOTE: you will not need the <code>stop_id</code> in this lab but you will for future labs.</p>
 
 <p>Create a page (named <code>index.html</code>) that displays a Google Map of all the MBTA Red Line subway stations.  Requirements:</p>
 
@@ -51,7 +53,7 @@
 	<li>The map shall take up the entire page.</li>
 	<li>Each station on the map shall be a marker with an icon: use the same icon image for each marker.  The Google Maps default red marker pin is not good enough.</li>
 	<li>For now, the map shall be centered on South Station.</li>
-	<li>Render a red polyline connecting each station, thus showing the complete Red Line on the map.  Please note that the Red Line forks at JFK/UMass Station: see <a href="http://www.mbta.com/schedules_and_maps/subway/lines/?route=RED" target="_blank">http://www.mbta.com/schedules_and_maps/subway/lines/?route=RED</a></li>
+	<li>Render a red polyline connecting each station, thus showing the complete Red Line on the map.  Please note that the Red Line forks at JFK/UMass Station: see <a href="https://www.mbta.com/schedules/Red/line" target="_blank">https://www.mbta.com/schedules/Red/line</a></li>
 	<li>A CSS file is required in order for the Google Map to even work.</li>
 	<li>Each subway station and it's corresponding location can be hard-coded in JavaScript.</li>
 	<li>Use a separate file for the JavaScript.  Do not mix JavaScript in the HTML file with the exception of the script tag to include the JavaScript file.</li>
