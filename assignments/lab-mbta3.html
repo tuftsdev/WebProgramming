@@ -14,27 +14,39 @@
 <h3><a href="lab-mbta2.html">Revisit Part 2 on Week 4</a></h3>
 
 <h2>Instructions</h2>
-<p>Last week, I gave you a URL to the JSON real-time data feed of MBTA Red Line subway trains: <code>https://defense-in-derpth.herokuapp.com/redline.json</code>.  This week, I am deleting what I provided that serves the JSON data feed.  Therefore, your map will no longer work.  To make your map work again, you must recreate the server-side.</p>
+<p>Last week, I gave you a real-time schedule of upcoming trains for a given Red Line station: <code>https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=[STOP_ID_HERE]</code>.  This week, I am deleting what I provided that serves the JSON data feed.  Therefore, your map will no longer work.  To make your map work again, you must recreate the server-side.</p>
 
-<p>I can tell you how my JSON data feed actually worked: it pulls the data from <code>http://developer.mbta.com/lib/rthr/red.json</code>, the original source.  In other words, what you used in the last lab was a mirror of what is provided by the MBTA.  However, I added one thing that allowed one to directly access my JSON data feed from client-side JavaScript.  You see, if you simply change <code>https://defense-in-derpth.herokuapp.com/redline.json</code> to <code>http://developer.mbta.com/lib/rthr/red.json</code> in your last lab, your map will still not work because of a fundamental security principle in client-side JavaScript.</p>
+<p>I can tell you how my JSON data feed actually worked: it pulls the data from <code>https://api-v3.mbta.com/predictions?filter[route]=Red&amp;filter[stop]=<em>STOP_ID_HERE</em>&amp;page[limit]=10&amp;sort=departure_time</code>, the original source (see <a href="https://medium.com/mbta-tech/introducing-the-v3-api-dce5bde105ea" target="_blank">https://medium.com/mbta-tech/introducing-the-v3-api-dce5bde105ea</a>).  In other words, what you used in the last lab was a mirror of what is provided by the MBTA.  However, I added one thing that allowed one to directly access my JSON data feed from client-side JavaScript.  You see, if you simply change <code>https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=[STOP_ID_HERE]</code> to <code>https://api-v3.mbta.com/predictions?filter[route]=Red&amp;filter[stop]=<em>STOP_ID_HERE</em>&amp;page[limit]=10&amp;sort=departure_time</code> in your last lab, your map will still not work because of a fundamental security principle in client-side JavaScript.</p>
 
 <h2>Basic Requirements of the Server</h2>
 <p>You will recreate the server that will serve the real-time schedule JSON feed MBTA Red Line subway trains.  Basic requirements:
 <ol>
 	<li>The server shall be written in Node.js and using the Express web application framework.  You are allowed to use Node packages.</li>
 	<li>Your work must be deployed onto <a href="https://www.heroku.com/" target="_blank">Heroku</a>.</li>
-	<li>Your server must have one route: <code>GET /redline.json</code>.  Accessing this route shall return a JSON string, the contents of the original source of the JSON data feed <code>http://developer.mbta.com/lib/rthr/red.json</code>.</li>
-	<li>Cross-Origin Resource Sharing must be enabled for <code>GET /redline.json</code>.</li>
+	<li>Your server must have one route: <code>GET /redline/schedule.json</code></li>
+	<li>Cross-Origin Resource Sharing must be enabled for <code>GET /redline/schedule.json</code>.</li>
 </ol>
 
-<p>Once you have completed the basic requirements of the server, all you need to do is to change the URL <code>https://defense-in-derpth.herokuapp.com/redline.json</code> to <code>https://NAMEOFYOURHEROKUAPP.herokuapp.com/redline.json</code> in your map and your map should work again.  If your map does not work, or if JavaScript changes are required to your previous work, then something is wrong with your server.</p>
+<h2>Basic Requirements for <code>GET /redline/schedule.json</code></h2>
+<ol>
+	<li>This API requires one query string key: <code>stop_id</code></li>
+	<li>Using the API without query string key <code>stop_id</code> shall render the error (in JSON format) <code>{"errors":"No stop_id provided"}</code></li>
+	<li>Example 1: <code>GET /redline/schedule.json</code> shall send <code>{"errors":"No stop_id provided"}</code> as response.</li>
+	<li>Accessing this route shall return a JSON string, the contents of the original source of the JSON data feed <code>https://api-v3.mbta.com/predictions?filter[route]=Red&amp;filter[stop]=<em>STOP_ID_HERE</em>&amp;page[limit]=10&amp;sort=departure_time</code></li>
+	<li>Example 2: <code>GET /redline/schedule.json?stop_id=place-davis</code> shall return a JSON string, the contents of the original source of the JSON data feed <code>https://api-v3.mbta.com/predictions?filter[route]=Red&amp;filter[stop]=place-davis&amp;page[limit]=10&amp;sort=departure_time</code></li>
+	<li>Providing a <code>stop_id</code> value that does not exist shall render the error (in JSON format) <code>{"errors":"No such stop_id exist"}</code></li>
+	<li>Example 3: <code>GET /redline/schedule.json?stop_id=PlymouthRock</code> shall send <code>{"errors":"No such stop_id exist"}</code></li>
+</ol>
+
+
+<p>Once you have completed the basic requirements of the server, all you need to do is to change the URL <code>https://defense-in-derpth.herokuapp.com/redline/schedule.json</code> to <code>https://NAMEOFYOURHEROKUAPP.herokuapp.com/redline/schedule.json</code> in your map and your map should work again.  If your map does not work, or if JavaScript changes are required to your previous work, then something is wrong with your server.</p>
 
 <h2>Going Beyond</h2>
 <ol>
+	<li>Build another web application + server with the same basic requirements except using a different programming language and framework (e.g., using Django or Flask for Python, Rails or Sinatra for Ruby).  Assess the differences and similarities in your README.</li>
+	<li>Use other APIs from the official MBTA API.  See official MBTA API documentation at <a href="https://api-v3.mbta.com/docs/swagger/index.html" target="_blank">https://api-v3.mbta.com/docs/swagger/index.html</a></li>
 	<li>Record the latitude and longitude of users accessing your map in MongoDB.  Please DO NOT record more information than that (e.g., IP address) for privacy purposes.  You will need to implement a new route on the server (using HTTP POST).</li>
 	<li>Keep track of the most popular Red Line stations clicked on.  Each time when a user clicks on a train station, record the information into a database (e.g., Mongo).  You will need to implement a new route on the server (using HTTP POST).</li>
-	<li>The MBTA JSON feed <code>http://developer.mbta.com/lib/rthr/red.json</code> is actually deprecated, but has not been fully decommissioned (think of reasons why full decommission is a bad idea).  Upgrade to the newest version of the MBTA Real-Time API.  See <a href="http://www.mbta.com/rider_tools/developers/" target="_blank">http://www.mbta.com/rider_tools/developers/</a> for more details.</li>
-	<li>Build another web application + server with the same basic requirements except using a different programming language and framework (e.g., using Django or Flask for Python, Rails or Sinatra for Ruby).  Assess the differences and similarities in your README.</li>
 </ol>
 
 <h2>References</h2>
@@ -61,15 +73,15 @@
 <h2>Submitting Part 3</h2>
 <ol>
 <li>Add me as a collaborator (using my email address <code>mchow[AT]cs[DOT]tufts[DOT]edu</code>) for your web application in Heroku.  You can do this by logging on to Heroku, go to the dashboard for your web application, under "Access", click on the "Add collaborator" button, enter my email address, and click "Save changes".</li>
-<li>Remember, your <a href="lab-mbta2.html">lab 10</a> must now work with your server and not the one I provided to you.  Change the URL in your lab 10 from <code>https://defense-in-derpth.herokuapp.com/redline.json</code> to <code>https://NAMEOFYOURHEROKUAPP.herokuapp.com/redline.json</code>, and push your changes to your private GitHub repository (i.e., <code>comp20-*****/mbta</code>)</li>
+<li>Remember, your <a href="lab-mbta2.html">MBTA Lab, Part 2</a> must now work with your server and not the one I provided to you.  Change the URL in your MBTA Lab, Part 2 from <code>https://defense-in-derpth.herokuapp.com/redline/schedule.json</code> to <code>https://NAMEOFYOURHEROKUAPP.herokuapp.com/redline/schedule.json</code>, and push your changes to your private GitHub repository (i.e., <code>comp20-*****/mbta</code>)</li>
 </ol>
 
 <h2>Assessment</h2>
 <p>This lab is worth 10 points:</p>
 <ul>
 <li>(1 point) <code>README</code></li>
-<li>(2 points) Updated map that now connects to your server and not my server <code>defense-in-derpth.herokuapp.com</code></li>
-<li>(6 points) Working web application on <code>herokuapp.com</code> with cross-origin resource sharing enabled on <code>GET /redline.json</code> resource</li>
+<li>(1 points) Updated map that now connects to your server and not my server <code>defense-in-derpth.herokuapp.com</code></li>
+<li>(7 points) Working web application on <code>herokuapp.com</code> with cross-origin resource sharing enabled on <code>GET /redline/schedule.json</code> resource</li>
 <li>(1 points) Accomplish at least one of the "Going Beyond" items</li>
 </ul>
 
