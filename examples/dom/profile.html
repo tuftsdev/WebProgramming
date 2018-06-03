@@ -4,6 +4,14 @@
 
 <head>
 <title>Fecesbook</title>
+<meta charset="utf-8" />
+<script>
+	function update() {
+		message = document.getElementById("msg").value;
+		updates = document.getElementById("status");
+		updates.innerHTML += "<p>" + new Date() + " - " + message + "</p>";
+	}
+</script>
 </head>
 
 <body>
