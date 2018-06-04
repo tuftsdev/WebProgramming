@@ -1,7 +1,6 @@
 # Overview
 A few examples that uses the Google Maps JavaScript API and the `navigator.geolocation` JavaScript API to determine your location (latitude and longitude):
 
-* `getmylocation.html` - Determines your location (latitude and longitude) using the `navigator.geolocation` JavaScript API.  *Pay attention to when each of the `console.log()` statements are called.  This will help you understand when callbacks are executed and the idea of event-based programming in JavaScript.*
-* `whereami.html` - Essentially another version of `getmylocation.html`.  *Pay attention to when each of the `console.log()` statements are called.  This will help you understand when callbacks are executed and the idea of event-based programming in JavaScript.*
 * `gmap_api_example.html` - Renders a Google Map on the web browser screen, with a map marker and center at Faneuil Hall Marketplace in Boston, MA.  Clicking on the marker will show an info window.
+* `whereami.html` - Determines your location (latitude and longitude) using the `navigator.geolocation` JavaScript API.  *Pay attention to when each of the `console.log()` statements are called.  This will help you understand when callbacks are executed and the idea of event-based programming in JavaScript.*
 * `geolocation_map.html` - Combines the Google Maps JavaScript API and the `navigator.geolocation` JavaScript API: upon opening the page, your location will be determined.  Once your location has been determined, map will move to where you are and a marker of where you are will be pinned onto map.  Clicking on the marker will show an info window.
