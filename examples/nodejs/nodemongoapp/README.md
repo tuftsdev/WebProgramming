@@ -7,12 +7,12 @@ A Node.js + Express + MongoDB web application.  There are two routes in this web
 # About the Files
 * `server.js` - the source of the server
 * `package.json` -  This file holds various metadata relevant to the project. This file is used to give information to `npm` that allows it to identify the project as well as handle the project's dependencies (VERY important).  See https://docs.npmjs.com/files/package.json for more details on what goes in to a `package.json` file.
-* `Procfile` - Required by Heroku.  A `Procfile` "is a mechanism for declaring what commands are run by your application's dynos on the Heroku platform."  In other words, it must specify which is the entry source file (i.e., the `app.js` file).  See https://devcenter.heroku.com/articles/procfile for more details.
+* `Procfile` - Required by Heroku.  A `Procfile` "is a mechanism for declaring what commands are run by your application's dynos on the Heroku platform."  In other words, it must specify which is the entry source file (i.e., the `server.js` file).  See https://devcenter.heroku.com/articles/procfile for more details.
 
 # Running This Example Locally
 1. Make sure the MongoDB database server is turned on.  If you are using the virtual machine, it should be already on, otherwise, run `sudo service mongod start`.  If you installed MongoDB via Homebrew on Mac OS X, run `mongod --config /usr/local/etc/mongod.conf` to start the MongoDB database server.  YOU MUST KEEP RUNNING the database server!
 2. Run `npm install` to install all dependencies of the web application as listed in `package.json` file.
-3. Run `node app.js` (or `nodejs app.js` on some Linux distributions) and LET IT KEEP RUNNING!
+3. Run `node server.js` (or `nodejs server.js` on some Linux distributions) and LET IT KEEP RUNNING!
 
 Please note: each time you add a dependency to the `package.json` file, you must re-run `npm install`.
 
