@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Data Persistence, Part I: Cookies and Local Storage</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Data Persistence, Part I: Cookies and Local Storage</h2>
+
+<h3>So far...</h3>
+<ul>
+<li>We have not talked about storing data to be used over time</li>
+<li>Recall the idea of key-value pairs a.k.a. finite map a.k.a. hash map a.k.a. dictionary a.k.a. associative array</li>
+<li>Also recall HTTP is a stateless protocol</li>
+</ul>
+
+<h3>Client-Side Cookies</h3>
+<ul>
+<li>A small amount of information sent by a server to a browser, and then sent back by the browser on future page requests to same site; only data</li>
+<li>Key-value pairs</li>
+<li>Per <a href="http://www.ietf.org/rfc/rfc2109.txt" target="_blank">RFC 2109</a>, the maximum size of a cookie is 4 KB</li>
+<li>The total number of cookies that can be stored is 300 with a maximum of 20 cookies accepted from a
+particular server or domain</li>
+<li>All cookies set by server are sent to server during interaction</li>
+<li><span class="stress">Same-domain policy</span>: a domain cannot access a cookie set by another domain!</li>
+<li>Can be manipulated on (i.e., <span class="stress">stored as file on client</span>)</li>
+<li>Used for authentication, user tracking, maintaining states (e.g., preferences, shopping cart)</li>
+<li>Can be persistent (i.e., last longer that browsing session)</li>
+<li>Setting a cookie: <code>document.cookie = <span class="stress">updatedCookie</span>;</code> where <span class="stress">updatedCookie</span> is a string of form <span class="stress">key=value</span></li>
+<li>See all the cookies set by site: <code>allCookies = document.cookie;</code></li>
+<li>Getting the value of a cookie: find it in <code>document.cookie</code></li>
+<li>Making a cookie last longer than current browsing session: append an additional attribute-value <code>;expires=<span class="stress">date-in-GMTString-format</span></code> to cookie.  Example: <code>";expires=Sat, 16 May 2009 18:40:22 GMT"</code></li>
+<li>Reference: <a href="https://developer.mozilla.org/en-US/docs/DOM/document.cookie" target="_blank">https://developer.mozilla.org/en-US/docs/DOM/document.cookie</a></li>
+<li>Example: <a href="http://tuftsdev.github.io/WebProgramming/examples/cookies_localstorage/cookies_example.html">cookies_example.html</a></li>
+</ul>
+
+<h3>HTML5 Local Storage</h3>
+<ul>
+<li>Provides key-value mappings (currently, string-to-string mappings)</li>
+<li>Very much like cookies.</li>
+<li>Differences:
+<ul>
+<li>Cookies => 4 KB; localStorage => depends on browser (usually in MB)</li>
+<li>Unlike cookies, sessionStorage and localStorage data are NOT sent to server!</li>
+<li>sessionStorage data confined to browser window that it was created in, lasts until browser is closed</li>
+<li>localStorage has longer persistence, can last even after browser is closed</li>
+</ul>
+</li>
+<li>Trivial to use:
+<ul>
+<li><code>(localStorage | sessionStorage).setItem()</code></li>
+<li><code>(localStorage | sessionStorage).getItem()</code></li>
+<li><code>(localStorage | sessionStorage).deleteItem()</code></li>
+</ul>
+</li>
+<li class="stress">Or use associative array syntax for localStorage or sessionStorage</li>
+<li>Example: <a href="http://tuftsdev.github.io/WebProgramming/examples/cookies_localstorage/localstorage_example.html">localstorage_example.html</a></li>
+</ul>
+
+</body>
+</html>

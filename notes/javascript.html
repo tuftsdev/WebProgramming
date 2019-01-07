@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - JavaScript</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>JavaScript</h2>
+
+<h3>So Far, We Have Discussed...</h3>
+<ul>
+<li>Content generation</li>
+<li>Getting content from a server via HTTP</li>
+<li>Presentation</li>
+<li>Different types of media and file types</li>
+</ul>
+
+<h3>Problems with HTML + CSS?</h3>
+<ul>
+<li>HTML and CSS are static</li>
+</ul>
+
+<h3>What is JavaScript?</h3>
+<ul>
+<li class="stress">"...a high-level, dynamic, untyped interpreted programming language"</li>
+<li>Originally named "LiveScript" by its originator, Netscape (oh how the once almighty has fallen)</li>
+<li>Can be embedded within a web page</li>
+<li>Integrates with HTML and CSS content</li>
+<li>Myths:
+<ul>
+<li>FALSE! JavaScript is Java</li>
+<li>FALSE! JavaScript is not a programming language</li>
+<li>FALSE! JavaScript is only for the web browser</li>
+<li>FALSE! JavaScript is a second-class citizen in the world of programming languages</li>
+</ul>
+</li>
+<li>Compiler? While generally JavaScript does not use a compiler, read <a href="http://programmers.stackexchange.com/questions/138521/is-javascript-interpreted-by-design" target="_blank">http://programmers.stackexchange.com/questions/138521/is-javascript-interpreted-by-design</a> for your enlightenment.</li>
+<li>C-like syntax</li>
+<li>cAsE sEnSiTiVe</li>
+<li>Comments:
+<ul>
+<li><code>//</code> - single line</li>
+<li><code>/*<br/>*/</code> - multi lines</li>
+</ul>
+</li>
+</ul>
+
+<h3>Client-Side Tasks (or What You Can Do With Client-Side JavaScript)</h3>
+<ul>
+<li>Dynamically modify web browser content, e.g., with animation</li>
+<li>Dynamically fetch new documents from servers</li>
+<li>Allow new methods of user interaction other than links and buttons</li>
+<li>Get information about your computer</li>
+</ul>
+
+<h3>Client-Side Scripts</h3>
+<ul>
+<li><span class="stress">Scalable:</span> run on the web browser itself</li>
+<li><span class="stress">Not entirely portable:</span> some methods and scripts only work on certain browser</li>
+<li>Subject to many security limits</li>
+</ul>
+
+<h3>JSFiddle</h3>
+<ul>
+<li><a href="https://jsfiddle.net/" target="_blank">https://jsfiddle.net/</a></li>
+<li>An online playground for JavaScript, HTML, and CSS</li>
+</ul>
+
+<h3>Debugging and Testing in Web Browser</h3>
+<ul>
+<li>For Chrome or Chromium =&gt; Developer Tools: <a href="https://developers.google.com/chrome-developer-tools/docs/scripts" target="_blank">https://developers.google.com/chrome-developer-tools/docs/scripts</a></li>
+<li>For Firefox =&gt; Firebug: <a href="http://getfirebug.com/javascript" target="_blank">http://getfirebug.com/javascript</a></li>
+</ul>
+
+<h3>Variables</h3>
+<ul>
+<li>Variable type is determined by what you set a variable to
+<ul>
+<li><code>i = 'hello';</code> - a string</li>
+<li><code>i = 2.45;</code> - a floating point number</li>
+<li><code>i = 4;</code> -  an integer</li>
+</ul>
+</li>
+</ul>
+
+<h3>Special Values</h3>
+<ul>
+<li><code>null</code> - return value when the result is nothing</li>
+<li><code>undefined</code> - value of something that hasn't been set yet</li>
+<li>There is a real boolean type with the special values <code>true</code> and <code>false</code></li>
+<li><code>NaN</code></li>
+<li><code>Infinity</code></li>
+<li>Thus a variable can have three states
+<ul>
+<li>Not set yet (undefined)</li>
+<li>Set to nothing (null)</li>
+<li>Set to a valid value</li>
+</ul>
+</li>
+</ul>
+
+<h3>Operators</h3>
+<ul>
+<li>The usual arithmetic gang: +, -, * , /, %</li>
+<li>The usual conditional gang: &amp;&amp;, ||, !, ==</li>
+<li><code>==</code> just checks value</li>
+<li><code>===</code> also checks type (i.e., exactly equal to).  Example: <code>10 === "10"</code> is false</li>
+<li>Many operators auto-convert types.  Example: <code>5 &lt; "7"</code> is true</li>
+<li>a &lt; b, a &gt; b, etc., work on both numbers and strings. For strings, you get alpha order.  For numbers, you get numeric order.</li>
+<li>String concatenation: <code>+</code></li>
+<li>Example: Factorials
+<pre>
+	fact = 1;
+	for (i = 1; i &lt;= 100; i++) {
+		fact *= i; // equivalent to: fact = fact * i;
+		console.log(i + '! = ' + fact);
+	}
+</pre>
+</li>
+<li>Try it out: <script async src="https://jsfiddle.net/mchow01/4yea24vL/4/embed/"></script></li>
+</ul>
+
+<h3>Functions</h3>
+<ul>
+<li>Parameter and return types are not written (not even <code>var</code> on parameter declarations)</li>
+<li>Can return any return type</li>
+<li>Functions with no return statement return an <code>undefined</code> value</li>
+<li>Variables declared in the function are <span class="stress">local</span></li>
+<li>The <code>var</code> keyword: <a href="http://stackoverflow.com/questions/1470488/what-is-the-function-of-the-var-keyword-and-when-to-use-it-or-omit-it" target="_blank">http://stackoverflow.com/questions/1470488/what-is-the-function-of-the-var-keyword-and-when-to-use-it-or-omit-it</a></li>
+<li>Wrong number of parameters used?
+<ul>
+<li>Too many: extras ignored</li>
+<li>Too few: remainders get an <code>undefined</code> value</li>
+</ul>
+</li>
+<li>Example:
+<pre>
+&lt;script&gt;
+	function silly (x, y) {
+		i = 5;
+		j = x * y;
+		return i * j;
+	}
+	y = silly(2, 3);
+	console.log("The result of silly(2, 3) is " + y); // take a look at your JavaScript console in web browser
+&lt;/script&gt;
+</pre>
+</li>
+<li>Try it out: <script async src="https://jsfiddle.net/mchow01/9a6wxh04/4/embed/"></script></li>
+</ul>
+
+<h3>Adding JavaScript to HTML</h3>
+<ul>
+<li>Three ways:
+<ol>
+<li>In the page's <code>&lt;body&gt;</code>; <span class="stress">runs when page loads</span></li>
+<li>In the page's <code>&lt;head&gt;</code>; <span class="stress">runs when events occur</span></li>
+<li><span class="note">Preferred:</span> In a link to an external <code>.js</code> script file. Example: <code>&lt;script src="ajax.js" /&gt;</code></li>
+</ol>
+</li>
+<li>Example: JavaScript in HTML body; always runs on page load; useful for generating dynamic text
+<pre>
+	&lt;body&gt;
+		&lt;script&gt;
+		...
+		...
+		...		
+		&lt;/script&gt;
+	&lt;/body&gt;
+</pre>
+</li>
+<li>Example: JavaScript in HTML header; does not run unless functions are explicitly called; useful for event-triggered actions
+<pre>
+	&lt;head&gt;
+		&lt;script&gt;
+		...
+		...
+		...		
+		&lt;/script&gt;
+	&lt;/head&gt;
+</pre>
+</li>
+</ul>
+
+<h3>Printing and Output</h3>
+<ul>
+<li><code>console.log()</code> - output to JavaScript console (e.g., in Chrome Developer Tools or in Firebug for Firefox)</li>
+<li><code>document.write()</code> - output to body of HTML page. <span class="note">Now generally frowned upon as it breaks stuff.  We will not be doing this often!</span></li>
+</ul>
+
+<h3>JavaScript Objects</h3>
+<ul>
+<li>Recall the concept of an object in COMP 11; a collection of properties and methods</li>
+<li>Read: <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Working_with_Objects" target="blank">https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Working_with_Objects</a></li>
+<li>(Almost) everything in JavaScript is an object</li>
+<li>JavaScript has many built-in objects</li>
+<li>You can write your own objects</li>
+<li>Use <span class="stress">dot notation</span> to access properties and functions of an object
+<ul>
+<li>Built-in object <code>Number</code> holds a bunch of numeric constants</li>
+<li><code>Number.MAX_VALUE</code></li>
+<li><code>Number.MIN_VALUE</code></li>
+<li><code>Number.NaN</code> (e.g., result of dividing by 0)</li>
+<li><code>Number.POSITIVE_INFINITY</code></li>
+<li><code>Number.NEGATIVE_INFINITY</code></li>
+</ul>
+</li>
+<li>Example: <code>i = Math.sqrt(2);</code> sets i to the square root of 2</li>
+<li>To call a function in JavaScript, you must remember which object it is in</li>
+</ul>
+
+<h3>String Object</h3>
+<ul>
+<li>Example: <code>name = 'Peter Griffin';</code></li>
+<li>You can use single or double-quotes for strings</li>
+<li>Methods:
+<ul>
+<li><code>charAt</code> --returns a string!</li>
+<li><code>indexOf</code></li>
+<li><code>lastIndexOf</code></li>
+<li><code>replace</code></li>
+<li><code>split</code></li>
+<li><code>substring</code></li>
+<li><code>toLowerCase</code></li>
+<li><code>toUpperCase</code></li>
+<li>Example: <code>firstName = s.substring(0, s.indexOf(" "));</code></li>
+</ul>
+</li>
+<li>Properties
+<ul>
+<li><code>length</code></li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">Complete list of methods</a></li>
+<li>Stringification: when you have a thing, and need a string, call the special (reserved) method <code>thing.toString()</code> to get one</li>
+</ul>
+
+<h3><code>Math</code> Object</h3>
+<ul>
+<li>Methods:
+<ul>
+<li><code>abs</code></li>
+<li><code>ceil</code></li>
+<li><code>cos</code></li>
+<li><code>floor</code></li>
+<li><code>log</code></li>
+<li><code>max</code></li>
+<li><code>min</code></li>
+<li><code>pow</code></li>
+<li><code>random</code> --returns a random number between 0 and 1</li>
+<li><code>round</code></li>
+<li><code>sin</code></li>
+<li><code>sqrt</code></li>
+<li><code>tan</code></li>
+</ul>
+</li>
+<li>Properties
+<ul>
+<li><code>E</code></li>
+<li><code>PI</code></li>
+</ul>
+</li>
+<li>Examples: <code>lottery1 = Math.floor(Math.random() * 9);</code>, <code>two = Math.floor(Math.E);</code></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math" target="_blank">Complete list of methods and properties</a></li>
+</ul>
+
+<h3><code>Date</code> Object</h3>
+<ul>
+<li>Example: <code>due = new Date(2013, 10, 5);</code></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Complete list of methods and properties</a></li>
+<li>Watch out!
+<ul>
+<li><code>getYear</code> returns a 2-digit year; use <code>getFullYear</code> instead</li>
+<li><code>getDay</code> returns day of week from 0 (Sun) through 6 (Sat)</li>
+<li><code>getDate</code> returns day of month from 1 to # of days in month</li>
+<li><code>Date</code> stores month from 0 - 11 (not from 1 - 12)</li>
+</ul>
+</li>
+<li>What is nice: you can compare two dates.  Example:
+<pre>
+	targetDate = new Date();
+	targetDate.setFullYear(2017, 2, 14);
+	today = new Date();
+	if (targetDate &gt; today) {
+		document.write("Output: Today is before PI Day, 3/14/2017");
+	}
+	else if (targetDate == today) {
+		document.write("Output: Today is PI Day!");
+	}
+	else {
+		document.write("Output: Today is after PI Day, 3/14/2017");
+	}
+</pre>
+</li>
+<li>Working live: <script>
+	targetDate = new Date();
+	targetDate.setFullYear(2017, 2, 14);
+	today = new Date();
+	if (targetDate > today) {
+		document.write("Output: Today is before PI Day, 3/14/2017");
+	}
+	else if (targetDate == today) {
+		document.write("Output: Today is PI Day!");
+	}
+	else {
+		document.write("Output: Today is after PI Day, 3/14/2017");
+	}
+</script></li>
+</ul>
+
+<h3>Lists (or Arrays)</h3>
+<ul>
+<li>Three ways to initialize an array:
+<ul>
+<li><code>names = Array(); names[0] = 'Tom';</code></li>
+<li><code>names = Array('Tom', 'Dick', 'Harry');</code></li>
+<li><code>names = ['Tom', 'Dick', 'Harry'];</code></li>
+</ul>
+</li>
+<li>Arrays don't have fixed dimensions</li>
+<li>They automatically resize as you add data</li>
+<li>No such thing as a fixed length array</li>
+<li>Example:
+<pre>
+&lt;script&gt;
+	a = new Array();
+	a[0] = 1;
+	a[1] = "hi there";
+	a[2] = 5.6;
+	a[3] = "data";
+	a[7] = "values";
+	a[12] = "can";
+	a[15] = "be";
+	a[19] = "anything";
+	for (i = 0; i &lt; a.length; i++) {
+		console.log("a[" + i + "] = " + a[i]);
+	}
+&lt;/script&gt;
+</pre>
+</li>
+<li>Try it out: <script async src="https://jsfiddle.net/mchow01/1ukhd9ba/2/embed/"></script></li>
+<li><code>concat</code></li>
+<li><code>join</code></li>
+<li><code>push</code> --adds element to end of array and returns new list size</li>
+<li><code>shift</code> --removes and returns element at beginning of list</li>
+<li><code>pop</code> --removes and returns element at end of array</li>
+<li><code>unshift</code> --adds element to front of array and returns new list size</li>
+<li><code>sort</code></li>
+<li>Examples:
+<ul>
+<li><code>names.push('Michael');</code></li>
+<li><code>names.push('Janet', 'Jermaine');</code></li>
+<li><code>names.unshift('LaToya');</code></li>
+<li><code>names.sort();</code></li>
+<li><code>names.pop();</code></li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank">Complete list of array methods and properties</a>
+</ul>
+
+<h3>Global DOM Objects</h3>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window" target="_blank"><code>window</code></a> - The browser window
+<ul>
+<li>Example 1: <code>window.close()</code> - Closes the current window</li>
+<li>Example 2: <code>window.pageYOffset</code> - Sets or returns the Y position of the current page in relation to the upper left corner of a window's display area</li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator" target="_blank"><code>navigator</code></a> - Information about the web browser you are using
+<ul>
+<li>Example: <code>navigator.userAgent</code> - Returns the value of the user-agent header sent by the client to the server</li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen" target="_blank"><code>screen</code></a> - Information about the screen occupied by the web browser
+<ul>
+<li>Example: <code>screen.width</code> - Returns width of the display screen</li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/History" target="_blank"><code>history</code></a> - List of pages the user has visiteds
+<ul>
+<li>Example: <code>history.go(-1)</code> - Go back to the previous page (if any)</li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Location" target="_blank"><code>location</code></a> - URL of the current document
+<ul>
+<li>Example: <code>location.pathname</code> - Sets or returns the path of the current URL</li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document" target="_blank"><code>document</code></a> - Current HTML page object model
+<ul>
+<li>Example 1: <code>document.getElementsByTagName("<span class="stress">some tag</span>")</code> - Get all elements of a certain type; returns an array</li>
+<li>Example 2: <code><span class="stress">element</span> = document.getElementById("<span class="stress">some ID</span>")</code> - Get a specific element on the page; returns an element
+<ul>
+<li>Example 2A: <code><span class="stress">element</span>.getElementsByTagName("<span class="stress">some tag</span>")</code> - Same as above; returns an array</li>
+</ul>
+</li>
+<li>Example 3: <code><a href="https://developer.mozilla.org/en/DOM/document.createElement" target="_blank">document.createElement("<span class="stress">some element</span>")</a></code></li>
+</ul>
+</li>
+</ul>
+
+<h3>Popup Boxes</h3>
+<ul>
+<li><code>alert('XSS');</code> - Message box</li>
+<li><code>confirm('Are you sure you want to delete all records?');</code> - Confirmation; returns true or false</li>
+<li><code>prompt('What is your name?');</code> - Returns user input string</li>
+</ul>
+
+<h3>Event-Driven Programming with JavaScript</h3>
+<ul>
+<li>HTML elements have event attributes
+<ul>
+<li><code>onclick</code></li>
+<li><code>onselect</code></li>
+<li><code>onchange</code></li>
+<li><code>onmouseover</code></li>
+<li><code>onkeyup</code></li>
+<li><code>onkeydown</code></li>
+</ul>
+</li>
+<li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/Event</a></li>
+<li>JavaScript functions can be set as event handlers</li>
+<li>Example: <code>&lt;h2 onclick="alert('Do you like green eggs and ham?');"&gt;I am Sam&lt;/h2&gt;</code></li>
+<li>Try it out (mouse over the words "I am Sam" in italics on the right...): <span class="stress" onmouseover="alert('Do you like green eggs and ham?');">I am Sam</span></li>
+</ul>
+
+</body>
+</html>

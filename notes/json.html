@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - JavaScript Object Notation (JSON)</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>JavaScript Object Notation (JSON)</h2>
+
+<h3>JavaScript Object Notation (JSON)</h3>
+<ul>
+<li>Lightweight data-interchange format (i.e., transferring data from one computer to another)</li>
+<li>Alternative to XML</li>
+<li>Based off of JavaScript's associative arrays</li>
+<li>Language-independent</li>
+<li>Commonly used in APIs</li>
+<li>RFC <a href="http://www.ietf.org/rfc/rfc4627.txt" target="_blank">http://www.ietf.org/rfc/rfc4627.txt</a></li>
+<li><img src="http://www.json.org/object.gif" alt="object" /><br/>
+<img src="http://www.json.org/array.gif" alt="array" /></li>
+<li>Example:
+<pre>{"menu": {
+  "id": "file",
+  "value": "File",
+  "popup": {
+    "menuitem": [
+      {"value": "New", "onclick": "CreateNewDoc()"},
+      {"value": "Open", "onclick": "OpenDoc()"},
+      {"value": "Close", "onclick": "CloseDoc()"}
+    ]
+  }
+}}
+</pre></li>
+<li>The same text (above) expressed as XML:
+<pre>
+&lt;menu id="file" value="File"&gt;
+  &lt;popup&gt;
+    &lt;menuitem value="New" onclick="CreateNewDoc()" /&gt;
+    &lt;menuitem value="Open" onclick="OpenDoc()" /&gt;
+    &lt;menuitem value="Close" onclick="CloseDoc()" /&gt;
+  &lt;/popup&gt;
+&lt;/menu&gt;
+</pre>
+</li>
+<li>JSON can be converted to XML, vice versa</li>
+<li>The JSON parser for JavaScript: <a href="https://github.com/douglascrockford/JSON-js" target="_blank">https://github.com/douglascrockford/JSON-js</a>; now built-in to most web browsers
+<ul>
+<li>To encode (object to string): <code>namesSelected = JSON.stringify(listItems);</code></li>
+<li>To decode (string to object): <code>datasets = JSON.parse(txt);</code></li>
+</ul>
+</li>
+<li><a href="http://json.parser.online.fr/" target="_blank">Online JSON parser to better understand and read a JSON string</a></li>
+<li>Example: <pre>
+&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+	&lt;title&gt;JSON Test&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;script&gt;
+		// Let's print just the landmark, latitude, and longitude of this JSON
+		str = '{"landmark":"Golden Gate Bridge","location":{"latitude":37.81972,"longitude":-122.47861}}';
+		parsed = JSON.parse(str);
+		console.log(parsed['landmark']);
+		console.log(parsed['location']['latitude']);
+		console.log(parsed['location']['longitude']);
+	&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+</li>
+</ul>
+
+</body>
+</html>

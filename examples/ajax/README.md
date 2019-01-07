@@ -1,0 +1,4 @@
+# Overview
+Examples using (client-side) JavaScript's `XMLHttpRequest` object:
+* `whereintheworld.html` - Uses `XMLHttpRequest` to get the JSON data in file`location.json`.  Upon successful retrieval of `location.json` file, the JSON data is parsed into JavaScript object format which can be used to dynamically update the HTML body via Document Object Model (DOM).
+* `messages.html` - After successful loading of the page, an HTTP GET request is made to data a remote server `https://messagehub.herokuapp.com/messages.json` via `XMLHttpRequest`.  Upon receiving a completed response from the server, the JSON data is parsed into JavaScript object format which can be used to dynamically update the HTML body via Document Object Model (DOM).  *IMPORTANT: the resource at https://messagehub.herokuapp.com/messages.json allows cross-origin requests!*

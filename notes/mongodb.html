@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Databases and Persistent Data Storage (with MongoDB)</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Databases and Persistent Data Storage (with MongoDB)</h2>
+
+<h3>Recall Data Persistence with Cookies and Local Storage</h3>
+
+<h3>Data Persistence on Server-Side via NoSQL</h3>
+<ul>
+<li>Does not use SQL-like query language (which supports the idea of "tables")</li>
+<li>Longer persistence</li>
+<li>Store massive amounts of records</li>
+<li>Many systems are optimized for retrieval (query) and appending (write) operations</li>
+<li>Systems can be scaled</li>
+<li>High availability</li>
+<li>Semi-structured data</li>
+<li>Support for numerous concurrent connections</li>
+<li>Indexing of records for faster retrieval</li>
+</ul>
+
+<h3>MongoDB</h3>
+<ul>
+<li>The big ideas: documents, collections</li>
+<li>MongoDB is a document-based database system</li>
+<li>The abstract idea of a document - data encapsulation into some file format. In the case of MongoDB, JSON is used.</li>
+<li>If you are familiar with relational databases and SQL, analogies: tables => collections; records (or rows) => documents</li>
+<li>Each document can have different fields from other documents</li>
+<li>All documents must have an <code>_id</code> field</li>
+</ul>
+
+<h3>Software</h3>
+<ul>
+<li><code>mongod</code> - the daemon process (runs the server); handles data requests, manages data format, and performs background management operations; must always run, don't quit it!</li>
+<li><code>mongo</code> - the client shell interface to MongoDB</li>
+</ul>
+
+<h3>MongoDB Operations</h3>
+<ul>
+<li>Selecting a database to use</li>
+<li>Showing all collections in database</li>
+<li>Finding / querying documents in a collection</li>
+<li>Inserting documents into a collection</li>
+<li>Deleting documents in a collection</li>
+<li>Update documents in a collection</li>
+<li><a href="https://s3.amazonaws.com/info-mongodb-com/mongodb_qrc_booklet.pdf" target="_blank">Reference guide</a></li></li>
+</ul>
+
+<h3>Using MongoDB</h3>
+<ul>
+<li>Interfacing with MongoDB using <code>mongo</code> client.</li>
+</ul>
+
+<h3>Using MongoDB in Node.js</h3>
+<ul>
+<li>In Node.js: use package <code>mongodb</code>; put it in your package.json file under dependencies</li>
+<li>Documentation: https://github.com/mongodb/node-mongodb-native</li>
+<li>Drivers for Java, C/C++, Python, Ruby, PHP, and other languages available. A driver is a piece of software to connect to a database.  See <a href="http://docs.mongodb.org/ecosystem/drivers/" target="_blank">http://docs.mongodb.org/ecosystem/drivers/</a></li>
+<li>Example: <a href="https://github.com/tuftsdev/WebProgramming/tree/gh-pages/examples/nodejs/nodemongoapp">https://github.com/tuftsdev/WebProgramming/tree/gh-pages/examples/nodejs/nodemongoapp</a></li>
+</ul>
+
+</body>
+</html>

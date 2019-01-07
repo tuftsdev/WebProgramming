@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>COMP 20: Web Programming</title>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("div#today ul").hide();
+			$("div#yesterday ul").hide();
+			$("div#today p").click(function() {
+				$("div#today ul").slideToggle('slow');
+			});
+			$("div#yesterday p").click(function() {
+				$("div#yesterday ul").slideToggle('slow');
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<h1>Fakebook</h1>
+	<div id="nav">
+		<ul>
+			<li id="home">Home</li>
+			<li id="groups">Groups</li>
+			<li id="profile">Profile</li>
+			<li id="contacts">Contacts</li>
+			<li id="inbox">Inbox</li>
+			<li id="applications">Applications</li>
+		</ul>
+	</div>
+	<div id="today">
+		<p>Updates for today:</p>
+		<ul>
+			<li>Alice is now connected to Bob</li>
+			<li>Tom recommends Jerry</li>
+			<li>Harry just returned from a trip from Curaco</li>
+		</ul>
+	</div>
+	<div id="yesterday">
+		<p>Updates for yesterday:</p>
+		<ul>
+			<li>Harry just returned from a trip from Curaco</li>
+			<li>Joan is now connected to Mary</li>
+			<li>Steven is now connected to James</li>
+		</ul>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+/* This is a CSS comment */
+
+body {
+	background-color: #808080;
+	color: #FFFFFF;
+	font-size: 18px;
+	font-family: Helvetica;
+}
+
+h1 {
+	text-align: center;
+}
+
+/* Recall:
+  <div> => generic block element
+  <span> => generic inline element
+*/
+
+/* Three types of CSS selectors:
+ 1. HTML element name (e.g., h1, p)
+ 2. ID
+    - Should be used ONLY once in HTML
+    - Example: "header", "footer" sections
+    - Use "id" attribute, available for all HTML tags
+    - In CSS, selector starts with "#"
+ 3. Class
+    - Can be used multiple times in HTML
+    - Example: styling for warning messages, certain words
+    - Use "class" attribute, available for all HTML tags
+    - In CSS, selector starts with "."
+*/
+
+#header {
+	background-color: green;
+	font-family: "Comic Sans MS";
+	text-align: center;
+	border: dashed;
+	margin-left: 10%;
+	margin-right:10%;
+}
+
+.peeps {
+	background-color: yellow;
+	font-size: 48px;
+	color: black;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 100px;
+}
+
+div.peeps {
+	color: blue;
+}

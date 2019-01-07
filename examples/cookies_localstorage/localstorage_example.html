@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>Local Storage Example</title>
+<meta charset="utf8"/>
+<script>
+	function runme() {
+		localStorage.setItem('phrase', 'Bonkers');
+		elem = document.getElementById("header");
+		elem.innerHTML = "<h1>The phrase that pays is " + localStorage['phrase'] + "</h1>";
+	}
+	
+	function reload() {
+		elem = document.getElementById("results");
+		output = "";
+		// Source: https://stackoverflow.com/questions/3138564/looping-through-localstorage-in-html5-and-javascript
+		for (var i = 0; i < localStorage.length; i++) {
+			output = output + "<p>" + localStorage.getItem(localStorage.key(i)) + "</p>\n";
+		}
+		elem.innerHTML = output;
+	}
+	
+	function store() {
+		txt = document.getElementById("something").value;
+		localStorage[new Date().getTime()] = txt;
+		reload();
+	}
+</script>
+</head>
+
+<body onload="runme()">
+	<div id="header"></div>
+	<p>Say something: <input type="text" name="something" id="something" onchange="store()" /></p>
+	<div id="results"></div>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Basic Networking and the HyperText Transfer Protocol (HTTP)</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Basic Networking and the HyperText Transfer Protocol (HTTP)</h2>
+
+<h3>Basic Networking</h3>
+<ul>
+	<li>Communications between two computers</li>
+	<li>"Handshaking" via TCP/IP
+		<ul>
+			<li>Explanation: <a href="http://www.inetdaemon.com/tutorials/internet/tcp/3-way_handshake.shtml" target="_blank">http://www.inetdaemon.com/tutorials/internet/tcp/3-way_handshake.shtml</a></li>
+		</ul>
+	</li>
+	<li><span class="def">Packet</span> - A block of data sent over the network transmitting the identities of the sending and receiving stations, error-control information, and message</li>
+	<li><span class="def">Port</span> - Represents an endpoint for network communications; application-specific</li>
+	<li><span class="def">Port number</span> - A number assigned to a particular network service on a host that ranges from 0 to 65535 (generally, HTTP is Port 80 and MySQL is Port 3306)
+		<ul>
+			<li>See <a href="http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt" target="_blank">http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt</a> for list of port numbers</li>
+		</ul>
+	</li>
+	<li><span class="def">Domain Name System (DNS)</span> - A set of servers that map written names to IP addresses.  Example: <code>yahoo.com</code> =&gt; <code>69.147.76.15</code></li> 
+</ul>
+
+<h3>The Internet</h3>
+<ul>
+	<li>The world's largest computer network</li>
+	<li>It also contains other networks (e.g., network or networks)</li>
+	<li>Originated in the 1960s.  Funded by Defense Advanced Research Projects Agency (DARPA), part of the US DoD</li>
+</ul>
+
+<h3>The World Wide Web (WWW)</h3>
+<ul>
+	<li>A collection of web sites and pages around the world</li>
+	<li>Provide documents in a markup language that reference other documents and media</li>
+	<li>Not to be confused with the Internet.  The Internet includes other services such as e-mail, chat, Gopher, telnet, etc.</li>
+	<li>Client-server technology; "information pull"
+		<ul>
+			<li><span class="def">Client</span> - A program running on your computer
+				<ul>
+					<li>Web browser - a client application that displays web pages (e.g., Chrome, Firefox, Microsoft Internet Explorer, Safari, Opera, lynx)</li>
+				</ul>
+			</li>
+			<li><span class="def">Server</span> - A computer running web server software on a remote computer; delivers information to other clients
+				<ul>
+					<li>Example: <a href="http://httpd.apache.org/" target="_blank">Apache HTTP Server</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+<h3>Uniform Resource Locator (URL)</h3>
+<ul>
+	<li>A universal naming scheme to specify the location of a document on a web site
+		<ul>
+			<li>A subset of the Uniform Resource Identifier (URI)</li>
+			<li>Created by Tim Berners-Lee in 1994</li>
+			<li>Format: <code>protocol://machine_or_server/directory/file.type</code>
+				<ul>
+					<li>Protocols: <code>http, ftp, telnet, gopher, mailto, file</code></li>
+					<li>Example: <code>http://www.eecs.tufts.edu/index.html</code>
+						<ul>
+							<li><code>http</code> - Hypertext Transport Protocol</li>
+							<li><code>www.eecs.tufts.edu</code> - machine <code>www</code>, domain <code>eecs.tufts.edu</code></li>
+							<li><code>index.html</code> - a file in the Hypertext Markup Language (<code>.html</code>)</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>Anchors: <code>http://tuftsdev.github.com/WebProgramming<strong>#syllabus</strong></code>. This will bring you directly to the syllabus section of our course home page.</li>
+			<li>Query string with parameters: portion of URL where data, in key-value pairs separated by ampersand, is passed to a web server or web application.  The first question mark is used as a separator, and is not part of the query string.  Example: <code>http://www.google.com/search<strong>?q=grand+theft+auto&amp;lr=lang_zh-TW</strong></code> (returns Google results on "Grand Theft Auto" in Chinese Traditional language)</li>
+		</ul>
+	</li>
+</ul>
+
+<h3>URL Encoding</h3>
+<ul>
+	<li>Only certain characters can be used in a URL (e.g., letters --cAsE sEnSiTiVe, and numbers).  For special characters including a whitespace, use URL encoding</li>
+	<li>Convert special characters to equivalent for <span class="stress">URLs</span> only!</li>
+	<li>Reference below</li>
+	<li>Example 1: Whitespace = <code>%20</code></li>
+	<li>Example 2: <code>http://venturebeat.com/2010/09/13/startups-find-strong-opportunities-in-3-%E2%80%9Cbig-data%E2%80%9D-markets/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed:+Venturebeat+(VentureBeat)</code></li>
+</ul>
+
+<h3>Hypertext Transport Protocol (HTTP)</h3>
+<ul>
+	<li>Request-response protocol</li>
+	<li>Stateless protocol</li>
+	<li>Application layer of OSI model (networking)</li>
+	<li>The idea: client makes a request (e.g., for a file) to a server; server sends back a response to client (including file data)</li>
+	<li>The complete RFC (Request For Comments): <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html" target="_blank">http://www.w3.org/Protocols/rfc2616/rfc2616.html</a></li>
+	<li>Commands sent from a web browser (the client) to web server. Request methods:
+		<ul>
+			<li><code>GET</code> - Download</li>
+			<li><code>POST</code> - Sent from a form</li>
+			<li><code>PUT</code> - Upload</li>
+			<li><code>DELETE</code></li>
+		</ul>
+	</li>
+	<li>HTTP request header:
+		<ul>
+			<li>List of header fields: <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html" target="_blank">http://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html</a></li>
+		</ul>
+	</li>
+	<li>Server response header:
+		<ul>
+			<li>Define characteristics of the data that is requested or the data that has been provided</li>
+			<li>Separated from the request or response body (e.g., HTML) by a blank line</li>
+			<li>List of header fields: <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html" target="_blank">http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html</a></li>
+		</ul>
+	</li>
+	<li>Response status codes:
+		<ul>
+			<li>200 - Ok</li>
+			<li>301 - Moved Permanently</li>
+			<li>302 - Found (the request was redirected to another URL/URI)</li>
+			<li>401 - Unauthorized</li>
+			<li>403 - Forbidden</li>
+			<li>404 - Not Found</li>
+			<li>500 - Internal Server Error</li>
+			<li>Complete list: <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html</a></li>
+		</ul>
+	</li>
+	<li>Reference of all HTTP field: <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html" target="_blank">http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html</a></li>
+</ul>
+
+<h3>Educational Humor</h3>
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Learn <a href="https://twitter.com/hashtag/HTTP?src=hash">#HTTP</a> status codes in one image... :-) // via <a href="https://twitter.com/abt_programming">@abt_programming</a> // <a href="http://t.co/9eB7JLqBxR">pic.twitter.com/9eB7JLqBxR</a></p>&mdash; Bruno Borges (@brunoborges) <a href="https://twitter.com/brunoborges/status/548626650850922498">December 26, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-partner="tweetdeck"><p lang="en" dir="ltr">HTTP joke of the day: <a href="https://t.co/Jv3fZO4hGB">https://t.co/Jv3fZO4hGB</a></p>&mdash; Mikko Hypponen (@mikko) <a href="https://twitter.com/mikko/status/640240074345611268">September 5, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<h3>Questions</h3>
+<ol>
+	<li>How can you browse the web without a modern web browser?</li>
+	<li>How do you build a web browser?</li>
+	<!-- http://stackoverflow.com/questions/598841/how-to-get-started-building-a-web-browser :-) -->
+	<li>What does the following evaluate to: <code>%77%77%77%2E%34%63%68%61%6E%2E%6F%72%67</code>?  If you cut-and-paste <code>%77%77%77%2E%34%63%68%61%6E%2E%6F%72%67</code> into the URL bar of your web browser, will work?</li>
+</ol>
+
+<h3>URL Encoding Reference</h3>
+<pre>
+	backspace %08
+	tab %09
+	linefeed %0A
+	creturn %0D
+	space %20
+	!  %21
+	"  %22
+	#  %23
+	$  %24
+	%  %25
+	&amp;  %26
+	'  %27
+	(  %28
+	)  %29
+	*  %2A
+	+  %2B
+	,  %2C
+	-  %2D
+	.  %2E
+	/  %2F
+	0  %30
+	1  %31
+	2  %32
+	3  %33
+	4  %34
+	5  %35
+	6  %36
+	7  %37
+	8  %38
+	9  %39
+	:  %3A
+	;  %3B
+	&lt;  %3C
+	=  %3D
+	&gt;  %3E
+	?  %3F
+	@  %40
+	A  %41
+	B  %42
+	C  %43
+	D  %44
+	E  %45
+	F  %46
+	G  %47
+	H  %48
+	I  %49
+	J  %4A
+	K  %4B
+	L  %4C
+	M  %4D
+	N  %4E
+	O  %4F
+	P  %50
+	Q  %51
+	R  %52
+	S  %53
+	T  %54
+	U  %55
+	V  %56
+	W  %57
+	X  %58
+	Y  %59
+	Z  %5A
+	[  %5B
+	\  %5C
+	]  %5D
+	^  %5E
+	_  %5F
+	`  %60
+	a  %61
+	b  %62
+	c  %63
+	d  %64
+	e  %65
+	f  %66
+	g  %67
+	h  %68
+	i  %69
+	j  %6A
+	k  %6B
+	l  %6C
+	m  %6D
+	n  %6E
+	o  %6F
+	p  %70
+	q  %71
+	r  %72
+	s  %73
+	t  %74
+	u  %75
+	v  %76
+	w  %77
+	x  %78
+	y  %79
+	z  %7A
+	{  %7B
+	|  %7C
+	}  %7D
+	~  %7E
+	¢  %A2
+	£  %A3
+	¥  %A5
+	|  %A6
+	§  %A7
+	«  %AB
+	¬  %AC
+	¯  %AD
+	º  %B0
+	±  %B1
+	ª  %B2
+	,  %B4
+	µ  %B5
+	»  %BB
+	¼  %BC
+	½  %BD
+	¿  %BF
+	À  %C0
+	Á  %C1
+	Â  %C2
+	Ã  %C3
+	Ä  %C4
+	Å  %C5
+	Æ  %C6
+	Ç  %C7
+	È  %C8
+	É  %C9
+	Ê  %CA
+	Ë  %CB
+	Ì  %CC
+	Í  %CD
+	Î  %CE
+	Ï  %CF
+	Ð  %D0
+	Ñ  %D1
+	Ò  %D2
+	Ó  %D3
+	Ô  %D4
+	Õ  %D5
+	Ö  %D6
+	Ø  %D8
+	Ù  %D9
+	Ú  %DA
+	Û  %DB
+	Ü  %DC
+	Ý  %DD
+	Þ  %DE
+	ß  %DF
+	à  %E0
+	á  %E1
+	â  %E2
+	ã  %E3
+	ä  %E4
+	å  %E5
+	æ  %E6
+	ç  %E7
+	è  %E8
+	é  %E9
+	ê  %EA
+	ë  %EB
+	ì  %EC
+	í  %ED
+	î  %EE
+	ï  %EF
+	ð  %F0
+	ñ  %F1
+	ò  %F2
+	ó  %F3
+	ô  %F4
+	õ  %F5
+	ö  %F6
+	÷  %F7
+	ø  %F8
+	ù  %F9
+	ú  %FA
+	û  %FB
+	ü  %FC
+	ý  %FD
+	þ  %FE
+	ÿ  %FF
+</pre>
+
+</body>
+</html>

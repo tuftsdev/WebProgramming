@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - HyperText Markup Language (HTML)</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>HyperText Markup Language (HTML)</h2>
+
+<h3>In the Beginning, There Was SGML</h3>
+<ul>
+<li><span class="def">Markup</span> - It is traditional practice in publishing to mark up a manuscript to indicate what typeface, style, and size should be used for each part</li>
+<li>A markup has a start tag, and <span class="stress">most</span> have content and an end tag</li>
+<li>Standardized General Markup Language (SGML)</li>
+<li>Uses <span class="def">tags</span> enclosed by angle brackets to markup text
+<ul>
+<li>Example: <code>&lt;quote author="guess_who"&gt;Able was I ere I saw Elba&lt;/quote&gt;</code></li>
+<li>The example above is a markup <span class="def">element</span></li>
+<li>The (start) <span class="def">tag name</span> is <code>quote</code></li>
+<li>The tag contains an <span class="def">attribute</span> <code>author</code>, and its <span class="def">value</span> is <code>guess_who</code></li>
+<li>The <span class="def">content</span> in the tag is <code>Able was I ere I saw Elba</code></li>
+<li>The element has a closing tag: <code>&lt;/quote&gt;</code></li>
+</ul>
+</li>
+<li>The significance of SGML: <span class="stress">it "solves" the hard problem of computer understanding documents.</span>  That is, the meaning of things and interpretation of markups can be determined.</li>
+</ul>
+
+<h3>HyperText Markup Language (HTML)</h3>
+<ul>
+<li>Created by Tim Berners-Lee (now at MIT) in 1991; inspired by SGML</li>
+<li><span class="stress">The idea</span>: determines document appearance and behavior</li>
+<li>Initially, it had only a fixed set of tags</li>
+<li class="stress">Lax syntax rules</li>
+<li class="stress">Lax enforcement of the syntax rules on browsers</li>
+<li>It is not really code in the traditional sense (i.e., no variables or loops)</li>
+<li>Most whitespace is insignificant in HTML.  That is, if you have a long run of whitespace, it is all collapsed into a single space.</li>
+<li>Current and latest standard: version 5.0 (2014)</li>
+</ul>
+
+<h3>Structure of an HTML Page</h3>
+<blockquote>
+<pre>
+&lt;html&gt;
+
+&lt;!-- This is a comment. It doesn't appear in the rendered document on the browser. --&gt;
+&lt;!-- This part of the document contains HTML --&gt;
+
+&lt;head&gt;
+&lt;!-- Information about the page (e.g., title, abstract, stylesheet declarations, keywords) goes here... --&gt;
+&lt;!-- ...Does not appear in the rendered document. --&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;!-- Content of the page goes here.  So many ways to create content. --&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+</blockquote>
+
+<h3>Basic Elements</h3>
+<ul>
+<li><code>&lt;title&gt;</code><code>&lt;/title&gt;</code> - Page title; <span class="stress">must</span> be placed within the head of the page!  Page title is displayed on title bar of web browser and it is used as the name of your bookmark.</li>
+<li>Block-level elements: contains an entire large region of text:
+<ul>
+<li><code>&lt;p&gt;</code><code>&lt;/p&gt;</code> - Paragraph</li>
+<li><code>&lt;h#&gt;</code><code>&lt;/h#&gt;</code> - Header</li>
+<li><code>&lt;hr/&gt;</code> - Horizontal rule; a long horizontal line</li>
+<li><code>&lt;ul&gt;</code><code>&lt;/ul&gt;</code> and <code>&lt;li&gt;</code><code>&lt;/li&gt;</code> - Unordered list; <code>&lt;ul&gt;</code><code>&lt;/ul&gt;</code> is a single block of bulleted-list items; each <code>&lt;li&gt;</code><code>&lt;/li&gt;</code> inside the <code>&lt;ul&gt;</code> is an item of the list</li>
+<li><code>&lt;ol&gt;</code><code>&lt;/ol&gt;</code> and <code>&lt;li&gt;</code><code>&lt;/li&gt;</code> - Ordered list; <code>&lt;ol&gt;</code><code>&lt;/ol&gt;</code> is a single block of ordered-list items; each <code>&lt;li&gt;</code><code>&lt;/li&gt;</code> inside the <code>&lt;ol&gt;</code> is an item of the list</li>
+<li><code>&lt;dl&gt;</code><code>&lt;/dl&gt;</code>, <code>&lt;dt&gt;</code><code>&lt;/dt&gt;</code>, and <code>&lt;dd&gt;</code><code>&lt;/dd&gt;</code> - Definition list; <code>&lt;dl&gt;</code><code>&lt;dl&gt;</code> is a single block of definition items; each <code>&lt;dt&gt;</code><code>&lt;/dt&gt;</code> is a term; each <code>&lt;dd&gt;</code> is its definition<code>&lt;/dd&gt;</code></li>
+<li><code>&lt;blockquote&gt;</code><code>&lt;/blockquote&gt;</code> - A block of quotation</li>
+<li><code>&lt;pre&gt;</code><code>&lt;/pre&gt;</code> - Preformatted text in a fixed-width font (Courier).  Ideal to display a chunk of source code on a web page.</li>
+<li><code>&lt;div&gt;</code><code>&lt;/div&gt;</code> - Division; generic block element (more on this in CSS)</li>
+<li><code>&lt;table&gt;</code><code>&lt;/table&gt;</code> - Table</li>
+<li><code>&lt;form&gt;</code><code>&lt;/form&gt;</code> - Web form</li>
+
+</ul>
+</li>
+<li>Inline-level elements: affects a small region of text; must be nested inside a block-level element:
+<ul>
+<li><code>&lt;br/&gt;</code> - A forced line break</li>
+<li><code>&lt;code&gt;</code><code>&lt;/code&gt;</code> - Display text in a fixed-width font (Courier).  Makes text look like source code.</li>
+<li><code>&lt;a&gt;</code><code>&lt;/a&gt;</code> - Anchor; a link to another page.  Use <code>href</code> attribute to specify the destination URL</li>
+<li><code>&lt;img /&gt;</code> - Image</li>
+<li><code>&lt;b&gt;</code><code>&lt;/b&gt;</code> - Presentation: bold (old)</li>
+<li><code>&lt;strong&gt;</code><code>&lt;/strong&gt;</code> - Presentation: strongly emphasized text (bold)</li>
+<li><code>&lt;i&gt;</code><code>&lt;/i&gt;</code> - Presentation: italics (old)</li>
+<li><code>&lt;em&gt;</code><code>&lt;/em&gt;</code> - Presentation: emphasized text (italics)</li>
+<li><code>&lt;u&gt;</code><code>&lt;/u&gt;</code> - Presentation: underline</li>
+<li><code>&lt;sub&gt;</code><code>&lt;/sub&gt;</code> - Presentation: subscript</li>
+<li><code>&lt;sup&gt;</code><code>&lt;/sup&gt;</code> - Presentation: superscript</li>
+<li><code>&lt;font&gt;</code><code>&lt;/font&gt;</code> - Presentation: specifies font to use (old)</li>
+<li><code>&lt;span&gt;</code><code>&lt;/span&gt;</code> - Generic inline element (more on this in CSS)</li>
+</ul>
+</li>
+</ul>
+
+<h3>More on HTML Tags and Attributes</h3>
+<ul>
+<li>Most inline-level elements stay on the same line, and most block-level automatically create new lines.</li>
+<li>Some tags can contain (multiple) attributes.  You can place the attributes in any order.  Example: <code>&lt;a href="http://www.google.com" target="_blank"&gt;Click here&lt;/a&gt;</code></li>
+<li>Some tags can be open and closed in one tag (i.e., no matching end tag).  Examples: <code>&lt;br/&gt;</code>, <code>&lt;img src="krusty.jpg" width="200" height="200" alt="Krusty the Clown" /&gt;</code></li>
+<li>Nesting tags: very important to nest tags correctly
+<ul>
+<li>Closing tag must match the <span class="stress">most recently</span> opened tag</li>
+<li>Example: <code>&lt;p&gt;Remember folks, there is &lt;em&gt;no class&lt;/em&gt; on &lt;strong&gt;Thursday, February 21st&lt;/strong&gt; but there was class on  &lt;strong&gt;&lt;em&gt;Thursday, January 24th&lt;/em&gt;&lt;/strong&gt;!&lt;/p&gt;</code></li>
+</ul>
+</li>
+</ul>
+
+<h3>Links and Anchors</h3>
+<ul>
+<li>Types of URL: <span class="stress">absolute</span> and <span class="stress">relative</span></li>
+<li><span class="def">Absolute</span> - To another website.  Example: <code>&lt;a href="http://www.google.com/"&gt;The Google&lt;/a&gt;</code></li>
+<li><span class="def">Relative</span> - To another page on current website or domain.  Example: <code>&lt;a href="../resources.php"&gt;Resources&lt;/a&gt;</code></li>
+<li>To a section in a document, specify name in document, then link to it using <code>#</code> in value of <code>href</code></li>
+<li>Example: <code>&lt;a href="../resources.html#software"&gt;Software Resources&lt;/a&gt;</code>; make sure there is a <code>&lt;a name="software" /&gt;</code> or <code>&lt;a id="software" /&gt;</code>in the <code>resources.html</code> page</li>
+<li>To open a link in a new browser window, use the attribute <code>target="_blank"</code></li>
+</ul>
+
+<h3>Images</h3>
+<ul>
+<li><code>&lt;img /&gt;</code></li>
+<li>The <code>src</code> attribute specifies the image URL</li>
+<li>If image is placed inside of an anchor tag, image will become a link.  To remove the link border, user the <code>border</code> attribute with value 0</li>
+<li>Example: <code>&lt;a href="http://www.google.com/" target="_blank"&gt;&lt;img src="http://www.google.com/intl/en_ALL/images/logo.gif" border="0" alt="Google" /&gt;&lt;/a&gt;</code>, Try it: <a href="http://www.google.com/" target="_blank"><img src="http://www.google.com/intl/en_ALL/images/logo.gif" border="0" alt="Google" /></a></li>
+</ul>
+
+<h3>Lists</h3>
+<ul>
+<li>A list can contain other lists</li>
+<li>Example 1:
+<pre>
+&lt;ul&gt;
+&lt;li&gt;Tom&lt;/li&gt;
+&lt;li&gt;Dick&lt;/li&gt;
+&lt;li&gt;Harry&lt;/li&gt;
+&lt;/ul&gt;
+</pre></li>
+<li>Example 2:
+<pre>
+&lt;ul&gt;
+&lt;li&gt;Donald
+&lt;ul&gt;
+&lt;li&gt;Huey&lt;/li&gt;
+&lt;li&gt;Dewey&lt;/li&gt;
+&lt;li&gt;Louie&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</li>
+<li>Example 3:
+<pre>
+&lt;ul&gt;
+&lt;li&gt;Marvel
+&lt;ul&gt;
+&lt;li&gt;Spider-Man&lt;/li&gt;
+&lt;li&gt;Captain America&lt;/li&gt;
+&lt;li&gt;Iron Man&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Capcom
+&lt;ul&gt;
+&lt;li&gt;Ryu&lt;/li&gt;
+&lt;li&gt;Mega Man&lt;/li&gt;
+&lt;li&gt;Strider&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</li>
+</ul>
+
+<h3>Special HTML Entities (Characters)</h3>
+<ul>
+<li><code>&amp;nbsp;</code> - Non-breaking space; create a few in a row to create the illusion of a tab </li>
+<li>&amp; - <code>&amp;amp;</code></li>
+<li>&gt; -  <code>&amp;gt;</code></li>
+<li>&lt; -  <code>&amp;lt;</code></li>
+<li>All special HTML entities start with &amp; and end with ;</li>
+<li><a href="http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references" target="_blank">Reference</a></li>
+</ul>
+
+<h3>metadata</h3>
+<ul>
+<li>Information about your web page</li>
+<li><code>&lt;meta /&gt;</code></li>
+<li>Placed in the header (<code>&lt;head&gt;</code>) section</li>
+<li>Attributes: <code>name</code> or <code>http-equiv</code> with <code>content</code></li>
+<li>Significance: search engine optimization (SEO) --i.e., ranking your page or website to the top</li>
+<li>Names
+<ul>
+<li><code>author</code></li>
+<li><code>revised</code> - version; last modification date</li>
+<li><code>generator</code> - the software used to generate the web page (e.g., Dreamweaver)</li>
+<li><code>description</code> - keep it concise</li>
+<li><code>keywords</code> - words separated by a comma; best: 10 - 20 keywords</li>
+<li><code>abstract</code> - Similar to description</li>
+<li><code>robots</code> - Controls whether or not search engine spiders are allowed to index a page and/or follow links from a page</li>
+<li><code>language</code></li>
+<li><code>viewport</code> - Necessary for displaying web pages nicely on mobile devices</li>
+</ul>
+</li>
+<li>Refreshing your page every <span class="stress">n</span> seconds, use <code>&lt;meta http-equiv="refresh" content="<span class="stress">n</span> " /&gt;</code></li>
+<li>Redirecting your page after <span class="stress">n</span> seconds, use <code>&lt;meta http-equiv="refresh" content="<span class="stress">n;A URL HERE</span>" /&gt;</code></li>
+<li>Example 1: what will the following do?
+<blockquote>
+<pre>
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;title&gt;COMP 20: Web Programming&lt;/title&gt;
+&lt;meta http-equiv="refresh" content="5;http://www.youtube.com/watch?v=oHg5SJYRHA0" /&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;h2&gt;Sorry, your page was not found.  You will be redirected to a page where I think you wanted to go...&lt;/h2&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+</blockquote>
+</li>
+<li>Example 2, to make your page viewable on a mobile browser (so the text is not tiny): <code>&lt;meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" /&gt; </code></li>
+</ul>
+
+<h3>Tables</h3>
+<ul>
+<li>Then: used to arrange information in space, and controlling layout</li>
+<li>Now: best for presenting records, structured data sets</li>
+<li>Allows specification of arrangement of cells</li>
+<li><code>&lt;table&gt;...&lt;/table&gt;</code>.  Attributes:
+<ul>
+<li><code>border</code> - Make a border around the table and its cells (0 = no border)</li>
+<li><code>cellspacing</code> - Specify the distance between cells in a table</li>
+<li><code>cellpadding</code> - Specify the spacing between the content of a cell and the inner walls of the cell</li>
+<li><code>width</code> - Specify the width of the table (e.g., in pixels or percentage)</li>
+</ul>
+</li>
+<li><code>&lt;caption&gt;...&lt;/caption&gt;</code> - Caption for table</li>
+<li><code>&lt;tr&gt;...&lt;/tr&gt;</code>.  Table row</li>
+<li>Cells.  Must be inside of a table row <code>&lt;tr&gt;...&lt;/tr&gt;</code>:
+<ul>
+<li><code>&lt;td&gt;...&lt;/td&gt;</code> - Normal Cell</li>
+<li><code>&lt;th&gt;...&lt;/th&gt;</code> - Header cell; content will be bold</li>
+<li>Attributes:
+<ul>
+<li><code>colspan</code> - Column span; take up <span class="stress">n</span> columns (e.g., merge two cells together)</li>
+<li><code>rowspan</code> - Row span: take up <span class="stress">n</span> columns</li>
+<li><code>width</code> - Specify width of cell (e.g., in pixels or percentage)</li>
+<li><code>align</code> - Specify alignment of content in cell (left, center, right)</li>
+</ul>
+</li>
+<li>Content inside cells can use HTML</li>
+<li>Use <code>&amp;nbsp;</code> to create a blank cell</li>
+</ul>
+</li>
+</ul>
+
+<h3>Internet Media Types and the <code>&lt;link&gt;</code> Tag</h3>
+<ul>
+<li>"MIME" (Multipurpose Internet Mail Extensions) type</li>
+<li><code>content-type</code> attribute</li>
+<li>A content type has two parts: type and sub-type.</li>
+<li>Example: <code>application/pdf</code> (with document extension <code>pdf</code>)</li>
+<li>List: <a href="http://en.wikipedia.org/wiki/Internet_media_type" target="_blank">http://en.wikipedia.org/wiki/Internet_media_type</a></li>
+<li><code>&lt;link /&gt;</code> - Describes the relationship from the current document to the anchor specified by the href attribute.   Three attributes: <code>rel</code>, <code>type</code> (one of the MIME types), and <code>href</code> (location). Ordering of the attributes is not important.  Generally placed in the header (<code>&lt;head&gt;</code>) section.</li>
+
+<li>Example 1: the <code>shortcut icon</code> relationship is the "favorite icon".  This icon is an 
+image by the filename <code>favicon.ico</code> stored in the root directory of the web server
+<ul>
+<li><code>&lt;link rel="shortcut icon" href="favicon.ico" /&gt;</code></li>
+</ul>
+</li>
+<li>Example 2: the <code>stylesheet</code> relationship is for stylesheets (CSS)
+<ul>
+<li><code>&lt;link type="text/css" rel="stylesheet" href="https://s-static.ak.facebook.com/rsrc.php/zD9IG/hash/3fmceog4.css" /&gt;</code></li>
+</ul>
+</li>
+</ul>
+
+<h3>Common Errors in HTML</h3>
+<ul>
+<li>Not closing a tag</li>
+<li>Not closing a list</li>
+<li>Improper nesting (document will likely still be rendered, but ugly)</li>
+<li>Forgetting to put double-quotes around values of attributes</li>
+<li>Forgetting important attributes for tags (e.g., <code>alt</code> for an image)</li>
+<li>Using upper-case / lower-case tag names interchangeably</li>
+<li>Hardly anything is enforced in HTML.  Even if there is an error, the page will most likely still render!</li>
+</ul>
+
+<h3>The Extensible Markup Language (XML)</h3>
+<ul>
+<li>Not just a file format, but a technology</li>
+<li>Not as general as SGML</li>
+<li>Extensible: can add new tags and tag hierarchies by embedding document type definitions (DTD's) into a document:
+<ul>
+<li><span class="def">DTD</span> - Contains a set of rules that can be used to validate an XML file</li>
+<li>Create declarations that define elements, attributes, entities, and notations for any XML files that reference the DTD file</li>
+<li>Establish constraints for how each element, attribute, entity, and notation may be used within any XML files that reference the DTD file</li>
+</ul>
+</li>
+<li>Markups encode <span class="stress">meaning</span></li>
+<li>Easy to parse (e.g., using PHP, Ruby, etc.)</li>
+<li>Requirements:
+<ul>
+<li>Every tag closes</li>
+<li>Every attribute is quoted</li>
+<li>Element names are cAsE sEnSiTiVe</li>
+</ul>
+</li>
+<li>Example: <code>&lt;pattern&gt;&lt;/PATTERN&gt;</code> is bad!</li>
+</ul>
+
+<h3>Wide Uses of XML</h3>
+<ul>
+<li>Configuration files (e.g., for servers, for web application)</li>
+<li>Graphics and drawings</li>
+<li>Game files</li>
+<li>Data sets</li>
+<li>Web services</li>
+<li>RSS feeds</li>
+</ul>
+
+<h3>So What Does the Current Version of HTML, HTML5, Provide?</h3>
+<ul>
+<li><a href="http://thumbnails-visually.netdna-ssl.com/what-is-html5--infographic_50291cafad518_w1500.jpg" target="_blank">Infographic</a></li>
+<li>The three aspects of HTML5:
+<ol>
+<li>Content (HTML + XML)</li>
+<li>Presentation of content (CSS)</li>
+<li>Interaction with content (JavaScript)</li>
+</ol>
+</li>
+<li>XML-based but no longer SGML-based</li>
+<li>Originally coined as <span class="stress">Web Applications 1.0</span></li>
+<li>Backing from Google and of course Apple</li>
+<li>Many incompatibilities (still) exist</li>
+<li>Flexible with error handling (i.e., incorrect syntax, deprecated elements --see below).  Older browsers will safely ignore the new HTML5 syntax.</li>
+<li>Validating HTML5 pages: <a href="http://validator.w3.org/" target="_blank">http://validator.w3.org/</a>
+<ul>
+<li>Validate this page (WARNING! many errors): <a href="http://validator.w3.org/check?uri=http%3A%2F%2Ftuftsdev.github.com%2FWebProgramming%2Fnotes%2Fhtml.html&charset=%28detect+automatically%29&doctype=Inline&group=0" target="_blank">http://validator.w3.org/check?uri=http%3A%2F%2Ftuftsdev.github.com%2FWebProgramming%2Fnotes%2Fhtml.html&charset=%28detect+automatically%29&doctype=Inline&group=0</a></li>
+</ul>
+</li>
+</ul>
+
+<h3>Deprecated Tags in HTML5</h3>
+<ul>
+<li>The presentation elements: <code>font</code>, <code>center</code>, <code>b</code>, <code>i</code>, <code>u</code></li>
+<li><code>frame</code>, <code>frameset</code></li>
+<li><code>applet</code></li>
+<li>Old special effects: <code>marquee</code>, <code>bgsound</code></li>
+<li><code>noscript</code></li>
+<li>Reference: <a href="http://www.html-5.com/changes/deprecated/" target="_blank">http://www.html-5.com/changes/deprecated/</a></li>
+</ul>
+
+<h3>Deprecated Attributes in HTML5</h3>
+<ul>
+<li><code>align</code></li>
+<li><code>border</code></li>
+<li>Reference: <a href="http://www.html-5.com/changes/deprecated/" target="_blank">http://www.html-5.com/changes/deprecated/</a></li>
+</ul>
+
+<h3>HTML5: What is In</h3>
+<ul>
+<li>New tags, including <code><a href="http://www.quackit.com/html_5/tags/html_button_tag.cfm" target="_blank">button</a></code>, <code>video</code>, <code>audio</code>, <code>article</code>, <code>footer</code>, <code>nav</code></li>
+<li>New media events</li>
+<li>New <code>canvas</code> tag for 2D rendering</li>
+<li>New form controls for date and time</li>
+<li>Geolocation</li>
+<li>Local storage</li>
+<li>New selectors</li>
+</ul>
+
+<h3>Structure of an HTML5 Document</h3>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+        &lt;head&gt;
+                &lt;title&gt;An HTML Document&lt;/title&gt;
+                ...
+                ...
+                ...
+        &lt;/head&gt;
+
+        &lt;body&gt;
+                ...
+                ...
+                ...
+        &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<ul>
+<li>Example (source: <a href="http://www.alistapart.com/articles/previewofhtml5/" target="_blank"><span class="stress">A Preview of HTML5</span> by Lachlan Hunt, http://www.alistapart.com/articles/previewofhtml5/</a>):</li>
+<li>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+        &lt;head&gt;
+                &lt;title&gt;An HTML Document&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+                &lt;header&gt;
+                        &lt;h1&gt;A Preview of HTML5&lt;/h1&gt;
+                &lt;/header&gt;
+                &lt;nav&gt;
+                  &lt;ul&gt;
+                    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/products"&gt;Products&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/services"&gt;Services&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/nav&gt;
+                &lt;article&gt;
+                        &lt;section&gt;
+                          &lt;h1&gt;Chapter 1: The Period&lt;/h1&gt;
+                          &lt;p&gt;It was the best of times, it was the worst of times,
+                                 it was the age of wisdom, it was the age of foolishness,
+                                 it was the epoch of belief, it was the epoch of incredulity,
+                                 it was the season of Light, it was the season of Darkness,...&lt;/p&gt;
+                        &lt;/section&gt;
+                &lt;/article&gt;
+                &lt;aside&gt;
+                  &lt;h1&gt;Archives&lt;/h1&gt;
+                  &lt;ul&gt;
+                    &lt;li&gt;&lt;a href="/2007/09/"&gt;September 2007&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/2007/08/"&gt;August 2007&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/2007/07/"&gt;July 2007&lt;/a&gt;&lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/aside&gt;
+        &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</li>
+<li>NOTE: Many new elements such as <code>aside</code>, <code>header</code>, <code>footer</code>, <code>article</code>, <code>section</code>, and <code>nav</code> have no effect.  That is, the tag exists, the meaning of the tag exists, but the effect is undefined!</li>
+</ul>
+
+<h3>Questions</h3>
+<ol>
+<li>Why should you almost always use relative URLs for your website?</li>
+<li>Give an example where you should use an absolute URL.</li>
+<li>In HTML5, the <code>border</code> attribute is prohibited for images.  Why?</li>
+<li>It is good practice to also set <code>height</code> and <code>width</code> attributes for image.  Why?</li>
+<li>Compliance with the <a href="http://www.section508.gov/" target="_blank">Section 508 Amendment to the Rehabilitation Act of 1973</a> requires the <code>alt</code> attribute to describe the image (alternative text). Why?</li>
+</ol>
+
+</body>
+</html>

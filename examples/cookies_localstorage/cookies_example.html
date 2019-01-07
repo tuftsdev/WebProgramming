@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>Cookies Example</title>
+<meta charset="utf8"/>
+<script>
+	function init() {
+		document.cookie="username=batman";
+		document.cookie="password=wouldntyouliketoknow";
+		console.log(document.cookie);
+	}
+</script>
+</head>
+
+<body onload="init()">
+	<h1>Take a look at your list of cookies for this site under the settings or preferences of your web browser...</h1>
+</body>
+</html>

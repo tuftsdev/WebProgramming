@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Web Security</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Web Security</h2>
+
+<h3>Basic Awareness</h3>
+<ul>
+<li><a href="https://www.owasp.org/index.php/Top_10_2013-Top_10" target="_blank">OWASP Top 10</a></li>
+<li><a href="https://www.sans.org/top25-software-errors/" target="_blank">CWE/SANS TOP 25 Most Dangerous Software Errors</a></li>
+</ul>
+
+<h3>Our Attack Playground</h3>
+<ul>
+<li>Try me: <a href="http://www.cs.tufts.edu/comp/20/hackme.php">http://www.cs.tufts.edu/comp/20/hackme.php</a></li>
+</ul>
+
+<h3>Assessing Web Applications for Vulnerabilities</h3>
+<ul>
+<li>Automatically using a scanner and proxy
+<ul>
+<li><a href="http://www.portswigger.net/burp/download.html" target="_blank">Burp Suite</a></li>
+</ul>
+</li>
+<li>Many app scanners also come with a spidering tool</li>
+<li>Captures the URLs that you enter in web browser, and subsequent URLs and pages</li>
+<li>Scans an entire web application or website for pages, SQL injection vulnerabilities, XSS vulnerabilities, hidden fields, cookies, etc.</li>
+<li>You can change cookies, form fields, and hidden fields on-the-fly and see the results
+<ul>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/966/" target="_blank">Tamper Data</a> - a Firefox plugin</li>
+</ul>
+</li>
+</ul>
+
+<h3>Attack: Bypassing Restrictions on Input Choices</h3>
+<ul>
+<li>Examples: <code>&lt;input type="text" name="first_name" <strong>maxlength="30"</strong> /&gt;</code>, <code>&lt;input type="radio" name="option" <strong>value="Ice Cream"</strong> /&gt;</code></li>
+<li>Can be applied on practically all input forms</li>
+<li>Conducting the attack:
+<ol>
+<li>Save a page to your desktop, modify it, resending it</li>
+<li>Use a proxy program to modify values in-transit</li>
+</ol>
+</li>
+<li>Prevention and protection: server-side input validation</li>
+</ul>
+
+<h3>Attack: Hidden Fields</h3>
+<ul>
+<li>All hidden fields are sent to server on submits (POST or GET)</li>
+<li>Very easy to identify: <code>&lt;input type="hidden" name="...</code></li>
+<li>State-based attack</li>
+<li>Rookie mistake: using hidden field to store sensitive information so it can be passed from one page to another.  Examples: account number, password, product price</li>
+<li>Back-in-the-days: <a href="http://www.edgeblog.net/2006/how-to-buy-a-plasma-for-99/" target="_blank">buy a plasma screen TV for $0.99</a>
+<ul>
+<li><a href="http://www.securityfocus.com/bid/1237/discuss" target="_blank">More details on SecurityFocus</a></li>
+<li>Many software packages and vendors have plugged this hole</li>
+</ul>
+</li>
+<li>Conducting the attack: see above; ask yourself whether the information is valuable enough</li>
+<li>Prevention and protection: avoid using hidden fields</li>
+</ul>
+
+<h3>Attack: Cross Site Scripting (XSS)</h3>
+<ul>
+<li>Potential consequences:
+<ul>
+<li>Present <span class="stress">all users</span> with fraudulent web content</li>
+<li>Steal cookie information</li>
+<li>Malicious code injection</li>
+<li>Annoying messages</li>
+</ul>
+</li>
+<li>Not the same as phishing</li>
+<li>Conducting the attack: where users input data that is echoed to other users.  Example: message board</li>
+<li>How do you embed a script into an HTML page? <code>&lt;script&gt;</code></li>
+<li>XSS cheat sheet: <a href="http://ha.ckers.org/xss.html" target="_blank">http://ha.ckers.org/xss.html</a></li>
+<li>Prevention and protection: remove the ability for data to be interpreted as code.  Pay attention to the angle brackets.  Change:
+<ul>
+<li>Change &lt; to &amp;lt;</li>
+<li>Change &gt; to &amp;gt;</li>
+</ul>
+</li>
+<li>XSS Payload Samples:
+<ul>
+<li><code>&lt;script&gt;alert('XSS');&lt;/script&gt;</code></li>
+<li><code>&lt;script&gt;window.document.getElementById("<span class="stress">SOME_ID</span>").innerHTML='&lt;img src="<span class="stress">SOME_IMAGE_URL</span>" /&gt;';&lt;/script&gt;</code>
+<ul>
+<li>Example: <code>&lt;script&gt;window.document.getElementById("searchedWords").innerHTML='&lt;img src="http://imagemacros.files.wordpress.com/2009/06/its_a_trap.jpg" /&gt;';&lt;/script&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</body>
+</html>

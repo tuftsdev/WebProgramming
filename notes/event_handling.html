@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Event Handling</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Event Handling</h2>
+
+<h3>What is an event?</h3>
+
+<h3>Recall: HTML elements have event attributes</h3>
+<ul>
+<li><code>onclick</code></li>
+<li><code>onselect</code></li>
+<li><code>onchange</code></li>
+<li><code>onmouseover</code></li>
+<li><code>onkeyup</code></li>
+<li><code>onkeydown</code></li>
+</ul>
+<ul>
+<li>Very ancient; the "Netscape model"</li>
+<li>The problem: "Concerns of content/structure and behavior are not well-separated, making a bug harder to find."</li>
+</ul>
+
+<h3>The idea of a <span class="stress">listener</span> (a.k.a., event handler)</h3>
+<ul>
+<li>"Hey, if this thing (i.e., the event) occurs, I'll do this..."</li>
+</ul>
+
+<h3>The modern way: <code><span class="stress">element.</span>addEventListener()</code> to a DOM element</h3>
+<ul>
+<li>The idea: attach a single listener to a single target</li>
+<li>Takes in two required parameters: an DOM event type (string) and a JavaScript function (typically)
+<ul>
+<li>Note: the JavaScript listener function has a default parameter: an event object!</li>
+</ul>    
+</li>
+</ul>
+
+<h3>DOM Event Types</h3>
+<ul>
+<li>Too many to list, see <a href="https://developer.mozilla.org/en-US/docs/Mozilla_event_reference" target="_blank">https://developer.mozilla.org/en-US/docs/Mozilla_event_reference</a></li>
+<li>Remember, event types are <span class="stress">strings</span>!</li>
+</ul>
+
+<h3>Handling Keyboard Events</h3>
+<ul>
+<li>Keycodes: <a href="https://developer.mozilla.org/en-US/docs/DOM/KeyboardEvent?redirectlocale=en-US&amp;redirectslug=DOM%2FEvent%2FUIEvent%2FKeyEvent" target="_blank">https://developer.mozilla.org/en-US/docs/DOM/KeyboardEvent?redirectlocale=en-US&amp;redirectslug=DOM%2FEvent%2FUIEvent%2FKeyEvent</a></li>
+<li>Example and demo (yes, check your JavaScript console!):
+<pre>
+&lt;script&gt;
+  document.addEventListener("keydown", function(event) {
+    console.log(event.keyCode);
+    if (event.keyCode == 32) {
+      console.log("I see that you pressed the space bar!");
+    }
+  });
+&lt;/script&gt;
+</pre>
+<script>
+  document.addEventListener("keydown", function(event) {
+    console.log(event.keyCode);
+    if (event.keyCode == 32) {
+      console.log("I see that you pressed the space bar!");
+    }
+  });
+</script>
+</li>
+</ul>
+
+<h3>Geolocation</h3>
+<ul>
+<li>HTML5 feature</li>
+<li>JavaScript object <code>navigator.geolocation</code></li>
+<li>How does it get your coordinates?  Wi-Fi information using Google Location Services, nearby wireless access points, your computer's IP address.  No plugins required.  Firefox 3.6 supports GPS.</li>
+<li>To check if your browser supports the geolocation object:
+<pre>
+  if (navigator.geolocation) {
+    // good
+  }
+  else {
+    // not supported
+  }  
+</pre>
+</li>
+<li>Not supported in IE &le; 7</li>
+<li>To get your current location:
+<pre>
+  navigator.geolocation.getCurrentPosition(function(position) {
+    // Consider this a special listener, an *asynchronous* request 
+    lat = position.coords.latitude;
+    lng = position.coords.longitude;
+	// do something...
+  });
+  // everything here will be executed *while* getCurrentPosition() is called...
+  // ...most likely before the request is executed!
+</pre>
+</li>
+<li><a href="https://developer.mozilla.org/ms/docs/Using_geolocation" target="_blank">More information</a></li>
+<li>Example (try me): <a href="https://tuftsdev.github.io/WebProgramming/examples/google_maps/whereami.html">whereami.html</a></li>
+</ul>
+
+</body>
+</html>

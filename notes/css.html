@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Cascading Style Sheet (CSS)</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Cascading Style Sheet (CSS)</h2>
+
+<h3>Why CSS?</h3>
+<ul>
+<li>HTML was never intended for formatting or styling purposes but to <span class="stress">define the content of a document</span></li>
+<li class="stress">Once you embed presentation inside of an HTML tag, it cannot be overridden</li>
+<li>The bottom line: <span class="stress">separate the structure and content</span></li>
+<li>Gives the designer creative control of the content. What you can change:
+<ul>
+<li>Font and font sizes</li>
+<li>Color</li>
+<li>Layout</li>
+<li>Position</li>
+<li>Borders</li>
+</ul>
+</li>
+<li>Control the layout of content on multiple devices using multiple style sheets (and thus improving accessibility)</li>
+<li>Provides visual feedback to users (Web Engineering)</li>
+</ul>
+
+<h3>Box Model</h3>
+<ul>
+<li>Consider all HTML elements as a rectangular box</li>
+<li>Explanation (interactive): <a href="http://www.w3.org/TR/CSS2/box.html" target="_blank">http://www.w3.org/TR/CSS2/box.html</a></li>
+</ul>
+
+<h3>Syntax</h3>
+<ul>
+<li>A CSS file contains a sequence of rules</li>
+<li>Example rule: <code>h1 { color: blue; }</code>
+<ul>
+<li><code>h1</code> is known as the <span class="def">selector</span></li>
+<li><code>color: blue;</code> is known as a <span class="def">declaration</span></li>
+<li><code>color</code> is known as the <span class="def">property</span></li>
+<li><code>blue</code> is known as the <span class="def">value</span></li>
+</ul>
+</li>
+<li>The selector comes first, then the declarations are enclosed by brackets</li>
+<li>A rule can have many declarations</li>
+<li>A declaration is a property-value pair separated by a colon</li>
+<li>Declarations always ends with a semicolon</li>
+<li>You can put one declaration on each line</li>
+<li>To make a comment in a CSS, use <code>/* COMMENT HERE */</code></li>
+</ul>
+
+<h3>id selector vs class selector</h3>
+<ul>
+<li>id selector
+<ul>
+<li>Used to specify a style for a single, unique element</li>
+<li>Uses the <code>id</code> attribute of the HTML element. <span class="note">IMPORTANT: the ID cannot start with a number</span></li>
+<li>Defined with a <code>#</code></li>
+<li>Example (CSS): <code>#warning { color:red; font-size:48px; }</code></li>
+<li>Example (HTML): <code>&lt;div id="warning"&gt;Don't eat the yellow snow!&lt;/div&gt;</code></li>
+</ul>
+</li>
+<li>class selector
+<ul>
+<li>Used to specify a style for a group of elements</li>
+<li>Class selector is most often used on several elements</li>
+<li>The class selector uses the HTML class attribute, and is defined with a <code>.</code></li>
+<li>In HTML, the <code>class</code> attribute can contain multiple class names, separated by spaces</li>
+<li>Example 1 (CSS): <code>.yay { color: green; }</code></li>
+<li>Example 1 (HTML): <code>&lt;p&gt;In March, there is &lt;span class="yay"&gt;SPRING BREAK!&lt;/span&gt;&lt;/p&gt;</code></li>
+<li>Example 2: <code>p.center {text-align:center;}</code> -  All paragraph elements with class="center" will be center-aligned</li>
+</ul>
+</li>
+</ul>
+
+<h3>Inserting and Using CSS</h3>
+<p>1. As external file; declare in <code>&lt;head&gt;</code> section (preferred)</p>
+<pre>
+&lt;link rel="stylesheet" href="default_style.css" /&gt;
+</pre>
+<p>2. Internally in <code>&lt;head&gt;</code> section (meh!)</p>
+<pre>
+&lt;style&gt;
+        ...
+        ...
+        ...
+&lt;/style&gt;
+</pre>
+<p>3. Inline within an element (yuck!)</p>
+<pre>&lt;p style="..."&gt;Whoa there!&lt;/p&gt;</pre>
+<p class="note">NOTE: The attribute-value pair <code>type="text/css"</code> for <code>&lt;link&gt;</code> and <code>&lt;style&gt;</code> is no longer required. See <a href="http://stackoverflow.com/questions/5409114/is-type-text-css-necessary-in-a-link-tag" target="_blank">http://stackoverflow.com/questions/5409114/is-type-text-css-necessary-in-a-link-tag</a>.</p>
+
+<h3>The "Cascading" in Cascading Style Sheets</h3>
+<ul>
+<li>What if there is more than one style specified for an HTML element?</li>
+<li>The styles will roll-up or "cascade" into a bigger rule</li>
+<li class="stress">The last declaration wins!</li>
+<li>Priorities:
+<ul>
+<li>Browser default</li>
+<li>External style sheet</li>
+<li>Internal style sheet</li>
+<li>Inline style</li>
+</ul>
+</li>
+</ul>
+
+<h3>Advanced Compositions</h3>
+<ul>
+<li>Concatenation, separated <code>.</code>
+<ul>
+<li>Example: <code>p.highlight.small { color: red; }</code> - Applies to all paragraph elements whose class contains highlight and small</li>
+</ul>
+</li>
+<li>"Or", separated by <code>,</code>
+<ul>
+<li>Example: <code>h1, h2, h3 {...}</code> - Applies to <code>&lt;h1&gt;, &lt;h2&gt; or &lt;h3&gt;</code> elements</li>
+</ul>
+</li>
+<li>Descendants, separated by space
+<ul>
+<li>Example: <code>form p {...}</code> - Applies to all paragraph tags inside form elements</li>
+</ul>
+</li>
+<li>Child of, separated by <code>&gt;</code>
+<ul>
+<li>Example: <code>form &gt; p {...}</code> - Applies to all paragraph elements that are direct children of form elements</li>
+</ul>
+</li>
+</ul>
+
+<h3>Pseudo-Classes</h3>
+<ul>
+<li><code>:hover</code> - Hover over a link</li>
+<li><code>:focus</code> - Link is focused</li>
+<li><code>:active</code> - Click on link</li>
+<li><code>:link</code> - Unvisited links</li>
+<li><code>:visted</code> - Visited links</li>
+<li>Example: </li>
+</ul>
+
+<h3>Units of Measurements</h3>
+<ul>
+<li><code>px</code> - pixels (common)</li>
+<li><code>%</code> - percentage with respect to screen dimensions (common)</li>
+<li><code>in</code> - inches</li>
+<li><code>cm</code> - centimeters</li>
+<li><code>pt</code> - point</li>
+<li><code>pc</code> - pica</li>
+</ul>
+
+<h3>Colors</h3>
+<ul>
+<li>Defined using a hexadecimal notation (HEX) for the combination of Red, Green, and Blue color values (RGB)</li>
+<li>The lowest value that can be given to one of the light sources is 0 (in HEX: 00). The highest value is 255 (in HEX: FF)</li>
+<li>HEX values are specified as 3 pairs of two-digit numbers, starting with a # sign.</li>
+<li>Example: <code>#FF00FF</code> (magenta)</li>
+</ul>
+
+</body>
+</html>

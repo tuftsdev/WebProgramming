@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Mobile and Responsive Design</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Mobile and Responsive Design</h2>
+
+<h3>Two Versions of CSS</h3>
+<ul>
+<li>Version 2 (CSS2) - What you have seen so far; approved by the W3C</li>
+<li>Version 3 (CSS3) - Visual enhancements (e.g., rounded corners via <code>border-radius</code> property), media queries, new selectors, new pseudo-classes; backwards compatible with CSS2; not officially a standard with the W3C</li>
+</ul>
+
+<h3>CSS2 Media Types</h3>
+<ul>
+<li>CSS2 supported only two different types of media: print and screen via <span class="stress">media types</span>
+<ul>
+<li>Screen (default): <code>&lt;link rel="stylesheet" type="text/css" href="style.css" media="screen" /&gt;</code></li>
+<li>Printer: <code>&lt;link rel="stylesheet" type="text/css" href="printfriendly.css" media="print" /&gt;</code></li>
+</ul>
+</li>
+<li>Alas, no support for mobile screens!</li>
+</ul>
+
+<h3>Getting Around the Real Resolution Issue</h3>
+<ul>
+<li>Specify metadata for viewport</li>
+<li>The crux of the matter: <a href="http://dev.opera.com/articles/view/an-introduction-to-meta-viewport-and-viewport/" target="_blank">http://dev.opera.com/articles/view/an-introduction-to-meta-viewport-and-viewport/</a></li>
+<li class="stress">Must be placed before linking stylesheets to page!</li>
+<li>That is: <code>&lt;meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" /&gt;</code></li>
+<li>The above ensures that the user isn't able to zoom in or out the website</li>
+</ul>
+
+<h3>CSS3 Media Queries: A New Hope</h3>
+<ul>
+<li>Currently implemented in Safari, Firefox, and Opera</li>
+<li>The idea: allow authors to customize a stylesheet based on some well-known properties, such as the size of the screen that is rendering the page</li>
+<li>Example using media query via <code>media</code> attribute in <code>link</code> element, stylesheet to be used by the iPhone's browser and not any PC browser: <code>&lt;link rel="stylesheet" href="handheld.css" media="only screen and (max-device-width:480px)"/&gt;</code></li>
+<li>Example using media query via <code>media</code> attribute in <code>link</code> element, stylesheet to be used by everything else: <code>&lt;link media="print, screen and (min-device-width: 480px)" href="navigation1.css" rel="stylesheet" /&gt;</code></li>
+<li>Media queries can also be used in a stylesheet</li>
+<li>For the iPad / tablet, refer to article <a href="http://broadcast.oreilly.com/2010/04/using-css-media-queries-ipad.html" target="_blank">Using CSS Media Queries to Style Your iPhone and iPad HTML (O'Reilly Media)</a></li>
+<li>Media queries syntax via Mozilla: <a href="https://developer.mozilla.org/en-US/docs/CSS/Media_queries" target="_blank">https://developer.mozilla.org/en-US/docs/CSS/Media_queries</a></li>
+</ul>
+
+</body>
+</html>

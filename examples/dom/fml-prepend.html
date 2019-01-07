@@ -1,0 +1,31 @@
+<!doctype html>
+
+<html>
+	<head>
+
+		<title>Tufts FML</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+		<link rel="stylesheet" href="style.css" />
+
+		<!--To get text typed in: document.getElementById("msg").value;-->
+		<script>
+			// This is where you write your JavaScript
+			function update() {
+				theMessage = document.getElementById("msg").value;
+				toUpdate = document.getElementById("content");
+				
+				// The idea: create a new node and prepend to the first node in the "content" div
+				newElem = document.createElement("p");
+				newElem.innerHTML = '<p><span class="message">' +theMessage + " #FML</span></p>";
+				toUpdate.insertBefore(newElem, toUpdate.childNodes[0]);
+				document.getElementById("msg").value = "";
+			}
+		</script>
+	</head>
+
+	<body>
+		<h3>Vent your FML <input type="text" id="msg" size="30" onchange="update()"/></h3>
+		<div id="content"></div>
+	</body>
+</html>

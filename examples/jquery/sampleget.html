@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>jQuery Test</title>
+	<meta charset="utf8"/>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$.get("https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=place-davis", function(data) {
+				$("#info").html(JSON.stringify(data));
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<h1>MBTA Red Line Schedule</h1>
+	<div id="info">Loading...</div>
+</body>
+</html>

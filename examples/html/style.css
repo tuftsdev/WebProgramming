@@ -1,0 +1,44 @@
+/* Really rudimentary style sheet */
+
+body {
+	font-family: Helvetica,Arial,sans-serif;
+	background-color: #007FFF; /* Azure */
+}
+
+h1 {
+	text-align: center;
+	font-size: 64px;
+	background-color: yellow;
+	border-style: dashed;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+p {
+	font-size: 24px;
+	color: white;
+}
+
+/*
+  lines 12 to 14 => 1 CSS *rule*
+  `p` (line 12) => selector. There are three types of selectors...
+  `font-size: 24px;` => 1 *declaration*, a.k.a., property-value pair
+    `font-size` => property
+    `24px` => value
+*/
+
+#troll1 {
+	font-family: "Comic Sans MS";
+	font-size: 72px;
+}
+
+#troll2 {
+	font-family: "Comic Sans MS";
+	font-size: 8px;
+}
+
+h1 {
+	background-color: violet;
+}

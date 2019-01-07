@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Google Maps API</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Google Maps API</h2>
+
+<h3>Overview</h3>
+<ul>
+<li>Documentation: <a href="http://code.google.com/apis/maps/documentation/javascript/" target="_blank">http://code.google.com/apis/maps/documentation/javascript/</a></li>
+<li>Uses HTML5.</li>
+<li>You can write a page that uses Google Maps and run it from your desktop (with Internet connection); no web server required.</li>
+<li>Requirements:
+<ol>
+<li>In the <code>&lt;head&gt;</code>, the JavaScript source <code>http://maps.google.com/maps/api/js?sensor=<span class="stress">set_to_true_or_false</span></code> (in our case, we will use <code>true</code> for the most part because we will write applications that use a sensor to determine the user's location)
+<ul>
+<li>That is, put <code>&lt;script src="http://maps.google.com/maps/api/js?sensor=true"&gt;&lt;/script&gt;</code> in the <code>&lt;head&gt;</code></li>
+</ul>
+</li>
+<li>CSS: <pre>
+	html { height: 100% }
+	body { height: 100%; margin: 0px; padding: 0px }
+	#map_canvas { height: 100% }</pre></li>
+</ol>
+</li>
+<li>Tutorial: <a href="http://code.google.com/apis/maps/documentation/javascript/tutorial.html" target="_blank">http://code.google.com/apis/maps/documentation/javascript/tutorial.html</a></li>
+<li>Objects:
+<ul>
+<li><a href="http://code.google.com/apis/maps/documentation/javascript/reference.html#Map"><code>google.maps.Map</code></a> - The map object (duh!)</li>
+<li><a href="http://code.google.com/apis/maps/documentation/javascript/reference.html#LatLng"><code>google.maps.LatLng</code></a> - An object that contains the latitude and longitude pair</li>
+<li><a href="http://code.google.com/apis/maps/documentation/javascript/reference.html#Marker"><code>google.maps.Marker</code></a> - A marker</li>
+<li><a href="http://code.google.com/apis/maps/documentation/javascript/reference.html#InfoWindow"><code>google.maps.InfoWindow</code></a> - An info window</li>
+<li><a href="http://code.google.com/apis/maps/documentation/javascript/reference.html#Polyline"><code>google.maps.Polyline</code></a> - A linear overlay</li>
+<li><a href="http://code.google.com/apis/maps/documentation/javascript/reference.html#event"><code>google.maps.event</code></a> - An event listener for Google Maps</li>
+</ul>
+</li>
+<li>Complete reference: <a href="http://code.google.com/apis/maps/documentation/javascript/reference.html" target="_blank">http://code.google.com/apis/maps/documentation/javascript/reference.html</a></li>
+</ul>
+
+<h3>Structure of a Google Maps API version 3 Page</h3>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta name="viewport" content="initial-scale=1.0, user-scalable=no" /&gt;
+
+&lt;!-- Better put the following style into a separate CSS file --&gt;
+&lt;style&gt;
+  html { height: 100% }
+  body { height: 100%; margin: 0px; padding: 0px }
+  #map_canvas { height: 100% }
+&lt;/style&gt;
+&lt;script src="http://maps.google.com/maps/api/js?sensor=true"&gt;&lt;/script&gt;
+&lt;script&gt;
+	function initialize() {
+		latlng = new google.maps.LatLng(...);
+		// "..." is stuff you have to fill in
+		...
+		...
+		...
+		myOptions = {...};
+		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	}
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body onload="initialize()"&gt;
+	&lt;div id="map_canvas" style="width:100%; height:100%"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>
+</html>
