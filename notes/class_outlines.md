@@ -10,8 +10,7 @@
 * Administrativa:
   1. The bad news: course is closed, wait-list
   2. No final exam for this class, book travel now
-  3. Tufts Career Fair and CS+ECE Reverse Career Fair
-  4. Lab 1 up
+  3. Lab 1 up
 * How two computers talk to each other: basic networking
 * The Internet vs the World Wide Web
 
