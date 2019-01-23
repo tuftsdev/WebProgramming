@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Lab: Git</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Lab: Git</h2>
+
+<h2>Lab Objective</h2>
+<ol>
+<li>Practice using Git and GitHub</li>
+</ol>
+
+<h2>Overview</h2>
+<p>In this course, you will be using Git and GitHub extensively to keep track of your work, communicate what you have done, work with teammates remotely (e.g., semester group project), and submit almost all assignments and labs.  All assignments and labs in this course should be done on your local computer.  That is, there is no need to connect to <code>homework.cs.tufts.edu</code> to work on assignments and labs unlike most other classes in our curriculum.</p>
+<p>Please note that Git and GitHub are not the same.  <strong>Git</strong> is the distributed version control system (software). Git is responsible for keeping track of changes to content (usually source code files), and it provides mechanisms for sharing that content with others.  <strong>GitHub</strong> is a company that provides Git repository hosting.  See <a href="https://programmers.stackexchange.com/questions/173321/conceptual-difference-between-git-and-github" target="_blank">https://programmers.stackexchange.com/questions/173321/conceptual-difference-between-git-and-github</a> for more insights.</p>
+
+<h2>Instructions</h2>
+<p class="note">Please read the following instructions first, carefully!</p>
+<ol>
+<li>Read <a href="../notes/git-ctaylor.pdf">Connor Taylor&#39;s (Tufts Class of 2015) Presentation on Git</a></li>
+<li>Create a GitHub account if you do not have one already at <a href="https://github.com/" target="_blank">https://github.com/</a>.</li>
+<li>Read <a href="https://help.github.com/articles/set-up-git/" target="_blank">https://help.github.com/articles/set-up-git</a> on setting up Git on your computer. If you are using Homebrew on a Mac, you can install Git via <code>brew install git</code>.  <span class="note">Important Note</span>: In this class, we will not be using the GitHub Desktop app.  It isn't as flexible as using the command line and you need to get into the habit of typing and using the command line terminal.</li>
+<li>Read <a href="https://help.github.com/articles/creating-a-new-repository/" target="_blank">https://help.github.com/articles/creating-a-new-repository/</a> on creating a Git repository on GitHub.  Please name this new repository <code>hello-world</code> under your account! <span class="note">Important Note</span>: To avoid future confusions and Git conflicts, DO NOT initialize the repository with a README.</span></li>
+<li>Upon creating the <code>hello-world</code> repository under your account in GitHub, you will see a page that looks something like the following (with the exception of the <code>mchow01</code> which is my GitHub username). <img src="lab-git-screenshot.png" alt="Screenshot" /></li>
+<li>On your computer using the terminal / command line, create a new directory (a.k.a., folder) named <code>hello-world</code> via <code>mkdir hello-world</code>.  This directory can be located anywhere on your computer.  Then go into the directory via <code>cd hello-world</code> (cAsE sEnSiTiVe).</li>
+<li>In the <code>hello-world</code> directory, follow the instructions as noted on the GitHub page (or screenshot above):
+<pre>
+echo "# hello-world" &gt;&gt; README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/your_github_username_here/hello-world.git
+git push -u origin master
+</pre><br/>The first line <code>echo "# hello-world" &gt;&gt; README.md</code> creates a file named <code>README.md</code> with one line: <code># hello-world</code>.
+</li>
+<li>Make a second commit change.  That is: find a funny image (e.g., using Google), add it to your <code>hello-world</code> repo, commit and push change to GitHub.  Please also write short, one line, coherent commit messages (i.e., no "dr. steve brule" or "asdf" garbage). <span class="note">Important Note 3</span>: Please do not use photos of other students, me, or the TAs. That is just downright creepy.</li>
+</ol>
+
+<h2>Readings and References</h2>
+<ul>
+	<li><a href="../notes/git-ctaylor.pdf">Connor Taylor&#39;s (Tufts Class of 2015) Presentation on Git</a></li>
+	<li><a href="http://www.slideshare.net/TarinGamberini/commit-messages-goodpractices" target="_blank">Commit Messages: Good Practices</a> (SlideShare)</li>
+	<li>Reference: <a href="https://education.github.com/git-cheat-sheet-education.pdf">GitHub's Git Cheat Sheet</a></li>
+	<li>Reference: <a href="http://ohshitgit.com/">Oh s***, Git!</a></li>
+	<li>Read: <a href="http://gitimmersion.com/" target="_blank">Git Immersion</a></li>
+	<li>Read: <a href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics" target="_blank">Git Basics</a></li>
+	<li>Read: <a href="http://eagain.net/articles/git-for-computer-scientists/" target="_blank">Git for Computer Scientists</a></li>
+</ul>
+
+<h2>Assessment</h2>
+<p>This lab is worth 2 points.</p>
+<ul>
+	<li>(0.5 point) Successfully created the <code>hello-world</code> repo. <span class="note">No credit for this lab if I cannot find your <code>hello-world</code> repo.</span></li>
+	<li>(1 point) Successfully added, commited, and pushed a funny image to <code>hello-world</code> repo</li>
+	<li>(0.5 point) Wrote short, one line, and coherent commit messages</li>
+</ul>
+
+</body>
+</html>

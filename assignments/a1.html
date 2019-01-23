@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Assignment 1</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Assignment 1: Your Portfolio</h2>
+<h2>Due: Thursday, February 7th</h2>
+
+<p class="note">This assignment is worth 10 points.  You must work on this assignment individually.</p>
+
+<h2>Overview</h2>
+<p>This assignment serves two important purposes:</p>
+<ol>
+<li>Use HTML5 and CSS.</li>
+<li>Help you put together a personal portfolio: whether you are looking for an opportunity (internship or full-time after graduation) or continue with graduate school.  Many people now use <code>*.github.io</code> as personal website.</li>
+</ol>
+
+<h2>Instructions</h2>
+<p>Using only HTML5 and CSS, you are to create three (3) personal web pages:</p>
+
+<p><code>resume.html</code> - Your resume. It shall include the following sections:</p>
+<ol>
+<li>Full name or handle (if you are not comfortable with providing your identity).  <span class="note">IMPORTANT: For privacy reasons, please do not list your addresses or telephone numbers.</span></li>
+<li>Education</li>
+<li>Professional Experience.  For each job, list accomplishments.  Use the past-tense if you no longer work at the job; in the present-tense if you are currently employed at the job.  Use bullets-points, an unordered list.</li>
+<li>Skills (e.g., programming languages)</li>
+<li>Activities that are related to your field of study or work</li>
+</ol>
+
+<p><code>bio.html</code> - A short biography of yourself.  This can be real or fictitious (e.g., for FERPA reasons)</p>
+
+<p><code>index.html</code> - Your personal home page.  This page is accessed by <code>http://<span class="stress">YOUR_GITHUB_USERNAME</span>.github.io</code> (notice the <code>index.html</code> is not necessary at the end of the URL.  It is inferred to be <code>index.html</code>).  This page shall contain:</p>
+<ol>
+<li>Your name --real or fictitious (e.g., for FERPA reasons)</li>
+<li>A photo of you --real or fictitious (e.g., for FERPA reasons)</li>
+<li>A link to your resume</li>
+<li>A link to your short biography</li>
+</ol>
+
+<p>Your must also have an <code>index.html</code> page hosted in your Tufts CS account that redirects to your actual website on GitHub.  Example: <a href="http://www.cs.tufts.edu/~mchow/" target="_blank">http://www.cs.tufts.edu/~mchow/</a> redirects to <a href="http://mchow01.github.io/" target="_blank">http://mchow01.github.io/</a></p>
+
+<h2>Guidelines</h2>
+<p>You must adhere to the following guidelines:</p>
+<ol>
+<li>All HTML pages must pass the official HTML5 specifications via <a href="https://validator.w3.org/" target="_blank">https://validator.w3.org/</a></li>
+<li>You must use at least one (1) CSS file. The CSS file, or one of the CSS files, must have at least 5 rules</li>
+<li>All CSS files must pass the official CSS validation via <a href="https://jigsaw.w3.org/css-validator/" target="_blank">https://jigsaw.w3.org/css-validator/</a></li>
+<li>You <span class="stress">cannot</span> use frames.</li>
+<li>You <span class="stress">cannot</span> use any styling element for any purpose (e.g., <code>&lt;b&gt;, &lt;i&gt;, &lt;font&gt;, &lt;center&gt;</code>).  All styling must be defined in CSS.</li>
+<li>You <span class="stress">cannot</span> use any styling attribute in elements (e.g., <code>&lt;h3 align="center"&gt;</code>).</li>
+<li>You <span class="stress">cannot</span> use absolute URLs for images.</li>
+<li>You <span class="stress">cannot</span> use front-end frameworks such as Bootstrap.</li>
+<li>You <span class="stress">cannot</span> use other people's CSS files.</li>
+<li>You <span class="stress">cannot</span> use JavaScript (or jQuery for that matter; considering we have not covered JavaScript yet!).</li>
+<li>All file names must be in lowercase and only <code>[a-z0-9_.]</code> characters can be used for file names (universal standard).  That is, do not use whitespace in file names!</li>
+<li>All content must be stored in your special repo <code><span class="stress">YOUR_GITHUB_USERNAME</span>.github.io</code>, master branch, of your GitHub account.</li>
+</ol>
+
+<h2>Getting Started</h2>
+<p>Please do the <a href="lab-git.html">Git lab</a> first.</p>
+<p>You must create a special repo under your GitHub account.  Please read <a href="https://help.github.com/articles/user-organization-and-project-pages" target="_blank">https://help.github.com/articles/user-organization-and-project-pages</a>, the "User &amp; Organization Pages" section.  That is, you must create a Git repo under your account named <code><span class="stress">YOUR_GITHUB_USERNAME</span>.github.io</code>.</p>
+
+<h2>The <code>README</code> File</h2>
+<p>Each assignment and lab shall include a <code>README</code> file that describes the work. This description must:</p>
+<ol>
+<li>Identify what aspects of the work have been correctly implemented and what have not.</li>
+<li>Identify anyone with whom you have collaborated or discussed the assignment.</li>
+<li>Say approximately how many hours you have spent completing the assignment.</li>
+<li>Be written in either text format (<code>README.txt</code>) or in Markdown (<code>README.md</code>). No other formats will be accepted.  Please use all capital letters for <code>README</code></li>
+</ol>
+
+<h2>About Your Tufts CS Account</h2>
+<p>Any student taking a class with the Tufts University Department of Computer Science is given an email address <code><span class="stress">YOUR_LOGIN</span>@cs.tufts.edu</code> and 50 MB of web hosting space.  As of this writing, your email address and web hosting space with Tufts CS is forever.  <span class="note">IMPORTANT: using Tufts CS resources for malicious (e.g., spam) or commercial purposes (e.g., a startup) will result in explusion from the University!</span></p>
+
+<p>Tufts CS provides a cluster for Unix logins.</p>
+
+<p><span class="note">If you have not done so already, activate or reset your Tufts CS Unix account at <a href="https://www.eecs.tufts.edu/~accounts/" target="_blank">https://www.eecs.tufts.edu/~accounts/</a>.</span></p>
+
+<p>With your Tufts CS account, you can create a personal website that will be available at:</p>
+
+<p><code>http://www.cs.tufts.edu/~user_name/</code></p>
+
+<p>or</p>
+
+<p><code>http://www.ee.tufts.edu/~user_name/</code></p>
+
+<p>In order to setup your website, you need to create a folder called <code>public_html</code> in your "home directory" (which is usually your current location after you have successfully logged on).  This folder will appear to be the root of your personal website.</p>
+
+<p>You will set the correct permissions on your "home directory" and the <code>public_html</code> directories.  This can be accomplished by executing the following commands (assume that your login is <code>lsimpson</code> and your command prompt is <code>&gt;</code>):</p>
+
+<ol>
+<li>Log on to <code>linux.cs.tufts.edu</code> or <code>homework.cs.tufts.edu</code></li>
+<li><code>lsimpson ~/work/project/ &gt; cd ~</code></li>
+<li><code>lsimpson ~/&gt; mkdir public_html</code></li>
+<li><code>lsimpson ~/&gt; chmod 755 public_html</code> (NOTE: <code>755</code> is the permissions code for user readable, writable, and executable; group readable and executable; other readable and executable)</li>
+<li><code>lsimpson ~/&gt; chmod 711 ~</code></li>
+</ol>
+
+<p>The default file for your website must be named <code>index.html</code>.  Without this file, visitors to your website will see a listing of the files you have in your <code>public_html</code> directory.</p>
+
+<p class="note">As you create new files and directories, you must verify that they have the proper permissions set.  The proper setting for all files within <code>public_html</code> is <code>644</code>, and for all directories is <code>755</code>.</p>
+
+<p>You can set these by executing:</p>
+<ol>
+<li><code>lsimpson ~/&gt; chmod 755 &lt;directory_name&gt;</code></li>
+<li><code>lsimpson ~/&gt; chmod 644 &lt;file_name&gt;</code> (NOTE: <code>644</code> is the permissions code for user readable and writable; readable by group and others)</li>
+</ol>
+
+<p class="note">Also, you must change your home directory to be executable. That is: <code>chmod 755 ~/.</code></p>
+
+<p>If one of these steps is not completed, you will get the 403 error (status code)!</p>
+
+<h3>Transfer Files From Your Computer to <code>linux.cs.tufts.edu</code> or <code>homework.cs.tufts.edu</code> via <code>scp</code> on Mac OS X and Linux</h3>
+<p><code>scp</code> securely copies files between hosts on a network.  To learn more about <code>scp</code>, run <code>man scp</code> on the terminal.</p>
+
+<p>Say that user <code>lsimpson</code> has two files: <code>index.html</code> and <code>smiley.png</code> in her home directory on her local computer.  To transfer them her <code>public_html</code> directory on <code>linux.cs.tufts.edu</code>, she would run:</p>
+
+<pre>
+scp index.html smiley.png lsimpson@linux.cs.tufts.edu:~/public_html
+</pre>
+
+<h3>Secure File Transfer via FileZilla (Mac OS X, Windows, Linux)</h3>
+
+<p><a href="http://filezilla-project.org/" target="_blank">FileZilla</a> can also be used to transfer files from a local computer to Tufts CS, vice versa.  Be sure to select <code>sftp</code> for the protocol!</p>
+
+<h2>Assessment</h2>
+<ol>
+<li><strong>(1 point)</strong> All files including directories are in you special repo <code><span class="stress">YOUR_GITHUB_USERNAME</span>.github.io</code> of your GitHub account.</li>
+<li><strong>(1 point)</strong> Used Git constantly: committing with meaningful messages and pushing to GitHub.</li>
+<li><strong>(1 point)</strong> A <code>README</code> (e.g., <code>README.txt</code> or <code>README.md</code>) file that briefly describes your work.</li>
+<li><strong>(1 point)</strong> Use at least 5 rules in one of your CSS file.</li>
+<li><strong>(1 point)</strong> All pages pass the official HTML5 specifications; warnings acceptable.</li>
+<li><strong>(1 point)</strong> All CSS files pass the official CSS validation; warnings acceptable.</li>
+<li><strong>(3 points)</strong> The three (3) pages with <span class="stress">exact file name</span>: <code>index.html</code>, <code>resume.html</code>, and <code>bio.html</code></li>
+<li><strong>(1 point)</strong> An <code>index.html</code> page hosted in your Tufts CS account that redirects to your actual website on GitHub.</li>
+<li><strong>(-5 points)</strong> You used JavaScript, jQuery, or some front-end framework.</li>
+<li><strong>(-10 points)</strong> You used a site generator such as Jekyll.</li>
+</ol>
+
+<h2>Course and Assignment Policies</h2>
+<p><a href="../index.html#policies">Please refer to the course home page.</a></p>
+
+<h2>Frequently Asked Question</h2>
+<h4>Q: I already have a project from before this class with this label (<code>MY_USERNAME.github.io</code>). Any idea how I should rename the first assignment?</h4>
+<p>A: You don't. You can (and should) use your existing work.  However, make sure all the directions in Assignment 1 are followed.  Another thing you can do: make a new directory in your MY_USERNAME.github.io, create a custom version of your website for Assignment 1 and make a note of it in your README file.</p>
+
+</body>
+</html>
