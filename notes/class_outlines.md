@@ -45,5 +45,31 @@
 * Image --a special tag...
 * Anchors
 * Absolute vs relative URLs
-* What's wrong with the HTML?
 * W3C validator
+
+# Tuesday, January 29th: Revision Control with Git
+* Recall: block elements, absolute vs relative sources, W3C validator, example
+* What's wrong with the HTML?
+* What I've noticed in the past: many connecting to Tufts CS to do work via SSH, questions on submitting assignments and labs in this class, how to upload web pages to a server
+* The nightmare scenario that illustrates the need for revision control: in the past...
+* What if I need to hire developers to work on different pieces of a projet?
+* Why revision control? Keep track of changes, document changes
+* Why Git? Speed, no dependency of a remote server (unlike Subversion)
+* Why GitHub for repositories? Network effect, communications
+* Example with our course website
+* IMPORTANT: you are not expected to master Git by the end of this course.  The reality, even for the most seasoned people: https://twitter.com/ErrataRob/status/707327952158121984
+
+# Thursday, January 31st: Cascading Style Sheets (CSS)
+* Why do you want to separate style?
+* One CSS _rule_ is made up of _selectors_ and _declarations_. A declaration is a _property-value_ pair.
+  - You really want to refer to a CSS cheat sheet!
+* Three types of selectors: HTML tag names, ID, class
+  - ID: should only be used once; starts with "#"
+  - class: can be used many times; start with "."
+  - Mixing IDs and classes is confusing, generally not a good idea.
+  - "id" and "class" attribute exist for all HTML elements
+  - Generic block HTML element: div
+  - Generic inline HTML element: span
+* Box model for HTML body elements
+* The "cascading" in "cascading style sheet"
+  - What if there is more than one style specified for an HTML element?
