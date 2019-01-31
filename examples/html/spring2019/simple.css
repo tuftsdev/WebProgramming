@@ -1,0 +1,40 @@
+/* A style sheet */
+/* Separation of concerns */
+
+body {
+    font-family: "Comic Sans MS";
+    background-color: Blue;
+    color: orange;
+    font-size: 32px;
+}
+
+/*
+    How to read a CSS file:
+
+    Lines 4 - 9: a single rule
+    `body` => selector (in some cases, selector is also HTML element)
+    Line 5, `font-family: "Comic Sans MS";` => attribute-value pair
+    `font-family` => attribute
+    `"Comic Sans MS"` => value
+*/
+
+h1, h2, h3 {
+    text-align: center;
+    font-family: "Times New Roman";
+}
+
+h2 {
+    background-color: yellow;
+    border: dashed;
+    font-size: 96px;
+    text-align: right;
+}
+
+p {
+    background-color: green;
+    border-top: dashed;
+    border-bottom: dashed;
+    padding: 50px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
