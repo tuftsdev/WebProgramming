@@ -73,3 +73,47 @@
 * Box model for HTML body elements
 * The "cascading" in "cascading style sheet"
   - What if there is more than one style specified for an HTML element?
+
+# Tuesday, February 5th: Responsive Design
+* Last class: CSS
+* Why CSS?  What do they give you?
+* Recall: id vs class
+* Recall: what is cascading?
+* Question: _how do you build a web browser?_
+* Loading additional stylesheets
+* Today: mobile
+* Take out your phone or mobile device.  Go to...
+* How mobile web browsers work: render pages in a virtual window (i.e., the viewport), usually wider than the screen, so they don't need to squeeze every page layout into a tiny window. Users can pan and zoom to see different areas of the page.  That is, a mobile browser it will assume that you are viewing a desktop experience and that you want to see all of it.
+* `<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />` => your layout will be displayed properly at 1:1 scale.  No zooming will be applied.
+* So can I have a different stylesheets for different screen sizes and devices?
+  - http://broadcast.oreilly.com/2010/04/using-css-media-queries-ipad.html
+  - `<link rel="stylesheet" media="all and (max-device-width: 480px)" href="iphone.css">`
+  - `<link rel="stylesheet" media="all and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" href="ipad-portrait.css">`
+  - `<link rel="stylesheet" media="all and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" href="ipad-landscape.css">`
+  - `<link rel="stylesheet" media="all and (min-device-width: 1025px)" href="ipad-landscape.css">`
+* Can I have different rules in a CSS for different screen sizes (e.g., widths)?
+* Gmail: http://googleappsdeveloper.blogspot.com/2016/09/your-emails-optimized-for-every-screen-with-responsive-design.html
+* Your next lab
+* Why this technique?
+
+# Thursday, February 7th: JavaScript
+* File permissions
+* So far, we have covered quite a bit: HTTP, HTML, CSS, Git
+* What are the problems and limitations with just HTML and CSS?
+* HTTP: stateless protocol, no memory of previous requests
+* In the early 90s, "Netscape quickly realized that the Web needed to become more dynamic. Even if you simply wanted to check that users entered correct values in a form, you needed to send the data to the server in order to give feedback." http://speakingjs.com/es5/ch04.html
+* Our focus is still on the client-side
+* Variables: dynamic typing but will be one of the following: number, string, array, object, boolean
+  - Three states of a variable: (1) not set yet (undefined), (2)set to nothing (null), (3) set to a valid value
+* Operations: "+" is interesting
+* Lists (a.k.a., arrays)
+* _(Almost)_ everything in JavaScript is an object_ https://stackoverflow.com/questions/9108925/how-is-almost-everything-in-javascript-an-object
+* Okay, but how do I use JavaScript in an HTML page?  Or how do I dynamically modify a loaded HTML page using JavaScript?
+
+# Tuesday, February 12th: Document Object Model (DOM)
+* Last class: JavaScript data and data structures (lists and dictionaries)
+* The big idea: using JavaScript to dynamically modify HTML content _after it is loaded_.  Yes, you can mix HTML and JavaScript
+* Today: the "var" keyword, using JavaScript in an HTML page
+* The document object: a JavaScript object that contains the entire structure of an HTML page after it is loaded, in tree-like format (thus, known as the Document Object Model tree).  Example of a DOM tree: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
+* Example 1: Fiddle https://jsfiddle.net/mchow01/0wga8wLp/3/?utm_source=website&utm_medium=embed&utm_campaign=0wga8wLp
+* Example 2: Highlighting paragraphs in an HTML document
