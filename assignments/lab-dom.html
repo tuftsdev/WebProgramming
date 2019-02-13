@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Lab: Document Object Model and Events</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Lab: <span class="stress">Union Strike Folk Song</span></h2>
+
+<h2>Lab Objectives</h2>
+<ol>
+	<li>Practice writing JavaScript.</li>
+	<li>Practice using the Document Object Model (DOM).</li>
+	<li>Practice with using JavaScript objects.</li>
+	<li>Understand event handling and using first-class function.</li>
+	<li>Recognize the power of HTML5.</li>
+</ol>
+
+<h2>Overview</h2>
+<p>HTML5 introduces built-in media support via the <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements, offering the ability to easily embed and manipulate media on web pages (Mozilla.org).  In this lab, you will create a web page that annotates a video with text and perhaps other media.</p>
+
+<h2>The Video</h2>
+<p>The video that you will annotate is an old song:</p>
+
+<video src="https://www.cs.tufts.edu/comp/20/butwehavethepower.mp4" id="butwehavethepower" controls>
+</video>
+<p>You are free to use the following to access the video on your page and there is no need to make a copy of the video onto your computer:</p>
+<pre>
+&lt;video src="https://www.cs.tufts.edu/comp/20/butwehavethepower.mp4" id="butwehavethepower" controls&gt;
+&lt;/video&gt;
+</pre>
+
+<h2>Lyrics to the "Union Strike Folk Song"</h2>
+<pre>
+Lisa:
+Come gather round, children,
+It's high time ye learned
+'Bout a hero named Homer
+And a devil named Burns.
+
+We'll march 'till we drop 
+The girls and the fellas.
+We'll fight 'till the death 
+Or else fold like umbrellas.
+
+So we'll march day and night
+By the big cooling tower.
+They have the plant
+
+But we have the power.
+
+Lenny:
+Now do "Classical Gas!"
+
+So we'll march day and night
+By the big cooling tower.
+They have the plant
+
+But we have the power.
+</pre>
+
+<h2>Getting Started</h2>
+<p>Once again, I am going to give you the HTML so you do not have to write it!  Copy and paste the following HTML below as your <code>index.html</code>:</p>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;title&gt;Union Strike Folk Song&lt;/title&gt;
+&lt;link rel="stylesheet" href="style.css" type="text/css" /&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1 id="title"&gt;Union Strike Folk Song&lt;/h1&gt;
+
+&lt;video src="https://www.cs.tufts.edu/comp/20/butwehavethepower.mp4" id="butwehavethepower" controls&gt;&lt;/video&gt;
+&lt;div id="lyrics"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+	// Complete this section and create a CSS file named style.css
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;	
+</pre>
+
+<h2>Instructions</h2>
+<p>Using JavaScript, annotate the video with the lyrics of the song inside the <code>&lt;div id="lyrics"&gt;</code>, <em>line by line</em> or <em>by verse</em>.  Finally, you must provide some styling for the page via <code>style.css</code>.</p>
+
+<h2>Readings and References</h2>
+<ul>
+	<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video" target="_blank">Using HTML5 audio and video (Mozilla)</a></li>
+	<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget.addEventListener" target="_blank"><code>addEventListener()</code> (Mozilla)</a></li>
+	<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events" target="_blank">Media events (Mozilla)</a></li>
+</ul>
+
+<h2>The <code>README</code> File</h2>
+<p>Each assignment and lab shall include a <code>README</code> file that describes the work. This description must:</p>
+<ol>
+<li>Identify what aspects of the work have been correctly implemented and what have not.</li>
+<li>Identify anyone with whom you have collaborated or discussed the assignment.</li>
+<li>Say approximately how many hours you have spent completing the assignment.</li>
+<li>Be written in either text format (<code>README.txt</code>) or in Markdown (<code>README.md</code>).  Markdown is preferred.  No other formats will be accepted.  Please use all capital letters for <code>README</code></li>
+</ol>
+<p>This <code>README.md</code> file must be directly in the folder of the lab or assignment.</p>
+
+<h2>Important</h2>
+<ul>
+	<li>You are not allowed to use jQuery for this lab.</li>
+	<li>You are not allowed to use WebVTT for this lab.</li>
+</ul>
+
+<h2>Submitting Your Lab</h2>
+<p>Push all your files (the HTML, the CSS, the README) to a folder named <code>butwehavethepower</code> inside of the private GitHub repo I created for you.  Say that your private repository is named <code>comp20-mchow</code>, make sure all the files are pushed to <code>comp20-mchow/butwehavethepower</code>. <span class="note">Please do not add and push the video to repository!</span></p>
+<pre>
+# Inside your private GitHub repo folder (e.g., <code>comp20-mchow</code>)
+git add .
+git commit -m "<span class="stress">Some good commit message here</span>"
+git push
+</pre>
+
+<h2>Assessment</h2>
+<p>This lab is worth 4 points.</p>
+<ul>
+	<li>(1 point) The basics (e.g., folder name in private GitHub repository, file names, repo name, README.md file, one CSS file)</li>
+	<li>(3 points) The <code>index.html</code> page following all the instructions above</li>
+	<li>(-4 points) You used jQuery or WebVTT</li>
+	<li>(-3 points) Errors and outputs (e.g., from <code>console.log statements</code>) exist in JavaScript console</li>
+</ul>
+
+</body>
+</html>
