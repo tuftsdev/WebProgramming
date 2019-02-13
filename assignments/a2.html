@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Assignment 2</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Assignment 2: The Private Car Service</h2>
+<h2>Due: Tuesday, March 5th</h2>
+
+<p class="note">This assignment is worth 15 points. You must work on this assignment individually.</p>
+
+<h2>Objectives</h2>
+<ol>
+<li>Use a JSON API.</li>
+<li>Use a third-party JavaScript API (in this case, Google Maps).</li>
+<li>Use the HTML5 geolocation API to determine your location.</li>
+<li>Use the <code>XMLHttpRequest</code> object to make requests and manage the response data.</li>
+</ol>
+
+<h2>Overview</h2>
+<p>For this assignment, you will be building the front-end of a private car a la ride sharing service.  Most of you will be passengers.  A lucky few of you, randomly selected, will be drivers / vehicles.  I cannot provide you the number of passengers or drivers.  The idea: passengers will be seeking vehicles, drivers will be seeking customers (passengers). You will develop a web page that:</p>
+<ol>
+<li>Retrieves your current location (latitude and longitude) and sends it to a server via ride request API that I created.</li>
+<li>Retrieves and displays the locations of vehicles OR passengers on a map, depending on who you are.  Your web page will need to handle both cases (showing locations of vehicles or passengers on map) as it is possible that I can change your status from a passenger to a driver, vice versa.</li>
+<li>Upon clicking on your marker (i.e., where you are currently located), show how far away you are to (1) the nearest vehicle or passenger --depending on who you are, and (2) the Weinermobile --if it exists!</li>
+</ol>
+
+<h2>Requirements</h2>
+<ol>
+<li>The HTML file must be named <code>index.html</code> in a folder named <code>liftknockoff</code> in your private Git repository.  You can write your JavaScript in the HTML file.</li>
+<li>You must use at least one (1) CSS file.  You can name the file whatever you want.</li>
+<li>You must use the JavaScript <code>navigator.geolocation</code> object to retrieve your geolocation information (latitude and longitude).</li>
+<li>You must use the JavaScript <code>XMLHttpRequest</code> object to make requests (i.e., send your information) and manage the response data.</li>
+<li>After retrieving your location using the <code>navigator.geolocation</code> JavaScript object, you must display your location on the map with unique marker (i.e., using an image of your choice) with an info window showing:
+	<ul>
+		<li>Your username and distance away (in miles) to nearest vehicle or passenger.</li>
+		<li>Your distance away (in miles) to the Weinermobile if it exists.</li>
+	</ul>
+</li>
+<li>You must display locations of all passengers OR vehicles on the map, depending on who you are.  If you are marked as a driver / vehicle, display location of all passengers.  If you are a passenger, display location of all vehicles.  All vehicles on the map shall use this icon: <img src="car.png" alt="Car"/>.  You can use any picture as marker icon for a passenger; all passenger markers shall use the same picture as marker icon on map.</li>
+<li>If Weinermobile exists, then it shall be marked at proper location on map using this icon: <img src="weinermobile.png" alt="Weinermobile"/></li>
+<li>Clicking on a vehicle or passenger marker will display vehicle or passenger username and mile(s) away from you in an info window.</li>
+</ol>
+
+<h2>APIs</h2>
+<p>This assignment will require the use of two external APIs:</p>
+<ol>
+<li>The ride request API to send your location information and to retrieve information on passengers or vehicles: <code>https://hans-moleman.herokuapp.com/rides</code></li>
+<li>The Google Maps API.  Please refer to my notes at <a href="../notes/ajax.html">http://tuftsdev.github.com/WebProgramming/notes/ajax.html</a>.  Working examples are available at <a href="https://github.com/tuftsdev/WebProgramming/tree/gh-pages/examples/google_maps">https://github.com/tuftsdev/WebProgramming/tree/gh-pages/examples/google_maps</a>.  <span class="note">NOTES: the <code>geolocation_map.html</code> example requires the page to be served by an actual web server.  Also, you will now need to create an API key to use Google Maps API version 3 at <a href="https://console.developers.google.com" target="_blank">https://console.developers.google.com</a>.</span>You can see <code>geolocation_map.html</code> in action at <a href="http://tuftsdev.github.com/WebProgramming/examples/google_maps/geolocation_map.html" target="_blank">http://tuftsdev.github.com/WebProgramming/examples/google_maps/geolocation_map.html</a>.</li>
+</ol>
+
+<h3>The Ride Request API</h3>
+<p>The ride request API <code>https://hans-moleman.herokuapp.com/rides</code> is HTTP POST only.  It takes in three parameters and will return a JSON feed of the locations of vehicles or passengers, depending on what you have been assigned as, if the three parameters are legitimate.</p>
+<ul>
+<li><code>username</code> - Your username. <span class="note">NOTE: you will be assigned, emailed a randomly generated handle for this lab. We will not be using Tufts CS login names for this assignment for privacy purposes.</span></li>
+<li><code>lat</code> - Your latitude, a floating point number</li>
+<li><code>lng</code> - Your longitude, a floating point number</li>
+</ul>
+<p>If you successfully send the three inputs as a <em>passenger</em>, you will receive a JSON that looks like the following (example response): <code>{"vehicles":[{"_id":"589bd30f8451126182dfbc62","username":"uOWuyLrd","lat":10.1,"lng":10.2,"created_at":"2019-02-09T02:25:19.575Z"}]}</code></p>
+<p>If you successfully send the three inputs as a <em>driver / vehicle</em>, you will receive a JSON that looks like the following (example response): <code>{"passengers":[{"_id":"589bd3258451126182dfbc63","username":"dwR3TbOH","lat":20.3,"lng":20.4,"created_at":"2019-02-09T02:25:41.166Z"}]}</code></p>
+<p>If you do not send the three inputs correctly, you will receive the following JSON: <code>{"error":"Whoops, something is wrong with your data!"}</code></p>
+<p class="note">Important: Cross-Origin Resource Sharing (CORS) is enabled for this API!</p>
+
+<h3>The Weinermobile</h3>
+<ul>
+<li>The Weinermobile can either be a vehicle or passenger! It will show up as an object in JSON with username <code>WEINERMOBILE</code> in all capital letters.  Example: <code>{"_id":"589bd3258451126182dfbc64","username":"WEINERMOBILE","lat":42.4075,"lng":-71.1190,"created_at":"2019-02-09T02:25:41.166Z"}</code></li>
+<li>If the Weinermobile does not exist in either <code>vehicles</code> or <code>passengers</code>, then you shall display a message in the infowindow that is opened upon clicking on your location marker: <code>The Weinermobile is nowhere to be seen</code> (or something like that).</li>
+<li>If the Weinermobile exists in either <code>vehicles</code> or <code>passengers</code>, then you shall display a message in the infowindow that is opened upon clicking on your location marker: <code>The Weinermobile is X miles away from me!</code> (or something of that like, replace <code>X</code> actual with number of miles away). Weinermobile shall also be marked at proper location on map using this icon: <img src="weinermobile.png" alt="Weinermobile"/></li>
+</ul>
+
+<h2>Important Notes</h2>
+<ul>
+<li>Only passengers or vehicles seen within the last three minutes will be returned by the ride request API.</li>
+<li>You are not allowed to use jQuery or any JavaScript front-end framework for this assignment.</li>
+<li>To help you better understand and read the resulting JSON that is sent to you, try this <a href="http://json.parser.online.fr/" target="_blank">Online JSON Parser</a></li>
+</ul>
+
+<h2>Getting Started</h2>
+<ol>
+<li>Create a new folder named <code>liftknockoff</code> in your folder <code>comp20-username</code> on your computer (the one you have been using since Lab 4).</li>
+<li>Follow the Google Maps JavaScript API tutorial "Getting Started" at <a href="https://developers.google.com/maps/documentation/javascript/tutorial" target="_blank">https://developers.google.com/maps/documentation/javascript/tutorial</a>.</li>
+</ol>
+
+<h2>Executing HTTP POST via <code>XMLHttpRequest</code></h2>
+<p>In order to execute HTTP POST using the JavaScript <code>XMLHttpRequest</code> object, you need to add a parameter to the HTTP request header: <code>xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");</code>  where <code>xhr</code> is an instance of <code>XMLHttpRequest</code>.  See <a href="https://stackoverflow.com/questions/9713058/sending-post-data-with-a-xmlhttprequest
+" target="_blank">https://stackoverflow.com/questions/9713058/sending-post-data-with-a-xmlhttprequest</a> for more information.</p>
+<p>Also, the parameter to send via <code>xhr.send()</code> must the in the following format: <code>"username=YOUR_USERNAME&amp;lat=YOUR_LATITUDE&amp;lng=YOUR_LONGITUDE"</code> (with the double quotes).  This is standard URI convention.  Remember replace YOUR_LATITUDE and YOUR_LONGITUDE using string concatenation!</p>
+
+<h2>Calulating the Distance Between Two Geopoints</h2>
+<p>There are two ways to calculate the distance between two geopoints, choose one:</p>
+<ol>
+<li>Use the classic Haversine Formula. The formula is provided and analyzed at <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">http://www.movable-type.co.uk/scripts/latlong.html</a>.  Also, you are encouraged to use the JavaScript implementation of the Haversine Formula on Stack Overflow but please do cite it in your <code>README.md</code> or in your code: <a href="http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript" target="_blank">http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript</a>.</li>
+<li>Use <code>google.maps.geometry.spherical.computeDistanceBetween(latLngA, latLngB);</code>.  See documentation at <a href="https://developers.google.com/maps/documentation/javascript/reference#spherical">https://developers.google.com/maps/documentation/javascript/reference#spherical</a></li>
+</ol>
+<p>Remember, the distance must be in <strong>miles</strong>, not meters.</p>
+
+<!-- So I ripped this off from Norman Ramsey at http://www.cs.tufts.edu/comp/105/details.html -->
+<h2>The <code>README</code> File</h2>
+<p>Every assignment shall include a <code>README</code> file that describes the work. This description must:</p>
+<ol>
+<li>Identify what aspects of the work have been correctly implemented and what have not.</li>
+<li>Identify anyone with whom you have collaborated or discussed the assignment.</li>
+<li>Say approximately how many hours you have spent completing the assignment.</li>
+<li>Be written in either text format (thus <code>README.txt</code>) or in Markdown (thus <code>README.md</code>). No other formats will be accepted.</li>
+</ol>
+
+<h2>Viewing Your Work and Submitting the Assignment</h2>
+<p>Using the JavaScript Geolocation API requires your page to served by an actual web server.  Alas, simply opening the <code>index.html</code> page on a web browser will not work for this assignment (although it may now work on Safari or Firefox --regardless, it is bad practice).  One way to serve your page is to run Python's simple HTTP server in the folder of your work.  That is:<p>
+<p><code>% cd comp20-XXXXX/liftknockoff; # where XXXXX is the name of your private GitHub repository<br/>% python -m SimpleHTTPServer<br/></code></p>
+<p>By default, a simple web server will open up on port 8000.  Go to <code>http://localhost:8000</code> on your favorite web browser to test your work.</p>
+<p class="note">Do not serve your work via the <code>gh-pages</code> branch of your private GitHub repository.</p>
+
+<h2>Hints</h2>
+<ul>
+	<li>You should only use one info window for the whole page.  Because of the possible large number of markers to be rendered on the map, it is not wise to create an info window for each marker.</li>
+</ul>
+
+<h2>Assessment</h2>
+<p>This assignment is worth 16 points.</p>
+<ul>
+<li>(1 point) Have at least one (1) CSS file</li>
+<li>(2 points) Retrieves your location via JavaScript <code>navigator.geolocation</code> object</li>
+<li>(3 points) Sends your location (latitude, longitude, username) to server is ride request API</li>
+<li>(4 points) Displays your location on the map with unique marker. Icon for your marker can be any image of your choosing.  Clicking on marker will display (1) your username and distance away (in miles) to nearest vehicle or passenger, and (2) distance away (in miles) to the Weinermobile --if it exists.</li>
+<li>(4 points) Displays locations of passengers if you are a driver / vehicle, or locations of vehicles if you are passenger on the map, including the Weinermobile if it exists.  Your map must handle both cases.  Clicking on a marker (passenger or vehicle) will display username, and mile(s) away from you in an info window.  A unique icon for a passenger must be used (the image can be anything); all people / passenger markers on map will use the same icon.  The icon for a vehicle must be <img src="car.png" alt="Car"/>. The icon for the Weinermobile must be <img src="weinermobile.png" alt="Weinermobile"/>.</li>
+<li>(2 points) The basics (e.g., <code>README</code> file, proper folder name, work in both <code>master</code> branch in private GitHub repository)</li>
+<li>(-4 points) Nonsense Git commit messages or did not commit much.</li>
+<li>(-4 points) Errors and <code>console.log()</code> outputs exist in JavaScript console (warnings acceptable).</li>
+<li>(-16 points) You used jQuery.</li>
+</ul>
+
+</body>
+</html>

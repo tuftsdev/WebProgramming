@@ -117,3 +117,29 @@
 * The document object: a JavaScript object that contains the entire structure of an HTML page after it is loaded, in tree-like format (thus, known as the Document Object Model tree).  Example of a DOM tree: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
 * Example 1: Fiddle https://jsfiddle.net/mchow01/0wga8wLp/3/?utm_source=website&utm_medium=embed&utm_campaign=0wga8wLp
 * Example 2: Highlighting paragraphs in an HTML document
+
+# Thursday, February 14th: Functions in JavaScript
+* Your Assignment 2
+* Recall: almost everything in JavaScript is a/an ______
+* Too many built-in JavaScript objects to name: string, Date, Math
+* Special object in JavaScript: the associative array a.k.a., dictionary a.k.a., hash a.k.a., finite map
+* So what about functions?
+* Function arguments: (1) too many: extras ignored, (2) too few: remainders get an undefined value
+* Who is in COMP 105 currently or have taken COMP 105?
+* What if I told you functions can be used as values to variables? Functions as arguments to functions? That's what it means by functions as first-class!
+* Consider example at http://www.joelonsoftware.com/items/2006/08/01.html
+* Recall Algebra: function composition
+* Why is this a powerful idea?
+  - Reduce repetitive code
+  - More reusable and scalable code
+  - "Object Oriented Programming" in JavaScript
+  - Example: `apply` https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+* Example: https://jsfiddle.net/mchow01/72j6knum/1/
+* Is this idea that important in JavaScript? Yes, not only in JavaScript but in many languages and frameworks as well
+  - Events
+  - Callbacks (e.g., working with the GPS)
+  - Asynchronous communications (e.g., downloading data from the web within a running app)
+* A powerful idea: update the HTML based on events, combine DOM + first class functions
+* Example: Double Rainbow
+* Your next lab
+* Next time: even more powerful idea: update the HTML with data from a web server
