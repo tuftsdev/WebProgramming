@@ -143,3 +143,42 @@
 * Example: Double Rainbow
 * Your next lab
 * Next time: even more powerful idea: update the HTML with data from a web server
+
+# Tuesday, February 19th and Tuesday, February 26th: JSON, Asynchronous, XMLHttpRequest
+* Last class: events, modifying HTML after it is loaded using JavaScript via DOM
+  - Notice: web page does not reload
+* We also saw the Twitter news feed and how content is retrieved from server(s) every so often
+* Last class + this week: you will start to see _why_ first class functions and JavaScript objects are so important
+* I really enjoy teaching this class online.  Notice the interactions that we have on Piazza......
+* This week: asynchronous, limitations of JavaScript
+* First things first: JSON --Data exchange format (think text file).  JSON is string, NOT JavaScript objects.
+* Why JSON?
+
+* So far, you have only worked with synchronous communications. Problem: slow, linear, "locking", not smooth
+* The bigger idea: asynchronous communications.  Where it is used: events, online education
+* (Recall) example: Twitter timeline.  Take a look at number of requests made _after page is loaded_
+* Another real example: email in the past vs Gmail
+* The idea of XMLHttpRequest => make a request to a server-side script to get data, manage the response
+* XHR key methods and attributes: `open()`, `send()`, `onreadystatechange`, `status`, `readyState`, `responseText`
+* The data that now typically get back in the `responseText`: JSON
+* Client-side JS is heavily event-based
+* Finishing up on the XMLHttpRequest example:
+  - Asynchronous
+  - The event: onreadystatechange.  The readyState values:
+    - 0 => The request is not initialized
+    - 1 => The request has been set up
+    - 2 => The request has been sent
+    - 3 => The request is in process
+    - 4 => The request is complete
+* Parsing the JSON data
+
+# Thursday, February 28th
+* Meet teammates for semester group project
+* Last class: XMLHttpRequest
+* The idea of XMLHttpRequest => make a request to a server-side script to get data, manage the response
+* XHR key methods and attributes: `open()`, `send()`, `onreadystatechange`, `status`, `readyState`, `responseText`
+* Is checking for readyState 4 good enough?  NO!
+* Are async and events the same? No. Are they related? Yes --almost all event handling functions are asynchronous.
+  - Asynchronous: "where data can be transmitted intermittently rather than in a steady stream"; not going at the same rate
+  - Are they the same? No. Are they related? Yes --almost all event handling functions are asynchronous.
+* navigator.geolocation
