@@ -154,10 +154,12 @@
 * First things first: JSON --Data exchange format (think text file).  JSON is string, NOT JavaScript objects.
 * Why JSON?
 
+# Tuesday, February 26th: Asynchronous, XMLHttpRequest (continued)
 * So far, you have only worked with synchronous communications. Problem: slow, linear, "locking", not smooth
 * The bigger idea: asynchronous communications.  Where it is used: events, online education
 * (Recall) example: Twitter timeline.  Take a look at number of requests made _after page is loaded_
 * Another real example: email in the past vs Gmail
+* Example: https://jsfiddle.net/mchow01/errdrx7r/
 * The idea of XMLHttpRequest => make a request to a server-side script to get data, manage the response
 * XHR key methods and attributes: `open()`, `send()`, `onreadystatechange`, `status`, `readyState`, `responseText`
 * The data that now typically get back in the `responseText`: JSON
