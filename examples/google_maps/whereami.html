@@ -7,21 +7,15 @@
 <script>
 	var lat = -99999;
 	var lng = -99999;
-	console.log("Hit me 1");
 	function getLocation() {
-		console.log("Hit me 2");
-
 		navigator.geolocation.getCurrentPosition(function(somePos) {
-			console.log("Hit me 3");
 			lat = somePos.coords.latitude;
 			lng = somePos.coords.longitude;
 			printLocation();
 		});
-		console.log("Hit me 4");
 	}
 
 	function printLocation() {
-		console.log("Hit me 5");
 		elem = document.getElementById("location");
 		elem.innerHTML = '<p class="fun">' + lat + ", " + lng + "</p>";
 	}
