@@ -8,15 +8,19 @@
 	<script>
 		function loadMessages() {
 			// Step 1: make an instance of XHR
+			console.log("Here I am 1");
 			request = new XMLHttpRequest();
 
 			// Step 2: Make request to the JSON source
 			request.open("GET", "https://messagehub.herokuapp.com/messages.json", true);
 
 			// Step 3: What to do when we get a response back
+			console.log("Here I am 2");
 			request.onreadystatechange = function() {
 				// Step 5: parse the JSON data from response
-				if (request.readyState == 4) {
+				console.log("Here I am 3");
+				if (request.readyState == 4 && request.status == 200) {
+					console.log("Here I am 4");
 					tweets = JSON.parse(request.responseText);
 					messagesSection = document.getElementById("messages");
 					messagesSection.innerHTML = "";
@@ -27,7 +31,9 @@
 			};
 
 			// Step 4: Fire off request!!!
+			console.log("Here I am 5");
 			request.send();
+			console.log("Here I am 6");
 		}
 	</script>
 </head>

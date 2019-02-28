@@ -8,14 +8,18 @@
 	var lat = -99999;
 	var lng = -99999;
 	function getLocation() {
+		console.log("I am here 1");
 		navigator.geolocation.getCurrentPosition(function(somePos) {
+			console.log("I am here 2");
 			lat = somePos.coords.latitude;
 			lng = somePos.coords.longitude;
 			printLocation();
 		});
+		console.log("I am here 3");
 	}
 
 	function printLocation() {
+		console.log("I am here 4");
 		elem = document.getElementById("location");
 		elem.innerHTML = '<p class="fun">' + lat + ", " + lng + "</p>";
 	}
