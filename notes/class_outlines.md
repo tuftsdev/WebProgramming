@@ -180,7 +180,33 @@
 * The idea of XMLHttpRequest => make a request to a server-side script to get data, manage the response
 * XHR key methods and attributes: `open()`, `send()`, `onreadystatechange`, `status`, `readyState`, `responseText`
 * Is checking for readyState 4 good enough?  NO!
-* Are async and events the same? No. Are they related? Yes --almost all event handling functions are asynchronous.
-  - Asynchronous: "where data can be transmitted intermittently rather than in a steady stream"; not going at the same rate
-  - Are they the same? No. Are they related? Yes --almost all event handling functions are asynchronous.
 * navigator.geolocation
+* Are async and events (e.g., addEventListener, getCurrentPosition) the same? No. Are they related? Yes --almost all event handling functions are asynchronous.
+  - Asynchronous: "where data can be transmitted intermittently rather than in a steady stream"; not going at the same rate
+* Caveats with XMLHttpRequest and one of the limitations of client-side JavaScript
+* Limitations of Client-Side JavaScript:
+  - Client-side tasks (or what you can do with client-side JavaScript)
+    - Dynamically modify browser content, e.g., with animation
+    - Dynamically fetch new documents from servers
+    - Allow new methods of user interaction other than links and buttons
+    - Get information about a user's computer (navigator.userAgent)
+  - Limitations of client-side scripts
+    - Other people cannot access data or information that you have (i.e., you can't make responses)
+    - Can't to write to files on disk
+    - You are constrained by web browser (i.e., browser incompatibility issues)
+    - Storage constraints (e.g., cookies, local storage)
+    - Security issues (e.g., same origin policy)
+    - View source
+* Lab 6
+* Quiz 1
+
+# Tuesday, March 4th: jQuery
+* jQuery examples
+* What's the point of jQuery?
+  - Write shorter code
+  - Don't need to deal with brower incompatibility issues
+* But why did we learn JS first?!?!?
+  - Need basic vocabulary
+  - How $() works => DOM
+  - How $.ajax, $.get, $.post all work => XHR
+* Midsemester course evaluation
