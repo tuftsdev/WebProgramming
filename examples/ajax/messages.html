@@ -4,47 +4,30 @@
 <head>
 	<title>Messages</title>
 	<meta charset="utf-8"/>
+	
 	<script>
 		function loadMessages() {
-			/* Step 1: Make instance of XHR object...
-			...to make HTTP request after page is loaded*/
+			// Step 1: make an instance of XHR
 			request = new XMLHttpRequest();
-			console.log("Hit me 1");
 
-			// Step 2: Open the JSON file at remote location
+			// Step 2: Make request to the JSON source
 			request.open("GET", "https://messagehub.herokuapp.com/messages.json", true);
-			console.log("Hit me 2");
 
-			// Step 3: set up callback for when HTTP response is returned (i.e., you get the JSON file back)
+			// Step 3: What to do when we get a response back
 			request.onreadystatechange = function() {
-				console.log("Hit me 3");
-
-				if (request.readyState == 4 && request.status == 200) {
-					// Step 5: when we get all the JSON data back, parse it and use it
-					theData = request.responseText;
-					messages = JSON.parse(theData);
-					returnHTML = "<ul>";
-					for (i = 0; i < messages.length; i++) {
-						returnHTML += "<li>" + messages[i].content + " by " + messages[i].username + 
-						"</li>";
+				// Step 5: parse the JSON data from response
+				if (request.readyState == 4) {
+					tweets = JSON.parse(request.responseText);
+					messagesSection = document.getElementById("messages");
+					messagesSection.innerHTML = "";
+					for (count = 0 ; count < tweets.length ; count++) {
+						messagesSection.innerHTML += "<p>" + tweets[count].content + " from " + tweets[count].username + "</p>";
 					}
-					returnHTML += "</ul>";
-					document.getElementById("messages").innerHTML =returnHTML;
-
 				}
-				else if (request.readyState == 4 && request.status != 200) {
-					document.getElementById("messages").innerHTML = "Whoops, something went terribly wrong!";
-				}
-				else if (request.readyState == 3) {
-					document.getElementById("messages").innerHTML = "Come back soon!";
-				}
+			};
 
-			}
-
-			// Step 4: fire off the HTTP request
+			// Step 4: Fire off request!!!
 			request.send();
-			console.log("Hit me 4");
-
 		}
 	</script>
 </head>
