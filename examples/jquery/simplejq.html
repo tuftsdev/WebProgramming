@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>The World News</title>
+        <meta charset="utf-8" />
+        <script src="jquery-3.3.1.min.js"></script>
+        <script>
+            // Old
+            /*function runme() {
+                elem = document.getElementById("news");
+                elem.innerHTML = "<h2>Kathleen Fisher Wins U.S. Senate Seat</h2>";
+            }*/
+
+            // Using jQuery
+            $(document).ready(function() {
+                $("#news").html("<h2>Kathleen Fisher Wins U.S. Senate Seat</h2>");
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1>The World News</h1>
+        <div id="news">Insert news here...</div>
+    </body>
+</html>

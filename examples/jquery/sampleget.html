@@ -7,7 +7,8 @@
 	<script src="jquery-3.3.1.min.js"></script>
 	<script>
 		$(document).ready(function() {
-			$.get("https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=place-davis", function(data) {
+			$.get("https://messagehub.herokuapp.com/messages.json", function(data) {
+				console.log(data);
 				$("#info").html(JSON.stringify(data));
 			});
 		});
@@ -15,7 +16,7 @@
 </head>
 
 <body>
-	<h1>MBTA Red Line Schedule</h1>
+	<h1>Messages</h1>
 	<div id="info">Loading...</div>
 </body>
 </html>
