@@ -219,6 +219,15 @@
   - Some open-endedness, force you to ask questions
   - More than one acceptable way to solve the problem, deal with engineering tradeoffs
   - Opportunities for the future
+* The picture: client-server  
+* What are the limitations of client-side?
+  1. Can't connect to a database server directly --and hence, store lots and lots of data
+  2. Other people cannot access data or information that you have (i.e., you can't make responses)
+  3. Can't to write to files on disk
+  4. You are constrained by web browser (i.e., browser incompatibility issues)
+  5. Storage constraints (e.g., cookies, local storage)
+  6. Security issues (e.g., same origin policy)
+  7. View source
 * The point of lab 6...
 * Today: storing data over time
 * What can't we do, knowing the limitations of client-side JavaScript.
@@ -230,15 +239,6 @@
 * Examples
 
 # Tuesday, March 12th: Server-Side and Web Applications
-* What are the limitations of client-side?
-  1. Can't connect to a database server directly --and hence, store lots and lots of data
-  2. Other people cannot access data or information that you have (i.e., you can't make responses)
-  3. Can't to write to files on disk
-  4. You are constrained by web browser (i.e., browser incompatibility issues)
-  5. Storage constraints (e.g., cookies, local storage)
-  6. Security issues (e.g., same origin policy)
-  7. View source
-* The picture: client-server
 * How do you design the server-side environment, assuming that hardware (computer(s) for server(s)) is provided to you?
   1. Handle incoming request
   2. Be publicly known and available
