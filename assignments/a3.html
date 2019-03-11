@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Assignment 3</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Assignment 3: The Server for the Private Car Service</h2>
+<h2>Due: Tuesday, April 9th</h2>
+
+<p class="note">This assignment is worth 25 points. You must work on this assignment individually.</p>
+
+<h2>Objectives</h2>
+<ul>
+<li>Develop a server-side web application using Heroku, Node.js, and the Express web framework.</li>
+<li>Enable and use Cross-Origin Resource Sharing (CORS).</li>
+<li>Read and write data to a MongoDB database.</li>
+<li>Build JSON-based APIs.</li>
+</ul>
+
+<h2>Overview</h2>
+<p>In <a href="a2.html">Assignment 2</a>, you sent your username, latitude, and longitude to a web application server (i.e., <code>https://hans-moleman.herokuapp.com/</code>), and it responded with a gob of data, where others in the class er I mean passengers or vehicles, in JSON format.  In this assignment, you will write a web application that is almost exactly like that used for Assignment 2, and deploy it.</p>
+
+<p>Using Heroku, Node.js with the Express web framework, and MongoDB, you are to build a web application server that maintains and serves locations of passengers and vehicles (username, latitude, and longitude) for a long period of time.</p>
+
+<h2>Getting Started</h2>
+<ol>
+<li class="note">For this assignment, you will not be using your private GitHub repository!</li>
+<li>Do <a href="lab-nodejsheroku.html">Lab 7</a> ASAP.  Use the web application you create in the lab for this assignment.</li>
+<li>You will need to use the mLab MongoDB plugin add-on for your web application.  See <a href="https://elements.heroku.com/addons/mongolab" target="_blank">https://elements.heroku.com/addons/mongolab</a>.  Run <code>heroku addons:create mongolab:sandbox</code> inside of your Heroku app folder (the one you used for Lab 7).  This will enable MongoDB for your web application on Heroku.  There is a 500 MB limit for data storage, more than enough for our needs.  If you forget to add a MongoDB plugin for your web application, your web application will return errors.</li>
+</ol>
+
+<h2>Data Description</h2>
+<p>Your web application shall work with two sets of data: <code>vehicles</code> and <code>passengers</code>.  In MongoDB, a set of data is known as a <span class="stress">collection</span>.  If you are familiar with relational databases, a collection is analogous to a "table".  The collection contains a number of records, properly known as <span class="stress">documents</span>.  If you are familiar with relational databases, a document is analogous to a "row".</p>
+<p>Each document will have the data field <code>_id</code> (the document's unique field, primary key) created automatically.</p>
+
+<h3>The Keys for a Single Document in <code>vehicles</code> and <code>passengers</code></h3>
+<p>The data that must be stored in one document (or record) in <code>vehicles</code> and <code>passengers</code> collections are:</p>
+<ul>
+<li><code>username</code> - The username of driver or passenger.  See <a href="#vehicles">below</a> for whitelist of all the usernames of drivers / vehicles. <span class="note">Important: the value must be stored in the database as a string!</span></li>
+<li><code>lat</code> - The user's latitude. <span class="note">Important: the value must be stored in the database as a floating point <em>number</em>!</span></li>
+<li><code>lng</code> - The user's longitude. <span class="note">Important: the value must be stored in the database as a floating point <em>number</em>!</span></li>
+<li><code>created_at</code> - The timestamp, generated for each new record entry.  The value for this field shall be generated on the server side.  Use the JavaScript <code>Date</code> object to generate timestamp.</li>
+</ul>
+
+<h2 id="vehicles">Whitelist of all Vehicles</h2>
+<p>The following is the list of all the vehicles that were used in Assignment 2.  Use this list to check if username is a driver / vehicle:</p>
+<p><code>var vehicles = ["JANET","NgfcWZmS", "tNEh59TC", "suFKyeZg", "VMerzMH8", "6tWDkKh6", "ajNnfhJj", "bCxY6mCw", "Cq4NX9eE", "mXfkjrFw", "EMYaM9D8", "nZXB8ZHz", "Tkwu74WC", "TnA763WN", "TaR8XyMe", "5KWpnAJN", "uf5ZrXYw"]</code></p>
+
+<h2>Requirements</h2>
+<p>Your web application shall have the following features or APIs (Application Programming Interfaces):</p>
+<h3>1. A <code>POST /rides</code> API</h3>
+<p>Returns a JSON string.  Submits check-in from any domain.  The required fields and <span class="stress">exact field names</span> for submission to this API are <code>username</code>, <code>lat</code>, and <code>lng</code>.  Successful submission of these three pieces of data shall result in one entry into either the collection <code>vehicles</code> (if <code>username</code> is <a href="#vehicles">in the list above</a>) or <code>passengers</code> (otherwise) in MongoDB.</p>
+<p>If a submission is missing any one of the required fields, do not insert new record into the database and send the following JSON as the response: <code>{"error":"Whoops, something is wrong with your data!"}</code>.</p>
+<p>Upon successful insertion of record into <code>vehicles</code> collection (i.e., username is a driver / vehicle), return a JSON string that is an object with the key <code>passengers</code> and the corresponding value is a list of all passengers who have requested a vehicle <em>within the last three minutes</em>.  Example JSON response, same as the one seen in the Assignment 2 specification: <code>{"passengers":[{"_id":"589bd3258451126182dfbc63","username":"dwR3TbOH","lat":20.3,"lng":20.4,"created_at":"2019-03-09T02:25:41.166Z"}]}</code></p>
+<p>Upon successful insertion of record into <code>passengers</code> collection (i.e., username is NOT a driver / vehicle), return a JSON string that is an object with the key <code>vehicles</code> and the corresponding value is a list of all drivers / vehicles who have been seen <em>within the last three minutes</em>.  Example JSON response, same as the one seen in the Assignment 2 specification: <code>{"vehicles":[{"_id":"589bd30f8451126182dfbc62","username":"suFKyeZg","lat":10.1,"lng":10.2,"created_at":"2019-03-09T02:25:19.575Z"}]}</code></p>
+<p><span class="note">IMPORTANT: Cross-origin resource sharing must be enabled for this API, else data cannot be sent from another domain (i.e., your Assignment 2 map will not work).</span></p>
+<p>Multiple check-ins for a username is allowed.</p>
+
+<h3>2. A <code>GET /passenger.json</code> API</h3>
+<p>Returns a list of all records for a given username as a JSON string if record(s) exist in MongoDB collection <code>passengers</code>.  The mandatory parameter for this API is <code>username</code>.  If the <code>username</code> query parameter is empty, not provided, or no results found, return empty JSON list <code>[]</code>.</p>
+<p>Example output 1: <code>GET /passenger.json?username=tNEh59TC</code> returns <code>[]</code> (as <code>tNEh59TC</code> is a vehicle)</p>
+<p>Example output 2: <code>GET /passenger.json?username=dwR3TbOH</code> returns something like <code>[{"_id":"589bd3258451126182dfbc63","username":"dwR3TbOH","lat":20.3,"lng":20.4,"created_at":"2019-03-09T02:25:41.166Z"}]</code></p>
+<p>Example output 3: <code>GET /passenger.json</code> returns <code>[]</code> as no username was given.</p>
+<p class="note">Cross-origin resource sharing must be enabled for this API else another another domain cannot retrieve data.</p>
+
+<h3>3. <code>GET /</code> - Home, the root, the index</h3>
+<p>Returns HTML.  You may also use additional JavaScript and CSS, and you are free to design this page however you desire. Accessing this on a web browser (e.g., <code>https://NAMEOFYOURHEROKUAPP.herokuapp.com/</code>) shall display list of all the vehicles in the database <span class="stress">in descending order</span> by timestamp (that is, the last driver/vehicle who was looking for passengers is displayed first).  username, and check-in timestamp must be displayed in addition to the location (latitude and longitude).  Simply outputting JSON as the page is unacceptable.</p>
+
+<p>Example output: <code>suFKyeZg was looking for passengers at 10.1, 10.2 on 2019-03-09T02:25:19.575Z</code>.</p>
+
+<h2>Security</h2>
+<p>With the exception of the data requirements (in "Data Description" above), please note that I did not mention a thing about security or error handling in the requirements.  Authentication to this web application is not required.  There is a reason for this, as you will see in Assignment 4.</p>
+
+<h2>References</h2>
+<ol>
+<li><a href="http://expressjs.com/api.html" target="_blank">The Express web framework API reference (official)</a></li>
+<li><a href="https://github.com/tuftsdev/WebProgramming/tree/gh-pages/examples/nodejs/nodemongoapp">The <code>nodemongoapp</code> example I wrote</a></li>
+<li><a href="https://stackoverflow.com/questions/7067966/how-to-allow-cors-in-express-node-js" target="_blank">Node.js + Express + Cross-Domain Scripting (Stack Overflow)</a></li>
+<li><a href="https://docs.mongodb.org/getting-started/shell/#getting-started-with-mongodb-development" target="_blank">Getting Started with MongoDB Development (official)</a></li>
+<li><a href="lab-nodejsheroku.html">Lab 7</a></li>
+<li><a href="https://github.com/mongodb/node-mongodb-native" target="_blank">The Official MongoDB Node.JS Driver QUICK START</a></li>
+<li><a href="https://mongodb.github.io/node-mongodb-native/genindex.html" target="_blank">The Official MongoDB Node.JS Driver Documentation</a></li>
+</ol>
+
+<h2>Testing Your Web Application</h2>
+<ol>
+<li>Push and deploy your app to Heroku.</li>
+<li>Play modified version of 2048 game on your computer.</li>
+<li>After the game is over, enter in your name.  After entry, your name, score, and final grid should be sent to your server.</li>
+<li>Once the server records your name, score, and final grid, you should see a popup with top 10 highest scores ever who have played your modified version of 2048.</li>
+</ol>
+
+<h2>The <code>README</code> File</h2>
+<p>Modify the <code>README.md</code> file in <code>node-js-getting-started</code> that describes your modifications. This description must:</p>
+<ol>
+<li>Identify what aspects of the work have been correctly implemented and what have not.</li>
+<li>Identify anyone with whom you have collaborated or discussed the assignment.</li>
+<li>Say approximately how many hours you have spent completing the assignment.</li>
+</ol>
+
+<h2>Submitting the Assignment</h2>
+<ol>
+<li>Push and deploy your app to Heroku.</li>
+<li>It is expected that you will use the same web app / repo from Lab 7 for this assignment.  If you are to create a new web app on Heroku for this assignment, you will need to add me as a collaborator (using my email address <code>mchow[AT]cs[DOT]tufts[DOT]edu</code>) for your web application in Heroku.  You can do this by logging on to Heroku, go to the dashboard for your web application, under "Access", click on the "Add collaborator" button, enter my email address, and click "Save changes".</li>
+</ol>
+
+<h2>Assessment</h2>
+<ul>
+<li>(15 total points) The <code>POST /rides</code> API as specified above</li>
+<li>(6 points) The <code>GET /passenger.json</code> API as specified above</li>
+<li>(3 points) The index <code>/</code> as specified above</li>
+<li class="note">If I cannot access any of the APIs above or if anything results in "Application Error", you will receive NO CREDIT for that part.</li>
+<li>(1 point) Your Assignment 2 in the <code>master</code> branch on GitHub is connected to your Assignment 3 and not to <code>https://hans-moleman.herokuapp.com/</code>.</li>
+</ul>
+
+</body>
+</html>

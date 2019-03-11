@@ -220,6 +220,13 @@
   - More than one acceptable way to solve the problem, deal with engineering tradeoffs
   - Opportunities for the future
 * The picture: client-server  
+* The point of lab 6...
+* Today: storing data over time
+* What can't we do, knowing the limitations of client-side JavaScript.
+* What we have learned so far in this course: key-value pairs
+* Two basic storage mechanisms on the client-side: cookies, local storage
+* Cookies: 4 KB max, there is a max number of cookies per domain
+* Local storage: about 5 MB per domain
 * What are the limitations of client-side?
   1. Can't connect to a database server directly --and hence, store lots and lots of data
   2. Other people cannot access data or information that you have (i.e., you can't make responses)
@@ -228,13 +235,6 @@
   5. Storage constraints (e.g., cookies, local storage)
   6. Security issues (e.g., same origin policy)
   7. View source
-* The point of lab 6...
-* Today: storing data over time
-* What can't we do, knowing the limitations of client-side JavaScript.
-* What we have learned so far in this course: key-value pairs
-* Two basic storage mechanisms on the client-side: cookies, local storage
-* Cookies: 4 KB max, there is a max number of cookies per domain
-* Local storage: about 5 MB per domain
 * The finer point: both cookies are local storage are still bound by Same Origin Policy
 * Examples
 
