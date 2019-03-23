@@ -2,7 +2,7 @@ var http = require("http");
 var url = require("url");
 
 http.createServer(function(request, response) {
-	
+	console.log(request);
 	var pathname = url.parse(request.url).pathname;
 	console.log("Request for " + pathname + " received.");
 	console.log(request.connection.remoteAddress);
