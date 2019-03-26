@@ -238,7 +238,7 @@
 * The finer point: both cookies are local storage are still bound by Same Origin Policy
 * Examples
 
-# Tuesday, March 12th: Server-Side and Web Applications
+# Tuesday, March 12th and Thursday, March 14th: Server-Side and Web Applications
 * How do you design the server-side environment, assuming that hardware (computer(s) for server(s)) is provided to you?
   1. Handle incoming request
   2. Be publicly known and available
@@ -254,3 +254,40 @@
 * Implementation 1 (ugly): Node.js => write server-side programs using JavaScript
 * Implementation 2 (cleaner using Express framework)
 * Assignment 3
+
+# Tuesday, March 26th and Thursday, March 28th: MongoDB: Data Persistence with MongoDB, Connecting Node.js with MongoDB
+* Using data sent via HTTP POST...
+* ...or HTTP GET
+* A fine point: data sent to a web server is always text!
+* A simple and complex picture of client-server architecture: https://www.acunetix.com/websitesecurity/web-application-attack/
+* So far, we have talked about the middle tier using Node.js and Express.js (framework on top of Node.js)
+* Let's talk about storing data now, the database server layer
+* Yes, we are dealing with another server (for solely storing data)
+* Why aren't we using a relational database or SQL in this class? Complexity.  The big idea that you know already: key-value pairs
+* MongoDB: we can store lots and lots of key-value pairs a la JSON
+* Database: a bin of data
+* Collection: lots and lots of data records
+* Document: a single record of key-value pairs in JSON format
+* All documents contain a field `_id`, generated for you
+* Important: a document does not need to follow a certain structure
+* Operations: inserting a document, querying a collection, updating a document
+* Important: inserting a document into a database that does not exist WILL create the database!
+* Wait, I'm confused: we are dealing with two different systems here. How do you have a Node.js server talk to a MongoDB server? The answer: a driver. A driver is a piece of software for accessing a database.  Think of this as a translation engine.  There is a `mongodb` driver for Node.js
+* Example: https://github.com/tuftsdev/WebProgramming/tree/gh-pages/examples/nodejs/nodemongoapp.  Feel free to copy and use initialization code.  It will help you big time!
+
+# Tuesday, April 2nd: Web Security, Part 1
+* Revisiting `nodemongoapp`
+* A trivial question: in the real world, people submit data via web form.  So...
+* There's something wrong with it. What if...
+* Cross-Site Scripting (XSS): what is it, why is it so bad, and where to attack?
+* https://www.veracode.com/security/xss
+* Awareness:
+  1. OWASP Top 10 list: https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf
+  2. CWE/SANS TOP 25 Most Dangerous Software Errors: https://www.sans.org/top25-software-errors/
+* Defending against XSS (don't do this in Assignment 3)
+* How bad is this problem? https://www.elie.net/static/files/lessons-learned-while-protecting-gmail/lessons-learned-while-protecting-gmail.pdf
+
+# Thursday, April 4th: Web Security, Part 2
+* https://www.csoonline.com/article/3269028/malware/what-is-cross-site-scripting-xss-low-hanging-fruit-for-both-attackers-and-defenders.html
+* https://www.veracode.com/sites/default/files/Resources/Reports/state-of-software-security-focus-on-application-development.pdf
+* Database injection attack in MongoDB
