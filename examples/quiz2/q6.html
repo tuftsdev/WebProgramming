@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Quiz 2 Question 6</title>
+        <meta charset="utf-8" />
+        <script>
+            lat = 1;
+            lng = 2;
+            request = new XMLHttpRequest();
+            request.open("POST", "https://hans-moleman.herokuapp.com/rides", true);
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            navigator.geolocation.getCurrentPosition(function(somePos) {
+                lat = 3;
+                lng = 4;
+            });
+            console.log("username=JANET&lat="+lat+"&lng="+lng); // added for debugging
+            request.send("username=JANET&lat="+lat+"&lng="+lng);
+        </script>
+    </head>
+
+    <body>
+        <h1>Take a look at your JavaScript console on web browser...</h1>
+    </body>
+</html>
