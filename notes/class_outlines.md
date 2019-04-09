@@ -281,11 +281,12 @@
 * There's something wrong with it. What if...
 * Cross-Site Scripting (XSS): what is it, why is it so bad, and where to attack?
 * https://www.veracode.com/security/xss
-* Awareness:
-  1. OWASP Top 10 list: https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf
-  2. CWE/SANS TOP 25 Most Dangerous Software Errors: https://www.sans.org/top25-software-errors/
+* Video: https://www.youtube.com/watch?v=t161cahMAZc
+* OWASP Top 10 list: https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf
 * Defending against XSS (don't do this in Assignment 3)
 * How bad is this problem? https://www.elie.net/static/files/lessons-learned-while-protecting-gmail/lessons-learned-while-protecting-gmail.pdf
+* Bug bounties
+* The moral of the story
 
 # Thursday, April 4th: Web Security, Part 2
 * https://www.csoonline.com/article/3269028/malware/what-is-cross-site-scripting-xss-low-hanging-fruit-for-both-attackers-and-defenders.html
