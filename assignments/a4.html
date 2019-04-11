@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Assignment 4</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Assignment 4: Security and Privacy Assessment of Private Car Service (Assignments 2 and 3)</h2>
+<h2>Due: Tuesday, April 23rd</h2>
+
+<h2>Objectives</h2>
+<ul>
+<li>Perform a security assessment on a potentially vulnerable web application.</li>
+</ul>
+
+<h2>Overview</h2>
+<p>You completed both the client-side (<a href="a2.html">Assignment 2</a>) and the server-side (<a href="a3.html">Assignment 3</a>) for a private car service.  Unfortunately, they are riddled with security and privacy vulnerabilities.  Assume that you have been hired as a security consultant to document and resolve the security and privacy issues in the applications.</p>
+
+<h2>Instructions</h2>
+<p>You will be assigned an Assignment 2 and 3 deliverable by another student in the class to penetration test and analyze (see below).  You are free to collaborate with the student on all matters.  Your goal is to find as many security and privacy problems as you can --breaking your partner's work is allowed.  You <span class="stress">must find at least three (3) vulnerabilities in the other students' product.</span>  You are allowed to use external tools such as <a href="http://www.portswigger.net/burp/download.html" target="_blank">Burp Suite</a>, curl, and <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project" target="_blank">OWASP Zed Attack Proxy (ZAP)</a>.</p>
+
+<p><span class="stress">It is not necessary for you to use any of the tools listed above but a good idea nonetheless.</span>  The only deliverable for this portion of the assignment is a security assessment document in HTML5 format in your private GitHub repository: <code>security/index.html</code>.  Your document must have the following sections:</p>
+<ol>
+<li><span class="stress">Introduction</span> - Provide a description of the product and what you were hired to do</li>
+<li><span class="stress">Methodology</span> - Describe your methodology pen testing the application, including the tools that you used</li>
+<li><span class="stress">Abstract of Findings</span> - Provide an overview of all the security and privacy issues you identified.  This section should be written for non-technical managers who do not have technical expertise and do not have time to read the entire document.  Write this section using lay language.</li>
+<li><span class="stress">Issues Found</span> - For each issue that you find, document:
+<ul>
+<li>Issue (e.g., database injection, really bad programming practice)</li>
+<li>Location or page where issue was found</li>
+<li>Severity of issue (e.g., low, medium , or high).  Justify your answer.</li>
+<li>Description of issue.  How did you find it?  A screenshot of problem is excellent.</li>
+<li>Proof of vulnerability.  <em>Show pictures or it didn't happen.</em></li>
+<li>Resolution.  Make recommendation(s) on how issue can be resolved.  Show code if possible.</li>
+</ul>
+</li>
+<li><span class="stress">Conclusion</span> - You can also list future considerations and recommendations with costs.</li>
+<li><span class="stress">References</span> - A list of references and links that you used for your work.</li>
+</ol>
+
+<h2>Notes</h2>
+<ul>
+<li>You can identify multiple instances of a security and privacy issue in your document (i.e., it will count as two issues).  Example: Cross-Site Scripting (XSS) on two different sections of the web application.</li>
+<li>It is important that you <span class="stress">read</span> your partner's source code!</li>
+</ul>
+
+<h2>Pairings</h2>
+<ol>
+<li>Jing, Panru:Bisbee, Eloise</li>
+<li>Lin, Zimo:Park, Robin</li>
+<li>Clarke-Magrab, Quinn:Lombino, Isabella</li>
+<li>Beaulieu, Gabrielle:Miljanic, Philip</li>
+<li>Neubieser, Craig:Holley, Cameron</li>
+<li>Prajapati, Harsh:Gramaglia, Peter</li>
+<li>Murray, Wei-ren:Bauer, Aidan</li>
+<li>Dawson, Brita:Nwachuku, Akwarandu</li>
+<li>Gaillard, Brian:Jelcic, Daniel</li>
+<li>Barnett-Young, Annie:Russo, Trevor</li>
+<li>Massart, David:Keser, Armanc</li>
+<li>Rose, Kiara:Pantuck, Alex</li>
+<li>Bell, Brandon:Whealan, Diana</li>
+<li>Kim, Maria:Polhemus, Ryan</li>
+<li>Dovey, Caelyn:Song, Ziyu</li>
+<li>Mukasa, Keisha:Gourley, Conor</li>
+<li>Wullenweber, Paul:Chong, Amber</li>
+<li>Tavadze, Bakar:Youman, Will</li>
+<li>Vithoontien, Jonathan:Fagan, Grace</li>
+<li>Zhang, Noah:Geismar, Ethan</li>
+<li>Dieng, Aminata:Chen, Yves</li>
+<li>Cheng, Michael:Saltzman, Samantha</li>
+<li>Chang, Jonathan:Swoap, Sam</li>
+<li>Sjamsu, Aji:Chung, Sam</li>
+<li>Kim, Matthew:Ross, Johanna</li>
+<li>Alsheikh-Ali, Noaf:Li, Henry</li>
+<li>Culligan, Casey:Lai, Emai</li>
+<li>Chang-Davidson, Thomas:Toffler, Mikayla</li>
+<li>Lytel, Lucas:Ngetich, David</li>
+<li>Yeung, Julie:Alguacil, Sandra</li>
+<li>Vanderlee, Caroline:Mathew, George</li>
+<li>Llamas-Rodriguez, Josue:Tijssen, Josefine</li>
+<li>Breitman, Roberto:Joshi, Radhika</li>
+<li>Fonarev, Vichka:Bornstein, Benjamin</li>
+<li>Schertz, Aidan:Fernandes, Ramon</li>
+<li>Rao, Sitara:Wolk, Colton</li>
+<li>Testa, Sam:Iyer, Era</li>
+<li>Herodes, Logan:San, Kerem</li>
+<li>Jacobs, Nick:Mirecki, Jay</li>
+<li>Varteresian, William:Tang, Darren</li>
+<li>Osherow, Eric:Chow, Ming</li> 
+</ol>
+
+<h2>The <code>README</code> File</h2>
+<p>Include a <code>README</code> file that describes the work. This description must:</p>
+<ol>
+<li>Identify what aspects of the work have been correctly implemented and what have not.</li>
+<li>Identify anyone with whom you have collaborated or discussed the assignment.</li>
+<li>Say approximately how many hours you have spent completing the assignment.</li>
+<li>Be written in either text format (thus <code>README.txt</code>) or in Markdown (thus <code>README.md</code>). No other formats will be accepted.</li>
+</ol>
+
+<h2>Assessment</h2>
+<p>I will be assessing your document based on its breadth and depth:</p>
+<ul>
+<li><strong>(1 point)</strong> - Introduction</li>
+<li><strong>(1 point)</strong> - Methodology</li>
+<li><strong>(1 points)</strong> - Abstract of findings</li>
+<li><strong>(3 points)</strong> - Issues found and technical analysis of issues found</li>
+<li><strong>(1 point)</strong> - Conclusion</li>
+<li><strong>(1 point)</strong> - References</li>
+<li><strong>(1 point)</strong> - Grammar, spelling, style (e.g., must be in HTML format)</li>
+<li><strong>(1 point)</strong> - <code>README</code> document exists; report is named <code>index.html</code> in folder named <code>security</code> in your private GitHub repository under the <code>master</code> branch.  No credit for report uploaded as PDF, Word document, or other format.</li>
+</ul>
+
+<h2>Submitting the Assignment</h2>
+<p>Push all your changes to the private repository in GitHub that I created for you in a folder named <code>security</code> under the <code>master</code> branch.  Say that your private repository in GitHub is named <code>comp20-mchow</code>, make sure all the files are pushed to <code>comp20-mchow/security</code>.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<p class="directions">Q: Is this an individual assignment or a team assignment?</p>
+<p>A: An individual assignment.  You are free to collaborate with your partner but each student will submit his/her own report.</p>
+
+<p class="directions">Q: Are we supposed to read the downloaded source code in order to make our attacks on the site we are attacking?  Or should we try to do it without going through the source code?  I'm not sure how to tell my attacks are working.</p>
+<p>A: Two step process:</p>
+<ol>
+<li>First, perform attacks WITHOUT reading the source code.  This is also known as "black box" testing.</li>
+<li>Then, download or get from your partner, the source code of the application.  Peruse through it, perform a manual code review of it, and document for your findings.</li>
+</ol>
+<p>If you find anything glaring, then go back to the application and attack it.  This is also known as "white box" testing.  For example, after you read the source code and you are suspicious that you can perform a Cross-Site Scripting attack, go ahead an try it out.</p>
+
+<p class="directions">Q: Is it necessary to use all the programs listed above?</p>
+<p>A: No.</p>
+
+<p class="directions">Q: I'm using a scanning tool and it returned a number of possible vulnerabilities.  Does it mean that the vulnerabilities actually exist?</p>
+<p>A: It could also be a false positive.  You have to check in the database (in this case, ask your partner), if it went through.  That is, your job is to validate the finding.</p>
+
+<p class="directions">Q: I can't find any problems with my partner's application.  What should I do?</p>
+<p>A: That's nonsense. You can make security and privacy recommendations.  Example: if you notice that your partner's web application uses the insecure methods, you can recommend to upgrade application to use more secure options.</p>
+
+<p class="directions">Q: Do I have to actually fix my partner's code?</p>
+<p>A: No.</p>
+
+</body>
+</html>
