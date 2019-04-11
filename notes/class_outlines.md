@@ -275,7 +275,7 @@
 * Wait, I'm confused: we are dealing with two different systems here. How do you have a Node.js server talk to a MongoDB server? The answer: a driver. A driver is a piece of software for accessing a database.  Think of this as a translation engine.  There is a `mongodb` driver for Node.js
 * Example: https://github.com/tuftsdev/WebProgramming/tree/gh-pages/examples/nodejs/nodemongoapp.  Feel free to copy and use initialization code.  It will help you big time!
 
-# Tuesday, April 2nd: Web Security, Part 1
+# Tuesday, April 9th: Web Security, Part 1
 * Revisiting `nodemongoapp`
 * A trivial question: in the real world, people submit data via web form.  So...
 * There's something wrong with it. What if...
@@ -288,7 +288,29 @@
 * Bug bounties
 * The moral of the story
 
-# Thursday, April 4th: Web Security, Part 2
+# Thursday, April 11th: Web Security, Part 2
 * https://www.csoonline.com/article/3269028/malware/what-is-cross-site-scripting-xss-low-hanging-fruit-for-both-attackers-and-defenders.html
 * https://www.veracode.com/sites/default/files/Resources/Reports/state-of-software-security-focus-on-application-development.pdf
 * Database injection attack in MongoDB
+* Hard-coded credentials: https://cwe.mitre.org/data/definitions/259.html
+* Playground: http://www.cs.tufts.edu/comp/20/hackme.php
+* Bypassing client-side validation using a proxy
+* Case study: "How to buy a 65” Plasma for $.99" http://www.edgeblog.net/2006/how-to-buy-a-plasma-for-99/
+* The moral of the story...
+* "I’ve Just Liberated My Modules" https://medium.com/@azerbike/i-ve-just-liberated-my-modules-9045c06be67c#.aandh88ud. Discussion on Hacker News: https://news.ycombinator.com/item?id=11340510
+* "NPM & left-pad: Have We Forgotten How To Program?" http://www.haneycodes.net/npm-left-pad-have-we-forgotten-how-to-program/. Discussion on Hacker News: https://news.ycombinator.com/item?id=11348798
+* No slides necessary for a lightning talk
+* Some reads on how to give a good lightning talk:
+  - http://www.perl.com/pub/2004/07/30/lightningtalk.html
+  - https://blog.hootsuite.com/lightning-talks-bring-your-organization-closer-together-in-5-minutes/
+  - http://www.unicef.org/knowledge-exchange/files/Lightning_Talks_production.pdf
+
+# Closing The Course
+* ![How the web works](https://ruslanspivak.com/lsbaws-part1/LSBAWS_HTTP_request_response.png)
+* For the next few class days, answer: "what's the point?"
+* What's the point --of web security?
+  - Let this sink in: "69 percent of web applications are plagued by vulnerabilities that could lead to sensitive data exposure, and 55 percent by cross-site request forgery flaws; 25% of web apps still vulnerable to eight of the OWASP Top Ten" (circa 2017: https://www.helpnetsecurity.com/2017/02/14/web-application-vulnerabilities/)
+  - https://www.veracode.com/sites/default/files/Resources/Reports/state-of-software-security-volume-7-veracode-report.pdf
+  - The Cyber Security Education problem
+  - "our CEO Tony’s greatest dissatisfaction many engineering new grads, as is not just the lack of preparation, but the seeming disinterest to chase down that very understanding."
+* What's the point --of everything? https://github.com/alex/what-happens-when
