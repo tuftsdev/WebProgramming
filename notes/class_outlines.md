@@ -314,3 +314,19 @@
   - The Cyber Security Education problem
   - "our CEO Tony’s greatest dissatisfaction many engineering new grads, as is not just the lack of preparation, but the seeming disinterest to chase down that very understanding."
 * What's the point --of everything? https://github.com/alex/what-happens-when
+
+# Thursday, April 18th: Where Do You Go From Here?
+* Where do you go from here?
+  - Web infrastructure and standards => COMP 150-IDS Internet-Scale Distributed Systems (Noah's course)
+  - Objects, first-class functions, closures => COMP 105: Programming Languages
+  - Internet and networking => COMP 112: Networking
+  - The engineering side of the web => COMP 120: Web Engineering
+  - NoSQL (e.g., MongoDB) vs. SQL databases => COMP 115: Databases
+  - Security => COMP 116: Security
+  - Programming skills and low-level => COMP 40, COMP 140 (Mark Hempstead)
+  - Concurrent uses and how to write a chat or web server => COMP 50: Concurrency
+  - User interface(s) => COMP 171
+  - Mobile => various
+  - Entrepreneurship.  COMP 20 will be part of ELS.
+  - Further application of this course => Wearables (COMP 50)
+    - See how Chris Gregg, Kate Wasynczuk, and Raewyn Duvall designed the course: https://docs.google.com/presentation/d/14vuu3Jc54vGYdguF4wE4pChx6nB87dZEOVXxRjd38Mg/edit?usp=sharing
