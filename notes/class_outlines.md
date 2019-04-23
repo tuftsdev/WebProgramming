@@ -305,28 +305,41 @@
   - https://blog.hootsuite.com/lightning-talks-bring-your-organization-closer-together-in-5-minutes/
   - http://www.unicef.org/knowledge-exchange/files/Lightning_Talks_production.pdf
 
-# Closing The Course
-* ![How the web works](https://ruslanspivak.com/lsbaws-part1/LSBAWS_HTTP_request_response.png)
-* For the next few class days, answer: "what's the point?"
-* What's the point --of web security?
-  - Let this sink in: "69 percent of web applications are plagued by vulnerabilities that could lead to sensitive data exposure, and 55 percent by cross-site request forgery flaws; 25% of web apps still vulnerable to eight of the OWASP Top Ten" (circa 2017: https://www.helpnetsecurity.com/2017/02/14/web-application-vulnerabilities/)
-  - https://www.veracode.com/sites/default/files/Resources/Reports/state-of-software-security-volume-7-veracode-report.pdf
-  - The Cyber Security Education problem
-  - "our CEO Tony’s greatest dissatisfaction many engineering new grads, as is not just the lack of preparation, but the seeming disinterest to chase down that very understanding."
-* What's the point --of everything? https://github.com/alex/what-happens-when
+# Tuesday, April 23nd
+* What's the point of semester group project?
+  - Applying what you have learned
+  - Scope down
+  - Dealing with adversity
+  - Show the rejection letter
 
-# Thursday, April 18th: Where Do You Go From Here?
-* Where do you go from here?
-  - Web infrastructure and standards => COMP 150-IDS Internet-Scale Distributed Systems (Noah's course)
-  - Objects, first-class functions, closures => COMP 105: Programming Languages
-  - Internet and networking => COMP 112: Networking
-  - The engineering side of the web => COMP 120: Web Engineering
-  - NoSQL (e.g., MongoDB) vs. SQL databases => COMP 115: Databases
-  - Security => COMP 116: Security
-  - Programming skills and low-level => COMP 40, COMP 140 (Mark Hempstead)
-  - Concurrent uses and how to write a chat or web server => COMP 50: Concurrency
-  - User interface(s) => COMP 171
-  - Mobile => various
-  - Entrepreneurship.  COMP 20 will be part of ELS.
-  - Further application of this course => Wearables (COMP 50)
-    - See how Chris Gregg, Kate Wasynczuk, and Raewyn Duvall designed the course: https://docs.google.com/presentation/d/14vuu3Jc54vGYdguF4wE4pChx6nB87dZEOVXxRjd38Mg/edit?usp=sharing
+# Thursday, April 25th
+* What's the point....
+  - Of web security?
+      - Let this sink in: "69 percent of web applications are plagued by vulnerabilities that could lead to sensitive data exposure, and 55 percent by cross-site request forgery flaws; 25% of web apps still vulnerable to eight of the OWASP Top Ten" (circa 2017: https://www.helpnetsecurity.com/2017/02/14/web-application-vulnerabilities/)
+     - https://www.veracode.com/sites/default/files/Resources/Reports/state-of-software-security-volume-7-veracode-report.pdf
+     - The Cyber Security Education problem
+     - "our CEO Tony’s greatest dissatisfaction many engineering new grads, as is not just the lack of preparation, but the seeming disinterest to chase down that very understanding."
+     - Of looking things up via Google, Stack Overflow => **take responsibility of your own learning, develop intellectual curiosity.  If you can't do these things, then perhaps CS is not for you as they are basic skills necessary for higher level courses (e.g., COMP 105, see https://www.cs.tufts.edu/comp/105/notes.html#Toc15)**
+    - This is big question in scholarship and grad school applications
+  - Of ask questions, asking for help => **ditto and _"knowing how to ask for help is the key to survival"_ --Alva Couch**
+  - Of me providing you readings that may go over your head => **get out of your comfort zone**
+  - Of using revision control:
+    - http://www.cs.tufts.edu/~nr/students/scm.html
+    - Develop good habits
+    - https://twitter.com/ElissaBeth/status/1076644664961314816
+    - https://github.blog/2017-04-18-why-version-control-is-required-for-comp-20-at-tufts-university/
+  - Of using Heroku => **use real tools and systems. Many friends and colleagues have lament Comp Sci grads are not prepared to build with today's evolving platforms.**
+  - Of making you write READMEs for every lab and assignment, Assignment 4 => **writing skills; articulate what you've learned**  See Josie's latest writing: https://josiebarth.com/2018/11/25/rediscovering-an-old-project-ourhouse/
+  - Of using GitHub: your portfolio, my gift to you
+    - https://github.com/blog/2343-why-version-control-is-required-for-comp-20-at-tufts-university
+    - Tommy Tang's email
+    - https://twitter.com/SamuelDeats/status/1106968793870491651
+* The real messages of this class
+  - What you COULD do
+  - Build your intellectual curiosity
+  - Engineering and code are not everything
+  - Learn how to learn
+  - Get out of your comfort zone
+* Personal thoughts
+* Now: you can serve your work via GitHub and the `gh-pages` branch.
+* Acknowledgements
