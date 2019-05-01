@@ -319,7 +319,7 @@
      - https://www.veracode.com/sites/default/files/Resources/Reports/state-of-software-security-volume-7-veracode-report.pdf
      - The Cyber Security Education problem
      - "our CEO Tony’s greatest dissatisfaction many engineering new grads, as is not just the lack of preparation, but the seeming disinterest to chase down that very understanding."
-     - Of looking things up via Google, Stack Overflow => **take responsibility of your own learning, develop intellectual curiosity.  If you can't do these things, then perhaps CS is not for you as they are basic skills necessary for higher level courses (e.g., COMP 105, see https://www.cs.tufts.edu/comp/105/notes.html#Toc15)**
+  - Of looking things up via Google, Stack Overflow => **take responsibility of your own learning, develop intellectual curiosity.  If you can't do these things, then perhaps CS is not for you as they are basic skills necessary for higher level courses (e.g., COMP 105, see https://www.cs.tufts.edu/comp/105/notes.html#Toc15)**
     - This is big question in scholarship and grad school applications
   - Of ask questions, asking for help => **ditto and _"knowing how to ask for help is the key to survival"_ --Alva Couch**
   - Of me providing you readings that may go over your head => **get out of your comfort zone**
@@ -328,7 +328,7 @@
     - Develop good habits
     - https://twitter.com/ElissaBeth/status/1076644664961314816
     - https://github.blog/2017-04-18-why-version-control-is-required-for-comp-20-at-tufts-university/
-  - Of using Heroku => **use real tools and systems. Many friends and colleagues have lament Comp Sci grads are not prepared to build with today's evolving platforms.**
+  - Of using Heroku => ****
   - Of making you write READMEs for every lab and assignment, Assignment 4 => **writing skills; articulate what you've learned**  See Josie's latest writing: https://josiebarth.com/2018/11/25/rediscovering-an-old-project-ourhouse/
   - Of using GitHub: your portfolio, my gift to you
     - https://github.com/blog/2343-why-version-control-is-required-for-comp-20-at-tufts-university
