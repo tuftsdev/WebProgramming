@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 20: Web Programming - Lab: Closest MBTA Subway Station</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Lab: Closest MBTA Subway Station, Part 1 on Week 3</h2>
+
+<h2>Overview</h2>
+<p>Over the next three weeks, you will create a web page (with a server) that shows all the MBTA (Massachusetts Bay Transportation Authority) Red Line subway train stations on a map and each station's real-time schedule of upcoming trains.  If you are not familiar with the MBTA subway system, the Red Line can be seen at <a href="https://www.mbta.com/schedules/Red/line" target="_blank">https://www.mbta.com/schedules/Red/line</a>.  The MBTA also provides APIs providing real-time data on subway schedules, bus schedules, and alerts for developers to use: see <a href="https://www.mbta.com/developers" target="_blank">https://www.mbta.com/developers</a>.</p>
+
+<p>It is important to note that instructions for this lab may be deliberately vague at times.  You are expected to ask questions if you are confused or not sure about something as in the professional world.  There will also be opportunities to go beyond expectations especially for those who feel they have mastered the material.</p>
+
+<h2>Instructions</h2>
+<p>The following is a table of all the MBTA Red Line subway stations and their geolocations:</p>
+<pre>
+     stop_name     |  stop_lat   |      stop_lon      |   stop_id   
+-------------------+-------------+--------------------+-------------
+ South Station     |   42.352271 | -71.05524200000001 | place-sstat
+ Andrew            |   42.330154 |         -71.057655 | place-andrw
+ Porter Square     |     42.3884 | -71.11914899999999 | place-portr
+ Harvard Square    |   42.373362 |         -71.118956 | place-harsq
+ JFK/UMass         |   42.320685 |         -71.052391 | place-jfk
+ Savin Hill        |    42.31129 |         -71.053331 | place-shmnl
+ Park Street       | 42.35639457 |        -71.0624242 | place-pktrm
+ Broadway          |   42.342622 |         -71.056967 | place-brdwy
+ North Quincy      |   42.275275 |         -71.029583 | place-nqncy
+ Shawmut           | 42.29312583 | -71.06573796000001 | place-smmnl
+ Davis             |    42.39674 |         -71.121815 | place-davis
+ Alewife           |   42.395428 |         -71.142483 | place-alfcl
+ Kendall/MIT       | 42.36249079 |       -71.08617653 | place-knncl
+ Charles/MGH       |   42.361166 |         -71.070628 | place-chmnl
+ Downtown Crossing |   42.355518 |         -71.060225 | place-dwnxg
+ Quincy Center     |   42.251809 |         -71.005409 | place-qnctr
+ Quincy Adams      |   42.233391 |         -71.007153 | place-qamnl
+ Ashmont           |   42.284652 | -71.06448899999999 | place-asmnl
+ Wollaston         |  42.2665139 |        -71.0203369 | place-wlsta
+ Fields Corner     |   42.300093 |         -71.061667 | place-fldcr
+ Central Square    |   42.365486 |         -71.103802 | place-cntsq
+ Braintree         |  42.2078543 |        -71.0011385 | place-brntn
+</pre>
+
+<p>NOTE: you will not need the <code>stop_id</code> in this lab but you will for future labs.</p>
+
+<p>Create a page (named <code>index.html</code>) that displays a Google Map of all the MBTA Red Line subway stations.  Requirements:</p>
+
+<ul>
+	<li>The map shall take up the entire page.</li>
+	<li>Each station on the map shall be a marker with an icon: use the same icon image for each marker.  The Google Maps default red marker pin is not good enough.</li>
+	<li>For now, the map shall be centered on South Station.</li>
+	<li>Render a red polyline connecting each station, thus showing the complete Red Line on the map.  Please note that the Red Line forks at JFK/UMass Station: see <a href="https://www.mbta.com/schedules/Red/line" target="_blank">https://www.mbta.com/schedules/Red/line</a></li>
+	<li>A CSS file is required in order for the Google Map to even work.</li>
+	<li>Each subway station and it's corresponding location can be hard-coded in JavaScript.</li>
+	<li>Use a separate file for the JavaScript.  Do not mix JavaScript in the HTML file with the exception of the script tag to include the JavaScript file.</li>
+</ul>
+
+<p>The required files for this part of the assignment: <code>index.html</code>, one CSS file, one JavaScript file, the <code>README</code> (more details on <code>README</code> below).</p>
+
+<h2>Getting Started</h2>
+<ol>
+<li>Create a new folder named <code>mbta</code> in your folder <code>comp20-XXXXX</code> on your computer, the one you have been using since the <a href="lab-responsive.html">responsive design lab</a>.</li>
+<li>Follow the Google Maps JavaScript API tutorial "Getting Started" at <a href="https://developers.google.com/maps/documentation/javascript/tutorial" target="_blank">https://developers.google.com/maps/documentation/javascript/tutorial</a>.</li>
+</ol>
+
+<h2>Going Beyond</h2>
+<p>Map all the MBTA Orange Line and Blue Line subway stations with respective polylines.  Map all MBTA Commuter Rail stations with respective polylines in purple color.</p>
+
+<h2>Testing Your Work</h2>
+<p>For this part of the lab, you can open the <code>index.html</code> page on a web browser.  However, it is bad practice as you will see next week.  Another way to serve your page locally is to run Python's simple HTTP server in the folder of your work.  That is:</p>
+<p><code>% cd comp20-XXXXX/mbta; # where XXXXX is the name of your private GitHub repository<br/>% python -m SimpleHTTPServer<br/></code></p>
+<p>By default, a simple web server will open up on port 8000.  Go to <code>http://localhost:8000/</code> on your favorite web browser to test your work.</p>
+<p class="note">Do not serve your work via the <code>gh-pages</code> branch of your private GitHub repository.</p>
+
+<h2>The <code>README</code> File</h2>
+<p>Every assignment shall include a <code>README</code> file that describes the work. This description must:</p>
+<ol>
+<li>Identify what aspects of the work have been correctly implemented and what have not.</li>
+<li>Identify anyone with whom you have collaborated or discussed the assignment.</li>
+<li>Say approximately how many hours you have spent completing the assignment.</li>
+<li>Be written in either text format (thus <code>README.txt</code>) or in Markdown (thus <code>README.md</code>). No other formats will be accepted.</li>
+</ol>
+
+<h2>Submitting Part 1</h2>
+<p>Push all your changes to the private repository in GitHub that I created for you in a folder named <code>mbta</code> under the <code>master</code> branch. Say that your private repository in GitHub is named <code>comp20-mchow</code>, make sure all the files are pushed to <code>comp20-mchow/mbta</code>.</p>
+
+<h2>Assessment</h2>
+<p>This lab is worth 10 points:</p>
+<ul>
+<li>(1 point) <code>README</code></li>
+<li>(2 points) The basics (proper repository folder name, 1 CSS file, map on entire page, map centered on South Station, separate file for JavaScript)</li>
+<li>(2 points) All the MBTA Red Line subway stations are marked on the map</li>
+<li>(2 points) Each station on the map shall be a marker with an icon: use the same icon image for each marker</li>
+<li>(3 points) Render a red polyline connecting each station, thus showing the complete Red Line on the map</li>
+<li>(-3 points) Errors exist in JavaScript console.  That is, errors that are not Google Maps API related.  Warnings are acceptable.</li>
+</ul>
+
+</body>
+</html>

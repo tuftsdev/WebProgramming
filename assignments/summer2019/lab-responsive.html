@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="/stylesheets/style.css" />
+<title>COMP 20: Web Programming - Lab: Responsive Design</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Lab: Responsive Design</h2>
+
+<h2>Lab Objectives</h2>
+<ol>
+<li>Practice reading HTML.</li>
+<li>Practice writing CSS.</li>
+<li>Understand what responsive design is.</li>
+<li>Understand the engineering technique of using sprite sheets.</li>
+</ol>
+
+<h2>Instructions</h2>
+<p><img src="software.png" width="640" height="480" alt="The image"/></p>
+<p>Given the above image named <code>software.png</code> and using only one HTML file named <code>index.html</code> and only one CSS file named <code>responsive.css</code>, create a web page where if you resize the browser screen width, a different part of the image will be rendered.  That is:</p>
+<ul>
+	<li>If the browser screen width is greater than 1200 pixels, display the top-left image of <code>software.png</code> (i.e., the one that reads "How the customer explained it")</li>
+	<li>If the browser screen width is greater than 1100 pixels but less than or equal to 1200 pixels, display the second image on the top row (i.e., "How the Project Leader understood it").</li>
+	<li>If the browser screen width is greater than 1000 pixels but less than or equal to 1100 pixels, display the third image on the top row (i.e., "How the Analyst designed it").</li>
+	<li>If the browser screen width is greater than 900 pixels but less than or equal to 1000 pixels, display the fourth image on the top row.</li>
+	<li>If the browser screen width is greater than 800 pixels but less than or equal to 900 pixels, display the last image on the top row.</li>
+	<li>If the browser screen width is greater than 700 pixels but less than or equal to 800 pixels, display the first image on the second row ("How the project was documented").</li>
+	<li>If the browser screen width is greater than 600 pixels but less than or equal to 700 pixels, display the second image on the second row.</li>
+	<li>If the browser screen width is greater than 500 pixels but less than or equal to 600 pixels, display the third image on the second row.</li>
+	<li>If the browser screen width is greater than 400 pixels but less than or equal to 500 pixels, display the fourth image on the second row.</li>
+	<li>If the browser screen width is less than or equal to 400 pixels, display the last image, bottom-right ("What the customer really needed").</li>
+</ul>
+
+<p>The entire image <code>software.png</code> is 640px x 480px.</p>
+
+<h2>Getting Started</h2>
+
+<p>This is the first lab / assignment that you are required to use the private GitHub repository I created for you.  One reason why am I requiring you to use a private GitHub repository is to prevent academic dishonesty.  Another reason for the private GitHub repository is so myself or the TA can pinpoint mistakes and make comments directly.  There is also a third reason.  To access you private GitHub repository I created for you:</p>
+<ol>
+	<li>Log into GitHub (the website)...</li>
+	<li>...then go to <a href="https://github.com/tuftsdev" target="_blank">https://github.com/tuftsdev</a>. You can accept invitation to your private repo there.</li>
+</ol>
+<p>On your workstation, create a new folder that is exactly the same name as the private GitHub repository I created for you.  For example, if your private GitHub repository is named <code>comp20-firstletteroffirstnamelastname</code>, run <code>mkdir comp20-firstletteroffirstnamelastname</code>.  Please replace <code>firstletteroffirstnamelastname</code> with your username I gave you (first letter of your first name followed by your last name).  Then run the following commands:</p>
+<pre>
+cd comp20-firstletteroffirstnamelastname; #the folder that you created
+git init; #make the folder into a Git repository
+mkdir responsive;
+git remote add origin git@github.com:tuftsdev/comp20-firstletteroffirstnamelastname.git;
+</pre>
+
+<p>I am going to give you the HTML so you do not have to write it!  Copy and paste the following HTML below into an <code>index.html</code> in your <code>responsive</code> folder:</p>
+<pre>
+&lt;!DOCTYPE HTML&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;title&gt;Software Development&lt;/title&gt;
+  &lt;link rel="stylesheet" href="responsive.css"/&gt;
+  &lt;meta charset="utf-8" /&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class="software"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p class="note">Caveat: you are NOT allowed to modify the HTML body!</p>
+
+<p>You must also save the <code>software.png</code> image in the same location as your <code>index.html</code> folder.  Right-click on the image (see above) and do a "Save Image As..."</p>
+
+<p>Your job is to write <code>responsive.css</code>.</p>
+
+<h2>Readings and References</h2>
+<ul>
+	<li><a href="http://www.feedthebot.com/pagespeed/combine-images-css-sprites.html" target="_blank"><span class="title">How to use CSS sprites (feedthebot.com)</span></a></li>
+	<li><a href="http://css-tricks.com/snippets/css/media-queries-for-standard-devices/" target="_blank"><span class="title">Media Queries for Standard Devices (css-tricks.com)</span></a></li>
+</ul>
+
+<h2>The <code>README</code> File</h2>
+<p>Each assignment and lab shall include a <code>README</code> file that describes the work. This description must:</p>
+<ol>
+<li>Identify what aspects of the work have been correctly implemented and what have not.</li>
+<li>Identify anyone with whom you have collaborated or discussed the assignment.</li>
+<li>Say approximately how many hours you have spent completing the assignment.</li>
+<li>Be written in either text format (<code>README.txt</code>) or in Markdown (<code>README.md</code>).  Markdown is preferred.  No other formats will be accepted.  Please use all capital letters for <code>README</code></li>
+</ol>
+
+<h2>Submitting Your Lab</h2>
+<p>Push all your files (the image <code>software.png</code>, the stylesheet <code>responsive.css</code>, the HTML <code>index.html</code>, and your <code>README.md</code>) to a folder named <code>responsive</code> inside of the private GitHub repo I created for you.  Say that your private repository is named <code>comp20-mchow</code>, make sure all the files are pushed to <code>comp20-mchow/responsive</code>.</p>
+<pre>
+# Inside your private GitHub repo folder (e.g., <code>comp20-mchow</code>)
+git add .
+git commit -m "<span class="stress">Some good commit message here</span>"
+git push
+</pre>
+
+<h2>Assessment</h2>
+<p>This lab is worth 4 points.</p>
+<ul>
+	<li>(1 point) The basics (e.g., exact folder name in private GitHub repository, exact file names, all files included in the folder)</li>
+	<li>(1 point) The README file</li>
+	<li>(2 point) Completion of the <code>responsive.css</code> style sheet following all the instructions above</li>
+	<li>(-4 points) You modified the HTML that I provided for you.</li>
+	<li>(-4 points) You used a number of separate images for this lab.</li>
+</ul>
+
+</body>
+</html>

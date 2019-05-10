@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="/stylesheets/style.css" />
+<title>COMP 20: Web Programming - Lab: JavaScript Object Notation (JSON)</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Lab: Messages, Part 1</h2>
+
+<p class="note">This lab is worth 2 points.</p>
+
+<h2>Lab Objectives</h2>
+<ol>
+<li>Practice parsing JSON data.</li>
+<li>Practice using JavaScript associative arrays.</li>
+</ol>
+
+<h2>Overview</h2>
+<p>In this lab, you will parse data in JSON format, and output the data to a section of a completely loaded HTML file.</p>
+
+<h2>Getting Started</h2>
+<p>I am going to give you the HTML so you do not have to write it!  Copy and paste the following HTML below into an <code>index.html</code> in a folder named <code>messages</code> in the private GitHub repository I created for you:</p>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;Messages&lt;/title&gt;
+  &lt;script&gt;
+    function parse() {
+      jsonData = '[{"id":1,"content":"Do you really want to hurt me?","username":"Boy"},{"id":2,"content":"Do you really want to make me cry?","username":"George"}]';
+      // Your code here......
+    }
+  &lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body onload="parse()"&gt;
+  &lt;h1&gt;Messages&lt;/h1&gt;
+  &lt;div id="messages"&gt;&lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+
+<h2>Instructions</h2>
+<p>Please review the <code>index.html</code> file.  Your job is to modify the JavaScript function to parse the JSON data, and output the messages with corresponding usernames in the "messages" section of the HTML, as ordered in JSON file (notice <code>// Your code here......</code>).  <span class="note">IMPORTANT: you are not allowed to modify the HTML body!  You are also not allowed to use jQuery!</span></p>
+
+<h2>Example Output</h2>
+<p><img src="lab-json.png" alt="Lab JSON" /></p>
+<p>Note: disregard the styling.  You will have an opportunity to do that next week.</p>
+
+<h2>Viewing Your Work</h2>
+<p>Serve your page via Python's simple HTTP server in the folder of your lab.  That is:<p>
+<p><code>% cd comp20-XXXXX/messages; # where XXXXX is the name of your private GitHub repository<br/>% python -m SimpleHTTPServer<br/></code></p>
+<p>By default, a simple web server will open up on port 8000.  Go to <code>http://localhost:8000</code> on your favorite web browser to test your work.</p>
+<p class="note">Do not serve your work via the <code>gh-pages</code> branch of your private GitHub repository.</p>
+
+<h2>Debugging</h2>
+<p>Be sure to look at your JavaScript console for any errors.</p>
+
+<!-- So I ripped this off from Norman Ramsey at http://www.cs.tufts.edu/comp/105/details.html -->
+<h2>The <code>README</code> File</h2>
+<p>Every assignment and lab shall include a <code>README</code> file that describes the work. This description must:</p>
+<ol>
+<li>Identify what aspects of the work have been correctly implemented and what have not.</li>
+<li>Identify anyone with whom you have collaborated or discussed the assignment.</li>
+<li>Say approximately how many hours you have spent completing the assignment.</li>
+<li>Be written in either text format (<code>README.txt</code>) or in Markdown (<code>README.md</code>). No other formats will be accepted.</li>
+</ol>
+
+<h2>Submitting the lab</h2>
+<p>To submit this lab, your work must be in the <code>master</code> branch of your private Git repository on GitHub.</p>
+
+<h2>Assessment</h2>
+<ol>
+<li>(0.5 point) The basics (e.g., file names, Git commit messages)</li>
+<li>(1 points) Your JavaScript code that parses the JSON, modifies "messages" section of HTML</li>
+<li>(0.5 point) The <code>README</code></li>
+<li>(-2.0 point) Outputs exist in JavaScript console</li>
+<li>(-2.0 point) You modified the HTML</li>
+<li>(-2.0 point) You used jQuery</li>
+</ol>
+
+</body>
+</html>
