@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="/stylesheets/style.css" />
+<title>COMP 20: Web Programming - Lab: The Ride-Hailing Service Part 2</title>
+</head>
+
+<body>
+<h1>COMP 20: Web Programming</h1>
+<h2>Lab: The Ride-Hailing Service, Part 2 on Week 4</h2>
+
+<h3><a href="lab-rides.html">Revisit Part 1 on Week 3</a></h3>
+
+<h2>Overview</h2>
+<p>Last week, you rendered a map with a few markers --all static content.  This week will be much more involved: populate the map with dynamic content --information that changes over time.  That is, you request a ride, and vehicles available will be displayed on map.</p>
+
+<h2>Instructions</h2>
+<p>This week, you are to implement four features onto your ride-hailing map from last week:</p>
+<ol>
+	<li>Determine your geolocation (geographic latitude and longitude) using the JavaScript <code>navigator.geolocation</code> object. Upon determining your geolocation, place a marker of where you are on the map.  The icon of the marker must be different than icon used for each vehicle (it can be the default red pin Google uses).</li>
+	<li>Make a request to the ride-hailing API, providing your username (to be randomly generated for you, provided on Canvas), latitude, and longitude.  Upon successful request, ride-hailing API will give to you a list of vehicles to mark onto map.  This list of vehicles will change over time.  As in part 1, each vehicle on the map shall be a marker with ths icon: <img src="car.png" alt="Vehicle" />.</li>
+	<li>Upon clicking on your marker on the map, display an information window (a.k.a., infowindow) noting the closest vehicle from where you are including the distance away in miles.</li>
+	<li>Render a polyline (any color) that connects "your" marker to the marker of the closest vehicle.</li>
+</ol>
+
+<h2>The Ride-Hailing API</h2>
+<p>The ride request API <code>https://hans-moleman.herokuapp.com/rides</code> is HTTP POST only.  It takes in three parameters and will return a string, JSON list, of the locations of vehicles --if the three parameters are legitimate.</p>
+<ul>
+<li><code>username</code> - Your username. <span class="note">NOTE: you will be assigned a randomly generated username for this lab, to be provided in Canvas.</span></li>
+<li><code>lat</code> - Your latitude, a floating point number</li>
+<li><code>lng</code> - Your longitude, a floating point number</li>
+</ul>
+<p>If you successfully send the three inputs, you will receive a JSON that looks like the following (example response):</p>
+<p><code>[{"_id":"589bd30f8451126182dfbc62","username":"uOWuyLrd","lat":10.1,"lng":10.2,"created_at":"2019-02-09T02:25:19.575Z"},"_id":"589bd3258451126182dfbc63","username":"dwR3TbOH","lat":20.3,"lng":20.4,"created_at":"2019-02-09T02:25:41.166Z"}]</code></p>
+<p>If you do not send the three inputs correctly, you will receive the following JSON: <code>{"error":"Whoops, something is wrong with your data!"}</code></p>
+<p class="note">Important: Cross-Origin Resource Sharing (CORS) is enabled for this API!</p>
+
+<h2>Calulating the Distance Between Two Geopoints</h2>
+<p>There are two ways to calculate the distance between two geopoints, choose one:</p>
+<ol>
+<li>Use the classic Haversine Formula. The formula is provided and analyzed at <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">http://www.movable-type.co.uk/scripts/latlong.html</a>.  Also, you are encouraged to use the JavaScript implementation of the Haversine Formula on Stack Overflow but please do cite it in your <code>README.md</code> or in your code: <a href="http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript" target="_blank">http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript</a>.</li>
+<li>Use <code>google.maps.geometry.spherical.computeDistanceBetween(latLngA, latLngB);</code>.  See documentation at <a href="https://developers.google.com/maps/documentation/javascript/reference#spherical">https://developers.google.com/maps/documentation/javascript/reference#spherical</a></li>
+</ol>
+<p>Remember, the distance must be in <strong>miles</strong>, not meters.</p>
+
+<h2>Testing Your Work</h2>
+<p>For this part of the lab, you can open the <code>index.html</code> page on a web browser.  However, it is bad practice as you will see next week.  Another way to serve your page locally is to run Python's simple HTTP server in the folder of your work.  That is:</p>
+<p><code>% cd comp20-XXXXX/notuber; # where XXXXX is the name of your private GitHub repository<br/>% python -m SimpleHTTPServer<br/></code></p>
+<p>By default, a simple web server will open up on port 8000.  Go to <code>http://localhost:8000/</code> on your favorite web browser to test your work.</p>
+<p class="note">Do not serve your work via the <code>gh-pages</code> branch of your private GitHub repository.</p>
+
+<h2>The <code>README</code> File</h2>
+<p>Every assignment shall include a <code>README</code> file that describes the work. This description must:</p>
+<ol>
+<li>Identify what aspects of the work have been correctly implemented and what have not.</li>
+<li>Identify anyone with whom you have collaborated or discussed the assignment.</li>
+<li>Say approximately how many hours you have spent completing the assignment.</li>
+<li>Be written in either text format (thus <code>README.txt</code>) or in Markdown (thus <code>README.md</code>). No other formats will be accepted.</li>
+</ol>
+
+<h2>Going Beyond</h2>
+<ul>
+	<li>Upon determining your location, display the restaurants, bars, and coffee shops within one mile around you.  Consider using the Google Places API.</li>
+	<li>Upon clicking on a marker for a vehicle, show popup infowindow noting how far away the vehicle is, in miles, from you.</li>
+</ul>
+
+<h2>Submitting Part 2</h2>
+<p>Same instructions as for submitting part 1: push all your changes to the private repository in GitHub that I created for you in a folder named <code>notuber</code> under the <code>master</code> branch. Say that your private repository in GitHub is named <code>comp20-mchow</code>, make sure all the files are pushed to <code>comp20-mchow/notuber</code>.</p>
+
+<h2>Assessment</h2>
+<p>This lab is worth 10 points:</p>
+<ul>
+<li>(1 point) <code>README</code></li>
+<li>(1 point) Determine and mark your location on the map</li>
+<li>(2 points) Make a successful request to the ride-hailing API, send your username, latitude, and longitude</li>
+<li>(3 points) Mark all the vehicles returned by the ride-hailing API on the map using the icon image <img src="car.png" alt="Vehicle" /></li>
+<li>(2 points) Note the closest vehicle from where you are (e.g., upon clicking on marker of where you are)</li>
+<li>(1 point) Polyline connecting your marker to the closest vehicle</li>
+<li>(-3 points) Errors exist in JavaScript console.  That is, errors that are not Google Maps API related.  Warnings are acceptable.</li>
+<li>(BONUS 1 point) Accomplish at least one of the "Going Beyond" items</li>
+</ul>
+
+</body>
+</html>

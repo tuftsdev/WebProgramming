@@ -64,7 +64,6 @@
 	<li>Use a separate file for the JavaScript.  Do not mix JavaScript in the HTML file with the exception of the script tag to include the JavaScript file.</li>
 	<li>For now, the map shall be centered on latitude = 42.352271, longitude = -71.05524200000001.  This location is South Station in Boston, MA.</li>
 	<li>Each vehicle on the map shall be a marker with ths icon: <img src="car.png" alt="Vehicle" /></li>
-	<li>Clicking on a marker for a vehicle shows popup infowindow noting how far away the vehicle is, in miles, from South Station.</li>
 </ul>
 
 <p>The required files for this part of the assignment: <code>index.html</code>, one CSS file, one JavaScript file, the <code>README</code> (more details on <code>README</code> below).</p>
@@ -74,14 +73,6 @@
 <li>Create a new folder named <code>notuber</code> in your folder <code>comp20-XXXXX</code> on your computer, the one you have been using since the <a href="lab-responsive.html">responsive design lab</a>.</li>
 <li>Follow the Google Maps JavaScript API tutorial "Getting Started" at <a href="https://developers.google.com/maps/documentation/javascript/tutorial" target="_blank">https://developers.google.com/maps/documentation/javascript/tutorial</a>.</li>
 </ol>
-
-<h2>Calulating the Distance Between Two Geopoints</h2>
-<p>There are two ways to calculate the distance between two geopoints, choose one:</p>
-<ol>
-<li>Use the classic Haversine Formula. The formula is provided and analyzed at <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">http://www.movable-type.co.uk/scripts/latlong.html</a>.  Also, you are encouraged to use the JavaScript implementation of the Haversine Formula on Stack Overflow but please do cite it in your <code>README.md</code> or in your code: <a href="http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript" target="_blank">http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript</a>.</li>
-<li>Use <code>google.maps.geometry.spherical.computeDistanceBetween(latLngA, latLngB);</code>.  See documentation at <a href="https://developers.google.com/maps/documentation/javascript/reference#spherical">https://developers.google.com/maps/documentation/javascript/reference#spherical</a></li>
-</ol>
-<p>Remember, the distance must be in <strong>miles</strong>, not meters.</p>
 
 <h2>Testing Your Work</h2>
 <p>For this part of the lab, you can open the <code>index.html</code> page on a web browser.  However, it is bad practice as you will see next week.  Another way to serve your page locally is to run Python's simple HTTP server in the folder of your work.  That is:</p>
@@ -107,8 +98,7 @@
 <li>(1 point) <code>README</code></li>
 <li>(2 points) The basics (proper repository folder name, 1 CSS file, map on entire page, separate file for JavaScript)</li>
 <li>(1 point) Map centered on South Station</li>
-<li>(3 points) All the vehicles are marked on the map with the icon image <img src="car.png" alt="Vehicle" /> used as marker</li>
-<li>(3 points) Clicking on a marker for a vehicle shows popup infowindow noting how far away the vehicle is, in miles, from South Station</li>
+<li>(6 points) All the vehicles are marked on the map with the icon image <img src="car.png" alt="Vehicle" /> used as marker</li>
 <li>(-3 points) Errors exist in JavaScript console.  That is, errors that are not Google Maps API related.  Warnings are acceptable.</li>
 </ul>
 
