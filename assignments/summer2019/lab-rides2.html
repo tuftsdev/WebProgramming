@@ -37,6 +37,11 @@
 <p>If you do not send the three inputs correctly, you will receive the following JSON: <code>{"error":"Whoops, something is wrong with your data!"}</code></p>
 <p class="note">Important: Cross-Origin Resource Sharing (CORS) is enabled for this API!</p>
 
+<h2>Executing HTTP POST via <code>XMLHttpRequest</code></h2>
+<p>In order to execute HTTP POST using the JavaScript <code>XMLHttpRequest</code> object, you need to add a parameter to the HTTP request header: <code>xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");</code>  where <code>xhr</code> is an instance of <code>XMLHttpRequest</code>.  See <a href="https://stackoverflow.com/questions/9713058/sending-post-data-with-a-xmlhttprequest
+" target="_blank">https://stackoverflow.com/questions/9713058/sending-post-data-with-a-xmlhttprequest</a> for more information.</p>
+<p>Also, the parameter to send via <code>xhr.send()</code> must the in the following format: <code>"username=YOUR_USERNAME&amp;lat=YOUR_LATITUDE&amp;lng=YOUR_LONGITUDE"</code> (with the double quotes).  This is standard URI convention.  Remember replace YOUR_LATITUDE and YOUR_LONGITUDE using string concatenation!</p>
+
 <h2>Calulating the Distance Between Two Geopoints</h2>
 <p>There are two ways to calculate the distance between two geopoints, choose one:</p>
 <ol>
