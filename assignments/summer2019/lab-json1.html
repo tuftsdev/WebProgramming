@@ -34,14 +34,14 @@
   &lt;meta charset="utf-8" /&gt;
   &lt;title&gt;Messages&lt;/title&gt;
   &lt;script&gt;
-    function parse() {
+    function loadMessages() {
       jsonData = '[{"id":1,"content":"Do you really want to hurt me?","username":"Boy"},{"id":2,"content":"Do you really want to make me cry?","username":"George"}]';
       // Your code here......
     }
   &lt;/script&gt;
 &lt;/head&gt;
 
-&lt;body onload="parse()"&gt;
+&lt;body onload="loadMessages()"&gt;
   &lt;h1&gt;Messages&lt;/h1&gt;
   &lt;div id="messages"&gt;&lt;/div&gt;
 &lt;/body&gt;
@@ -50,7 +50,7 @@
 </pre>
 
 <h2>Instructions</h2>
-<p>Please review the <code>index.html</code> file.  Your job is to modify the JavaScript function to parse the JSON data, and output the messages with corresponding usernames in the "messages" section of the HTML, as ordered in JSON file (notice <code>// Your code here......</code>).  <span class="note">IMPORTANT: you are not allowed to modify the HTML body!  You are also not allowed to use jQuery!</span></p>
+<p>Please review the <code>index.html</code> file.  Your job is to modify the JavaScript function <code>loadMessages</code>to parse the JSON data, and output the messages with corresponding usernames in the "messages" section of the HTML, as ordered in JSON file (notice <code>// Your code here......</code>).  <span class="note">IMPORTANT: you are not allowed to modify the HTML body!  You are also not allowed to use jQuery!</span></p>
 
 <h2>Example Output</h2>
 <p><img src="lab-json.png" alt="Lab JSON" /></p>
