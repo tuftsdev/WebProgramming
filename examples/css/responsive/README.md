@@ -1,0 +1,1 @@
+This is a solution to the reponsive design lab in summer 2019 https://tuftsdev.github.io/WebProgramming/assignments/summer2019/lab-responsive.html
