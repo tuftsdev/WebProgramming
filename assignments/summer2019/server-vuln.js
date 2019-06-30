@@ -137,7 +137,7 @@ app.get('/', function(request, response) {
 				}
 				else {
 					for (var count = 0; count < results.length; count++) {
-						indexPage += "<li>" + validator.escape(results[count].username) + " requested a vehicle at " + results[count].lat + ", " + results[count].lng + " on " + results[count].created_at + "</li>";
+						indexPage += "<li>" + results[count].username + " requested a vehicle at " + results[count].lat + ", " + results[count].lng + " on " + results[count].created_at + "</li>";
 					}
 				}
 				indexPage += "</ul></body></html>"
