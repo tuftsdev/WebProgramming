@@ -10,6 +10,6 @@
 		"body-parser": "latest",
 		"validator": "latest",
 		"compression": "latest",
-		"mongodb": "^2.2.33"
+		"mongodb": "^3.6.1"
 	}
 }
