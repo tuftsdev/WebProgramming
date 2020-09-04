@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"dependencies": {
 		"express": "latest",
-		"mongodb": "^2.2.33",
+		"mongodb": "^3.6.1",
 		"validator": "latest"
 	}
 }
